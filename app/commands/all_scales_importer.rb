@@ -22,9 +22,9 @@ class AllScalesImporter < ActiveInteraction::Base
   end
 
   def create_scale(line)
-    mode_number = line[0, 7].strip
-    scale = line[7, 16].strip
-    common_name = line[16..].strip
+    mode_number = line[0..6].strip
+    scale = line[7..22].strip
+    common_name = line[23..].strip
 
     Scale.create!(
       mode_number:,
