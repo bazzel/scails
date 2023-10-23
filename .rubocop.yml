@@ -2,5 +2,7 @@ require: rubocop-rails
 
 AllCops:
   Exclude:
+    - "app/helpers/*.rb"
+    - "db/migrate/*.rb"
     - "config/environments/*.rb"
     - "bin/*"
