@@ -4,6 +4,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "app/helpers/*.rb"
+    - "db/schema.rb"
     - "db/migrate/*.rb"
     - "config/environments/*.rb"
     - "bin/*"

@@ -76,4 +76,4 @@ end
 
 gem 'solargraph', '~> 0.49.0'
 
-gem "active_interaction", "~> 5.3"
+gem 'active_interaction', '~> 5.3'
