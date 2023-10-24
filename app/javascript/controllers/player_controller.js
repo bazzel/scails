@@ -6,22 +6,32 @@ export default class extends Controller {
     modeNumber: Number,
   };
 
-  connect() {}
+  initialize() {
+    this.isPlaying = false;
+  }
 
   playNote() {
-    const synth = new Tone.Synth().toDestination();
-    const now = Tone.now();
-    const notes = this.playableNotes();
-    const length = 0.4;
+    if (!this.isPlaying) {
+      const synth = new Tone.Synth({
+        onsilence: () => (this.isPlaying = false),
+      }).toDestination();
+      const now = Tone.now();
+      const notes = this.playableNotes();
+      const length = 0.2;
+      const subdivision = "8n";
 
-    for (const [index, element] of notes.entries()) {
-      synth.triggerAttackRelease(`${element}4`, "8n", now + index * length);
+      this.isPlaying = true;
+
+      for (const [index, element] of notes.entries()) {
+        const note = `${element}4`;
+        const time = now + index * length;
+        synth.triggerAttackRelease(note, subdivision, time);
+      }
+
+      const note = `${notes[0]}5`;
+      const time = now + notes.length * length;
+      synth.triggerAttackRelease(note, subdivision, time);
     }
-    synth.triggerAttackRelease(
-      `${notes[0]}5`,
-      "8n",
-      now + notes.length * length
-    );
   }
 
   playableNotes() {
