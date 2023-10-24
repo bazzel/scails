@@ -2,23 +2,45 @@ import { Controller } from "@hotwired/stimulus";
 import Tone from "tone";
 
 export default class extends Controller {
+  static values = {
+    modeNumber: Number,
+  };
+
   connect() {}
 
   playNote() {
     const synth = new Tone.Synth().toDestination();
     const now = Tone.now();
+    const notes = this.playableNotes();
+    const length = 0.4;
 
-    synth.triggerAttackRelease("C4", "8n");
-    synth.triggerAttackRelease("D4", "8n", now + 1 * 0.5);
-    synth.triggerAttackRelease("E4", "8n", now + 2 * 0.5);
-    synth.triggerAttackRelease("F4", "8n", now + 3 * 0.5);
-    synth.triggerAttackRelease("G4", "8n", now + 4 * 0.5);
-    synth.triggerAttackRelease("A4", "8n", now + 5 * 0.5);
-    synth.triggerAttackRelease("B4", "8n", now + 6 * 0.5);
-    synth.triggerAttackRelease("C5", "8n", now + 7 * 0.5);
+    for (const [index, element] of notes.entries()) {
+      synth.triggerAttackRelease(`${element}4`, "8n", now + index * length);
+    }
+    synth.triggerAttackRelease(
+      `${notes[0]}5`,
+      "8n",
+      now + notes.length * length
+    );
   }
 
-  static get allNotes() {
+  playableNotes() {
+    let arr = [];
+
+    for (const [index, element] of this.binaryScale.entries()) {
+      if (element == 1) {
+        arr.push(this.allNotes[index]);
+      }
+    }
+
+    return arr;
+  }
+
+  get binaryScale() {
+    return Number(this.modeNumberValue).toString(2).split("");
+  }
+
+  get allNotes() {
     return ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
   }
 }
