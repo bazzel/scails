@@ -1,24 +1,37 @@
-# README
+# Scails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+This is a simple Ruby on Rails application that shows all known musical scales.
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+- Install [all requirements](https://gorails.com/setup/macos/14-sonoma) on your machine
+- PostgreSQL (instruction in the link above, but you can also use [asdf-postgres](https://github.com/smashedtoatoms/asdf-postgres) instead)
 
-* Configuration
+## Installation
 
-* Database creation
+```
+$ git clone https://github.com/bazzel/scails.git
+$ cd scails
+$ asdf install # assuming you use asdf.
+$ pg_ctl start # when you need to start your PostgreSQL server.
+$ bundle install
+```
 
-* Database initialization
+If you use a different username than `postgres` to connect to your PostgreSQL server, update the `username` key in `config/database.yml`.
 
-* How to run the test suite
+```
+$ rails db:setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running / Development
 
-* Deployment instructions
+- `$ dev`
+- Visit your app at [http://localhost:3000](http://localhost:3000).
 
-* ...
+### Populate the database
+
+The project comes with a `seed.rb` which you can use to populate your development environment. This seed is automatically used when running `rails db:setup`. To (re-)run it at a later moment:
+
+`$ rails db:seed`
