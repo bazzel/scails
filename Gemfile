@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.1.3'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.1'
@@ -65,7 +65,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
+  gem 'error_highlight', platforms: [:ruby]
 end
 
 group :test do
@@ -78,4 +78,4 @@ gem 'solargraph', '~> 0.49.0'
 
 gem 'active_interaction', '~> 5.3'
 
-gem "view_component", "~> 3.6"
+gem 'view_component', '~> 3.6'
