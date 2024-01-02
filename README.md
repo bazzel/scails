@@ -22,16 +22,16 @@ $ bundle install
 If you use a different username than `postgres` to connect to your PostgreSQL server, update the `username` key in `config/database.yml`.
 
 ```
-$ rails db:setup
+$ bin/rails db:setup
 ```
 
 ## Running / Development
 
-- `$ dev`
+- `$ bin/dev`
 - Visit your app at [http://localhost:3000](http://localhost:3000).
 
 ### Populate the database
 
-The project comes with a `seed.rb` which you can use to populate your development environment. This seed is automatically used when running `rails db:setup`. To (re-)run it at a later moment:
+The project comes with a `seed.rb` which you can use to populate your development environment. This seed is automatically used when running `bin/rails db:setup`. To (re-)run it at a later moment:
 
-`$ rails db:seed`
+`$ bin/rails db:seed`
