@@ -79,3 +79,5 @@ gem 'solargraph', '~> 0.49.0'
 gem 'active_interaction', '~> 5.3'
 
 gem 'view_component', '~> 3.6'
+
+gem "dockerfile-rails", ">= 1.6", :group => :development

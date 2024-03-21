@@ -35,3 +35,12 @@ $ bin/rails db:setup
 The project comes with a `seed.rb` which you can use to populate your development environment. This seed is automatically used when running `bin/rails db:setup`. To (re-)run it at a later moment:
 
 `$ bin/rails db:seed`
+
+
+## Hosting
+
+The application has been deployed to the following environments (not all may be available at the time of writing):
+
+* [Render](https://render.com/)
+* [Koyeb](https://www.koyeb.com/)
+* [Fly.io](https://fly.io/)
