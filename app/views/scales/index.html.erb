@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-200">
-        <%= render @scales %>
+        <%= render partial: 'scale', collection: @scales, locals: { chromatic_scale: @chromatic_scale } %>
       </tbody>
     </table>
   </div>

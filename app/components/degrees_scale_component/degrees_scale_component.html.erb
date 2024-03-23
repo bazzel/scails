@@ -1,17 +1,7 @@
 <div class="flex justify-between" data-controller="player" data-player-mode-number-value="<%= @scale.mode_number %>">
-  <div class="p-1 <%= n1_class %>">C</div>
-  <div class="p-1 <%= n2_class %>">C#</div>
-  <div class="p-1 <%= n3_class %>">D</div>
-  <div class="p-1 <%= n4_class %>">D#</div>
-  <div class="p-1 <%= n5_class %>">E</div>
-  <div class="p-1 <%= n6_class %>">F</div>
-  <div class="p-1 <%= n7_class %>">F#</div>
-  <div class="p-1 <%= n8_class %>">G</div>
-  <div class="p-1 <%= n9_class %>">G#</div>
-  <div class="p-1 <%= n10_class %>">A</div>
-  <div class="p-1 <%= n11_class %>">A#</div>
-  <div class="p-1 <%= n12_class %>">B</div>
-  <div class="p-1 <%= n1_class %>">C</div>
+  <% @chromatic_scale.each_with_index do |note, index| %>
+    <div class="p-1 <%= note_class(index) %>"><%= note %></div>
+  <% end %>
   <button
   type="button" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" data-action="click->player#playNote">Play</button>
 </div>

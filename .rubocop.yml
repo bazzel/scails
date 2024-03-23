@@ -10,4 +10,10 @@ AllCops:
     - "bin/*"
 
 Style/Documentation:
-  Enabled: false
+  Exclude:
+    - "app/models/*"
+    - "app/controllers/*"
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/components/*_component.rb"
