@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.1.3'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.1'
@@ -80,4 +80,4 @@ gem 'active_interaction', '~> 5.3'
 
 gem 'view_component', '~> 3.6'
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', group: :development

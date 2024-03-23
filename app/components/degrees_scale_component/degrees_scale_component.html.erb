@@ -1,7 +1,4 @@
-<div
-class="flex justify-between"
-data-controller="player"
-data-player-mode-number-value="<%= @scale.mode_number %>">
+<div class="flex justify-between" data-controller="player" data-player-mode-number-value="<%= @scale.mode_number %>">
   <div class="p-1 <%= n1_class %>">C</div>
   <div class="p-1 <%= n2_class %>">C#</div>
   <div class="p-1 <%= n3_class %>">D</div>
@@ -16,7 +13,5 @@ data-player-mode-number-value="<%= @scale.mode_number %>">
   <div class="p-1 <%= n12_class %>">B</div>
   <div class="p-1 <%= n1_class %>">C</div>
   <button
-  type="button"
-  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-  data-action="click->player#playNote">Play</button>
+  type="button" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" data-action="click->player#playNote">Play</button>
 </div>
