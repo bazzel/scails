@@ -1,7 +1,7 @@
 <div class="flex justify-between" data-controller="player" data-player-mode-number-value="<%= @scale.mode_number %>">
   <% @chromatic_scale.each_with_index do |note, index| %>
-    <div class="p-1 <%= note_class(index) %>"><%= note %></div>
+    <div class="p-1 <%= note_class(index) %>" data-player-target="note"><%= note %></div>
   <% end %>
   <button
-  type="button" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" data-action="click->player#playNote">Play</button>
+  type="button" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" data-action="click->player#playScale">Play</button>
 </div>
