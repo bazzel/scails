@@ -1,4 +1,4 @@
-<tr class="odd:bg-gray-50">
-  <td class="whitespace-nowrap px-4 py-2 text-gray-700"><%= scale.common_name %></td>
-  <td class="whitespace-nowrap px-4 py-2 text-gray-700"><%= render(DegreesScaleComponent.new(scale: scale, chromatic_scale: chromatic_scale)) %></td>
-</tr>
+<div class=" border-2 shadow-md rounded-md border-blue-500 p-4 flex flex-col gap-2">
+  <div class="text-lg font-medium"><%= scale.common_name %></div>
+  <div><%= render(DegreesScaleComponent.new(scale: scale, chromatic_scale: chromatic_scale)) %></div>
+</div>

@@ -1,20 +1,3 @@
-<div class="w-full">
-  <h1 class="font-bold text-4xl">Scales</h1>
-  <div class="overflow-x-auto">
-    <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-      <thead>
-        <tr>
-          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Common name
-          </th>
-          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-            Degrees
-          </th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-200">
-        <%= render partial: 'scale', collection: @scales, locals: { chromatic_scale: @chromatic_scale } %>
-      </tbody>
-    </table>
-  </div>
+<div class="flex gap-6 flex-col">
+<%= render partial: 'scale', collection: @scales, locals: { chromatic_scale: @chromatic_scale } %>
 </div>
