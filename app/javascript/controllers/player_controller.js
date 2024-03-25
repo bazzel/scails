@@ -61,6 +61,6 @@ export default class extends Controller {
   }
 
   get allNotes() {
-    return this.noteTargets.map((element) => element.textContent);
+    return this.noteTargets.map((element) => element.textContent.trim());
   }
 }
