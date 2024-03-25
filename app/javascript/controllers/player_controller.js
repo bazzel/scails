@@ -25,11 +25,11 @@ export default class extends Controller {
       let octaveNumber;
 
       this.isPlaying = true;
-      
+
       for (const [index, element] of notes.entries()) {
         const chromaticNote = allNotes.indexOf(element);
-        octaveNumber = (chromaticNote < c4) ? 3 : 4;
-        
+        octaveNumber = chromaticNote < c4 ? 3 : 4;
+
         const note = `${element}${octaveNumber}`;
         const time = now + index * length;
 

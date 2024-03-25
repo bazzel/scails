@@ -3,7 +3,7 @@
 # Renders the scale degrees with a play button to play the scale
 class DegreesScaleComponent < ViewComponent::Base
   NOTE_IN_SCALE_CLASS = 'bg-gray-300'
-  NOTE_NOT_IN_SCALE_CLASS = 'text-gray-300'
+  NOTE_NOT_IN_SCALE_CLASS = 'text-gray-300 bg-white'
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
@@ -13,7 +13,12 @@ class DegreesScaleComponent < ViewComponent::Base
   end
 
   def note_class(position)
-    [FIRST_POSITION, LAST_POSITION].include?(position) || in_scale?(position) ? NOTE_IN_SCALE_CLASS : NOTE_NOT_IN_SCALE_CLASS
+    if [FIRST_POSITION,
+        LAST_POSITION].include?(position) || in_scale?(position)
+      NOTE_IN_SCALE_CLASS
+    else
+      NOTE_NOT_IN_SCALE_CLASS
+    end
   end
 
   private
