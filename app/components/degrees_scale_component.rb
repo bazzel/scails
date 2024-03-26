@@ -2,8 +2,8 @@
 
 # Renders the scale degrees with a play button to play the scale
 class DegreesScaleComponent < ViewComponent::Base
-  NOTE_IN_SCALE_CLASS = 'bg-gray-300 dark:bg-gray-200 dark:text-gray-800'
-  NOTE_NOT_IN_SCALE_CLASS = 'text-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-600'
+  NOTE_IN_SCALE_CLASS = ' md:bg-gray-300 dark:md:bg-gray-200 dark:text-gray-100 dark:md:text-gray-800 dark:font-medium md:font-normal'
+  NOTE_NOT_IN_SCALE_CLASS = 'text-gray-300 md:bg-white md:dark:bg-gray-800 dark:border-gray-600 dark:text-gray-600'
   ROUNDED_BORDER_LEFT_CLASS = 'rounded-l'
   ROUNDED_BORDER_RIGHT_CLASS = 'rounded-r'
   FIRST_POSITION = 0

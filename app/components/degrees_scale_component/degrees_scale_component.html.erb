@@ -5,7 +5,7 @@
 >
   <% @chromatic_scale.each_with_index do |note, index| %>
     <div
-    class="w-10 flex justify-center items-center <%= rounded_border_class(index) %> md:rounded-md border border-gray-300 <%= note_class(index) %>"
+    class="w-10 flex justify-center items-center rounded-md md:border border-gray-300 <%= note_class(index) %>"
     data-player-target="note"
   >
       <%= note %>
