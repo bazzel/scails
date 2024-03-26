@@ -3,7 +3,7 @@
 # Renders the scale degrees with a play button to play the scale
 class DegreesScaleComponent < ViewComponent::Base
   NOTE_IN_SCALE_CLASS = 'bg-gray-300 dark:bg-gray-200 dark:text-gray-800'
-  NOTE_NOT_IN_SCALE_CLASS = 'text-gray-300 bg-white dark:bg-gray-800 dark:text-gray-600'
+  NOTE_NOT_IN_SCALE_CLASS = 'text-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-600'
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
