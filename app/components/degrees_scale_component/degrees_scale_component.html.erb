@@ -1,21 +1,21 @@
 <div
-  class="flex justify-between"
+  class="flex md:justify-between"
   data-controller="player"
   data-player-mode-number-value="<%= @scale.mode_number %>"
 >
   <% @chromatic_scale.each_with_index do |note, index| %>
-  <div
-    class="w-10 flex justify-center items-center rounded-md border border-gray-300 <%= note_class(index) %>"
+    <div
+    class="w-10 flex justify-center items-center <%= rounded_border_class(index) %> md:rounded-md border border-gray-300 <%= note_class(index) %>"
     data-player-target="note"
   >
-    <%= note %>
-  </div>
+      <%= note %>
+    </div>
   <% end %>
   <button
     class="bg-primary-500 hover:bg-primary-600 focus:outline-none rounded-full p-2.5 ml-2.5 inline-flex items-center text-white border border-transparent text-sm font-medium"
     type="button"
     data-action="click->player#playScale"
-  >
+    >
     <svg
       class="text-white"
       aria-hidden="true"
