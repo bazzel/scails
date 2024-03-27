@@ -83,3 +83,5 @@ gem 'view_component', '~> 3.6'
 gem 'dockerfile-rails', '>= 1.6', group: :development
 
 gem "htmlbeautifier", "~> 1.4"
+
+gem "inline_svg", "~> 1.9"

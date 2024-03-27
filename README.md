@@ -44,3 +44,9 @@ The application has been deployed to the following environments (not all may be 
 * [Render](https://render.com/)
 * [Koyeb](https://www.koyeb.com/)
 * [Fly.io](https://fly.io/)
+
+
+## Credits
+
+* musical scale by erifqizeicon from [https://thenounproject.com/browse/icons/term/musical-scale/](Noun Project) (CC BY 3.0) (but slightly modified).
+* icons from [https://flowbite.com/icons/](Flowbite)
