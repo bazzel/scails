@@ -1,0 +1,28 @@
+<%= render(ModalComponent.new(title: "Settings")) do |m| %>
+  <%= m.with_controller do %>
+    <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+      <span class="absolute -inset-1.5"></span>
+      <span class="sr-only">Settings</span>
+      <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  <% end %>
+  <%= m.with_body do %>
+    <%= form_with url: root_path, method: :get do |form| %>
+      <div class="relative">
+        <%= form.select :root_note, ChromaticScale::NOTES, { selected: params[:root_note] }, class: "bg-white border border-gray-400 text-base rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 peer", placeholder: " " %>
+        <%= form.label :root_note, "Select the root note to start with", class: "absolute bg-white px-1 block text-sm font-medium text-gray-900 dark:text-white duration-300 transform -translate-y-[1.625rem] scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[1.625rem]" %>
+      </div>
+      <%# Buttons cannot be placed in footer,
+      so we define them in the body and include 
+      the footer CSS separately. %>
+      <div class="flex items-center justify-end gap-2 pt-6">
+        <button class="button text-button" type="button" data-action="click->modal#close">
+          Cancel
+        </button>
+        <%= form.submit "Save changes", class: "button text-button" %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

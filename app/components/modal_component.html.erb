@@ -1,0 +1,24 @@
+<%# Inspired by https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation %>
+<div data-controller="modal" data-action="keyup@window->modal#close" data-modal-visible-class="block" data-modal-hidden-class="hidden">
+  <%= controller %>
+  <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" data-modal-target="dialog" data-action="click->modal#toggle" id="modal-id">
+    <div class="relative my-6 mx-auto min-w-72 max-w-xl">
+      <!--content-->
+      <div class="p-6 border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="flex items-start justify-between">
+          <h3 class="text-2xl font-semibold">
+            <%= @title %>
+          </h3>
+        </div>
+        <!--body-->
+        <%= body %>
+        <!--footer-->
+        <% if footer? %>
+          <%= footer %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" data-modal-target="backdrop" id="modal-id-backdrop"></div>
+</div>
