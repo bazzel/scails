@@ -9,7 +9,7 @@
   }
 
   .text-button {
-    @apply text-primary-500 hover:bg-primary-500/10;
+    @apply text-primary-500  hover:bg-primary-500/10 dark:text-primary-300 dark:hover:bg-primary-500/10;
   }
 }
 
