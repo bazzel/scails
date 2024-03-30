@@ -9,20 +9,15 @@
     </button>
   <% end %>
   <%= m.with_body do %>
-    <%= form_with url: root_path, method: :get do |form| %>
+    <%= form_with url: root_path, method: :get, data: { modal_target: "form" } do |form| %>
       <div class="relative">
         <%= form.select :root_note, ChromaticScale::NOTES, { selected: params[:root_note] }, class: "bg-white border border-gray-400 text-base rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 peer", placeholder: " " %>
         <%= form.label :root_note, "Select the root note to start with", class: "absolute bg-white px-1 block text-sm font-medium text-gray-900 dark:text-white duration-300 transform -translate-y-[1.625rem] scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[1.625rem]" %>
       </div>
-      <%# Buttons cannot be placed in footer,
-      so we define them in the body and include 
-      the footer CSS separately. %>
-      <div class="flex items-center justify-end gap-2 pt-6">
-        <button class="button text-button" type="button" data-action="modal#close">
-          Cancel
-        </button>
-        <%= form.submit "Save changes", class: "button text-button" %>
-      </div>
     <% end %>
+  <% end %>
+  <%= m.with_footer do %>
+    <%= button_tag "Cancel", class: "button text-button", type: "button", data: { action: "modal#close" } %>
+    <%= button_tag "Save changes", class: "button text-button", data: { action: "modal#submitForm" } %>
   <% end %>
 <% end %>

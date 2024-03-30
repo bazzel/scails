@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = ["dialog", "backdrop"];
+  static targets = ["dialog", "backdrop", "form"];
   static classes = ["visible", "hidden"];
 
   toggle(event, skipCheck = false) {
@@ -27,6 +27,14 @@ export default class extends Controller {
   close(event) {
     if (this.dialogTarget.classList.contains(this.visibleClass)) {
       this.toggle(event, true);
+    }
+  }
+
+  submitForm(event) {
+    event.preventDefault();
+
+    if (this.hasFormTarget) {
+      this.formTarget.submit();
     }
   }
 }
