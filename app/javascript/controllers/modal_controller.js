@@ -6,7 +6,6 @@ export default class extends Controller {
   static classes = ["visible", "hidden"];
 
   toggle(event, skipCheck = false) {
-    
     if (
       skipCheck ||
       event.key === 'Escape' ||
@@ -26,8 +25,6 @@ export default class extends Controller {
   }
 
   close(event) {
-    if (event.key !== 'Escape' && event.target !== event.currentTarget) return;
-
     if (this.dialogTarget.classList.contains(this.visibleClass)) {
       this.toggle(event, true);
     }
