@@ -48,5 +48,7 @@ The application has been deployed to the following environments (not all may be 
 
 ## Credits
 
-* musical scale by erifqizeicon from [https://thenounproject.com/browse/icons/term/musical-scale/](Noun Project) (CC BY 3.0) (but slightly modified).
-* icons from [https://flowbite.com/icons/](Flowbite)
+* List of musical scales from [Daqarta](https://www.daqarta.com/dw_ss0a.htm)
+* Musical scale icons by erifqizeicon from [Noun Project](https://thenounproject.com/browse/icons/term/musical-scale/) (CC BY 3.0) (but slightly modified)
+* Interactive music from [Tone.js](https://tonejs.github.io/)
+* App icons from [Flowbite](https://flowbite.com/icons/)
