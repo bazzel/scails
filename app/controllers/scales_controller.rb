@@ -8,6 +8,6 @@ class ScalesController < ApplicationController
 
     return if params[:root_note].blank?
 
-    flash.now[:notice] = "Showing scales for #{params[:root_note]}"
+    flash.now[:notice] = "Showing scales for #{params[:root_note]}."
   end
 end
