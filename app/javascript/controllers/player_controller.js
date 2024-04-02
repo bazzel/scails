@@ -5,28 +5,24 @@ export default class extends Controller {
   static values = {
     modeNumber: Number,
   };
-  static targets = ["note"];
+  static targets = ["note", "playButton", "pauseButton"];
 
-  initialize() {
-    this.isPlaying = false;
-  }
-
-  playScale() {
+  play() {
     const synth = this.#getSynth();
     const scale = this.#getScale();
-    const patternName = "upDown"; // https://tonejs.github.io/docs/14.7.77/type/PatternName
+    const patternName = "up"; // https://tonejs.github.io/docs/14.7.77/type/PatternName
 
     let counter = 0;
 
+    this.#showPlayStatus();
+
+    let that = this;
     new Tone.Pattern(
       function (time, note) {
         synth.triggerAttackRelease(note, "4n", time);
         counter++;
 
-        if (counter == scale.length) {
-          Tone.Transport.stop();
-          Tone.Transport.cancel();
-        }
+        if (counter == scale.length) that.stop();
       },
       scale,
       patternName
@@ -36,9 +32,25 @@ export default class extends Controller {
     Tone.Transport.start("+0.1");
   }
 
+  stop() {
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+
+    this.#showStopStatus();
+  }
+
+  #showPlayStatus() {
+    this.playButtonTarget.style.display = "none";
+    this.pauseButtonTarget.style.display = "block";
+  }
+
+  #showStopStatus() {
+    this.playButtonTarget.style.display = "block";
+    this.pauseButtonTarget.style.display = "none";
+  }
+
   #getSynth() {
     return new Tone.Synth({
-      onsilence: () => (this.isPlaying = false),
       oscillator: { type: "square16" },
       // oscillator: { type: "fmsquare16" },
       // oscillator: { type: "amsquare16" },
