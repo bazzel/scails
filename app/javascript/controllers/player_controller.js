@@ -7,6 +7,10 @@ export default class extends Controller {
   };
   static targets = ["note", "playButton", "pauseButton"];
 
+  initialize() {
+    this.pattern = new Tone.Pattern();
+  }
+
   play() {
     const synth = this.#getSynth();
     const scale = this.#getScale();
@@ -16,26 +20,19 @@ export default class extends Controller {
 
     this.#showPlayStatus();
 
-    let that = this;
-    new Tone.Pattern(
-      function (time, note) {
-        synth.triggerAttackRelease(note, "4n", time);
-        counter++;
-
-        if (counter == scale.length) that.stop();
-      },
-      scale,
-      patternName
-    ).start(0);
+    this.pattern.start();
+    this.pattern.callback = (time, note) =>
+      synth.triggerAttackRelease(note, "4n", time);
+    this.pattern.pattern = patternName;
+    this.pattern.values = scale;
+    this.pattern.iterations = scale.length;
 
     Tone.Transport.bpm.value = 120;
-    Tone.Transport.start("+0.1");
+    Tone.Transport.start();
   }
 
   stop() {
-    Tone.Transport.stop();
-    Tone.Transport.cancel();
-
+    this.pattern.stop();
     this.#showStopStatus();
   }
 
@@ -52,6 +49,7 @@ export default class extends Controller {
   #getSynth() {
     return new Tone.Synth({
       oscillator: { type: "square16" },
+      onsilence: (_instrument) => this.stop(),
       // oscillator: { type: "fmsquare16" },
       // oscillator: { type: "amsquare16" },
       // oscillator: { type: "fatsquare16" },
