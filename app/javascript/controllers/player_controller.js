@@ -12,42 +12,66 @@ export default class extends Controller {
   }
 
   playScale() {
-    if (!this.isPlaying) {
-      const synth = new Tone.Synth({
-        onsilence: () => (this.isPlaying = false),
-      }).toDestination();
-      const now = Tone.now();
-      const allNotes = this.allNotes;
-      const notes = this.playableNotes();
-      const length = 0.2;
-      const subdivision = "8n";
-      const c4 = allNotes.indexOf("C");
-      let octaveNumber;
+    const synth = this.#getSynth();
+    const scale = this.#getScale();
+    const patternName = "upDown"; // https://tonejs.github.io/docs/14.7.77/type/PatternName
 
-      this.isPlaying = true;
+    let counter = 0;
 
-      for (const [index, element] of notes.entries()) {
-        const chromaticNote = allNotes.indexOf(element);
-        octaveNumber = chromaticNote < c4 ? 3 : 4;
+    new Tone.Pattern(
+      function (time, note) {
+        synth.triggerAttackRelease(note, "4n", time);
+        counter++;
 
-        const note = `${element}${octaveNumber}`;
-        const time = now + index * length;
+        if (counter == scale.length) {
+          Tone.Transport.stop();
+          Tone.Transport.cancel();
+        }
+      },
+      scale,
+      patternName
+    ).start(0);
 
-        synth.triggerAttackRelease(note, subdivision, time);
-      }
-
-      if (c4 == 0) octaveNumber = 5;
-      const note = `${notes[0]}${octaveNumber}`;
-      const time = now + notes.length * length;
-      synth.triggerAttackRelease(note, subdivision, time);
-    }
+    Tone.Transport.bpm.value = 120;
+    Tone.Transport.start("+0.1");
   }
 
-  playableNotes() {
-    const allNotes = this.allNotes;
+  #getSynth() {
+    return new Tone.Synth({
+      onsilence: () => (this.isPlaying = false),
+      oscillator: { type: "square16" },
+      // oscillator: { type: "fmsquare16" },
+      // oscillator: { type: "amsquare16" },
+      // oscillator: { type: "fatsquare16" },
+    }).toDestination();
+  }
+
+  #getScale() {
+    const allNotes = this.#allNotes;
+    const notes = this.#playableNotes();
+    const middleC = allNotes.indexOf("C");
+
+    let octaveNumber;
+
+    const scale = notes.map((element) => {
+      const chromaticNote = allNotes.indexOf(element);
+      octaveNumber = chromaticNote < middleC ? 3 : 4;
+      return `${element}${octaveNumber}`;
+    });
+
+    if (middleC == 0) octaveNumber = 5;
+
+    const note = `${notes[0]}${octaveNumber}`;
+    scale.push(note);
+
+    return scale;
+  }
+
+  #playableNotes() {
+    const allNotes = this.#allNotes;
     let arr = [];
 
-    for (const [index, element] of this.binaryScale.entries()) {
+    for (const [index, element] of this.#binaryScale.entries()) {
       if (element == 1) {
         arr.push(allNotes[index]);
       }
@@ -56,11 +80,11 @@ export default class extends Controller {
     return arr;
   }
 
-  get binaryScale() {
+  get #binaryScale() {
     return Number(this.modeNumberValue).toString(2).split("");
   }
 
-  get allNotes() {
+  get #allNotes() {
     return this.noteTargets.map((element) => element.textContent.trim());
   }
 }
