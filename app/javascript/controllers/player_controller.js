@@ -4,6 +4,7 @@ import Tone from "tone";
 export default class extends Controller {
   static values = {
     modeNumber: Number,
+    patternName: String,
   };
   static targets = ["note", "playButton", "pauseButton"];
 
@@ -14,7 +15,7 @@ export default class extends Controller {
   play() {
     const synth = this.#getSynth();
     const scale = this.#getScale();
-    const patternName = "up"; // https://tonejs.github.io/docs/14.7.77/type/PatternName
+    const patternName = this.patternNameValue;
 
     let counter = 0;
 

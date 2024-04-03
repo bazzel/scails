@@ -29,3 +29,14 @@
 
 en:
   hello: "Hello world"
+  tonejs:
+    pattern_names: # Keys are equal to the pattern names in the Tone.js library https://tonejs.github.io/docs/14.7.77/type/PatternName
+      up: "Walk upward"
+      down: "Walk downward"
+      upDown: "Up then down"
+      downUp: "Down then up"
+      alternateUp: "Jump up two and down one"
+      alternateDown: "Jump down two and up one"
+      random: "Randomly select a note"
+      randomOnce: "Randomly plays a every note once"
+      randomWalk: "Randomly plays a note above the current one"

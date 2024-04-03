@@ -5,9 +5,11 @@ class ScalesController < ApplicationController
   def index
     @scales = Scale.all
     @chromatic_scale = ChromaticScale.run!(root_note: params[:root_note])
+    @pattern_names_and_labels = I18n.t('tonejs.pattern_names').map { |k, v| [v, k] }
+    @pattern_name = params[:pattern_name] || @pattern_names_and_labels.first.last
 
-    return if params[:root_note].blank?
+    return if params.empty?
 
-    flash.now[:notice] = "Showing scales for #{params[:root_note]}."
+    flash.now[:notice] = 'Settings have been updated.'
   end
 end
