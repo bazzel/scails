@@ -9,6 +9,7 @@ export default class extends Controller {
   static targets = ["note", "playButton", "pauseButton"];
 
   initialize() {
+    this.#showStopStatus();
     this.pattern = new Tone.Pattern();
   }
 
@@ -40,11 +41,11 @@ export default class extends Controller {
 
   #showPlayStatus() {
     this.playButtonTarget.style.display = "none";
-    this.pauseButtonTarget.style.display = "block";
+    this.pauseButtonTarget.style.display = "inline-flex";
   }
 
   #showStopStatus() {
-    this.playButtonTarget.style.display = "block";
+    this.playButtonTarget.style.display = "inline-flex";
     this.pauseButtonTarget.style.display = "none";
   }
 

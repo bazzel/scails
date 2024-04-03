@@ -36,19 +36,17 @@ The project comes with a `seed.rb` which you can use to populate your developmen
 
 `$ bin/rails db:seed`
 
-
 ## Hosting
 
 The application has been deployed to the following environments (not all may be available at the time of writing):
 
-* [Render](https://render.com/)
-* [Koyeb](https://www.koyeb.com/)
-* [Fly.io](https://fly.io/)
-
+- [Render](https://render.com/)
+- [Koyeb](https://www.koyeb.com/)
+- [Fly.io](https://fly.io/)
 
 ## Credits
 
-* List of musical scales from [Daqarta](https://www.daqarta.com/dw_ss0a.htm)
-* Musical scale icons by erifqizeicon from [Noun Project](https://thenounproject.com/browse/icons/term/musical-scale/) (CC BY 3.0) (but slightly modified)
-* Interactive music from [Tone.js](https://tonejs.github.io/)
-* App icons from [Flowbite](https://flowbite.com/icons/)
+- List of musical scales from [Daqarta](https://www.daqarta.com/dw_ss0a.htm)
+- Musical scale icons by erifqizeicon from [Noun Project](https://thenounproject.com/browse/icons/term/musical-scale/) (CC BY 3.0) (but slightly modified)
+- Interactive music from [Tone.js](https://tonejs.github.io/)
+- App icons from ~~[Flowbite](https://flowbite.com/icons/)~~ [Heroicons](https://heroicons.com/)
