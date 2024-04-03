@@ -16,8 +16,9 @@ export default class extends Controller {
     const synth = this.#getSynth();
     const scale = this.#getScale();
     const patternName = this.patternNameValue;
-
-    let counter = 0;
+    const iterations = this.#isGoingBackToStart
+      ? scale.length * 2 - 1
+      : scale.length;
 
     this.#showPlayStatus();
 
@@ -26,7 +27,7 @@ export default class extends Controller {
       synth.triggerAttackRelease(note, "4n", time);
     this.pattern.pattern = patternName;
     this.pattern.values = scale;
-    this.pattern.iterations = scale.length;
+    this.pattern.iterations = iterations;
 
     Tone.Transport.bpm.value = 120;
     Tone.Transport.start();
@@ -89,6 +90,11 @@ export default class extends Controller {
     }
 
     return arr;
+  }
+
+  get #isGoingBackToStart() {
+    const patternNames = ["upDown", "downUp"];
+    return patternNames.includes(this.patternNameValue);
   }
 
   get #binaryScale() {

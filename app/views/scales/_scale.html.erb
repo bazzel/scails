@@ -10,8 +10,6 @@
     class="flex flex-col gap-2 p-4 sm:border border-gray-200 sm:rounded-lg cursor-pointer peer-checked:border-primary-600 hover:bg-gray-100 peer-checked:shadow-[0_0_0_2px] peer-checked:shadow-primary-500 dark:border-gray-600 dark:hover:bg-gray-700"
   >
     <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
-    <div>
-      <%= render(DegreesScaleComponent.new(scale: scale, chromatic_scale: chromatic_scale, pattern_name: pattern_name)) %>
-    </div>
+    <%= render(DegreesScaleComponent.new(scale: scale, chromatic_scale: chromatic_scale, pattern_name: pattern_name)) %>
   </label>
 </li>
