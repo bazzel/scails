@@ -1,12 +1,21 @@
 <nav class="bg-gray-800 fixed w-full z-20 top-0 start-0">
   <div class="mx-auto max-w-screen-2xl px-2 sm:px-8">
     <div class="relative flex h-16 items-center justify-between">
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+      <div
+        class="
+          flex flex-1 items-center justify-center sm:items-stretch sm:justify-start
+        "
+      >
         <div class="flex flex-shrink-0 items-center">
-          <%= inline_svg_tag("app.svg", class:"text-white", size: '32') %>
+          <%= inline_svg_tag("app.svg", class: "text-white", size: "32") %>
         </div>
       </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <div
+        class="
+          absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto
+          sm:ml-6 sm:pr-0
+        "
+      >
         <%= render "settings" %>
       </div>
     </div>

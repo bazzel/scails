@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="modal"
 export default class extends Controller {
@@ -8,9 +8,9 @@ export default class extends Controller {
   toggle(event, skipCheck = false) {
     if (
       skipCheck ||
-      event.key === 'Escape' ||
+      event.key === "Escape" ||
       event.target === event.currentTarget
-      ) {
+    ) {
       this.dialogTarget.classList.toggle(this.hiddenClass);
       this.backdropTarget.classList.toggle(this.hiddenClass);
       this.dialogTarget.classList.toggle(this.visibleClass);
