@@ -1,5 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require('tailwindcss/colors');
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
@@ -8,6 +8,7 @@ module.exports = {
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
     "./app/components/**/*.{erb,haml,html,slim,rb}",
+    { raw: '<div class="w-6 h-6">', extension: "html" },
   ],
   theme: {
     extend: {
