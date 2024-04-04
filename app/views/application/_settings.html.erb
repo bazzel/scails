@@ -30,6 +30,18 @@
                     class: "form-select peer" %>
         <%= form.label :pattern_name, "Pattern", class: "form-label" %>
       </div>
+      <div class="relative mb-6">
+        <label class="flex justify-between items-center cursor-pointer gap-2">
+          <div>
+            <div class="text-base">Loop</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Keep playing until you click the Stop button</div>
+          </div>
+
+          <input type="checkbox" value="" class="sr-only peer">
+          <div class="form-switch peer"></div>
+        </label>
+      </div>
+
     <% end %>
   <% end %>
   <%= m.with_footer do %>
