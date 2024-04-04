@@ -8,8 +8,8 @@ module.exports = {
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
     "./app/components/**/*.{erb,haml,html,slim,rb}",
-    { raw: '<div class="w-6 h-6">', extension: "html" },
   ],
+  safelist: ["w-6", "h-6"],
   theme: {
     extend: {
       colors: {
