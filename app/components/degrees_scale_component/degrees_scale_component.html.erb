@@ -3,6 +3,7 @@
   data-controller="player"
   data-player-mode-number-value="<%= @scale.mode_number %>"
   data-player-pattern-name-value="<%= @pattern_name %>"
+  data-player-loop-value="<%= @loop %>"
 >
   <% @chromatic_scale.each_with_index do |note, index| %>
     <div

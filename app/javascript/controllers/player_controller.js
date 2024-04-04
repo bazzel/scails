@@ -5,6 +5,7 @@ export default class extends Controller {
   static values = {
     modeNumber: Number,
     patternName: String,
+    loop: Boolean,
   };
   static targets = ["note", "playButton", "pauseButton"];
 
@@ -28,7 +29,8 @@ export default class extends Controller {
       synth.triggerAttackRelease(note, "4n", time);
     this.pattern.pattern = patternName;
     this.pattern.values = scale;
-    this.pattern.iterations = iterations;
+
+    if (!this.loopValue) this.pattern.iterations = iterations;
 
     Tone.Transport.bpm.value = 120;
     Tone.Transport.start();
