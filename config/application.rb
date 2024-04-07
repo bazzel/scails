@@ -32,5 +32,9 @@ module Scails
         system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
       end
     end
+
+    # ViewComponents
+    config.view_component.generate.sidecar = true
+    # End ViewComponents
   end
 end
