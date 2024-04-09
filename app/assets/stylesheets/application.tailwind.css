@@ -33,5 +33,9 @@
   .form-text {
     @apply pl-4 mt-1 text-xs dark:text-white;
   }
+
+  .form-range {
+    @apply w-full cursor-pointer appearance-none focus:outline-none [&::-webkit-slider-runnable-track]:h-4 [&::-webkit-slider-runnable-track]:rounded-2xl [&::-webkit-slider-runnable-track]:border-none [&::-webkit-slider-runnable-track]:bg-primary-100 [&::-webkit-slider-runnable-track]:bg-[linear-gradient(to_right,_theme(colors.primary.500)_50%,_theme(colors.primary.100)_50%)] [&::-webkit-slider-runnable-track]:shadow-none [&::-webkit-slider-thumb]:-mt-5 [&::-webkit-slider-thumb]:h-14 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-2xl [&::-webkit-slider-thumb]:border-[6px] [&::-webkit-slider-thumb]:border-solid [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-primary-500  [&::-webkit-slider-thumb]:active:cursor-grabbing [&::-webkit-slider-thumb]:active:border-[7px];
+  }
   /* End form elements */
 }
