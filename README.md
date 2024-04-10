@@ -50,6 +50,7 @@ The application has been deployed to the following environments (not all may be 
 - Musical scale icons by erifqizeicon from [Noun Project](https://thenounproject.com/browse/icons/term/musical-scale/) (CC BY 3.0) (but slightly modified)
 - Interactive music from [Tone.js](https://tonejs.github.io/)
 - App icons from ~~[Flowbite](https://flowbite.com/icons/)~~ [Heroicons](https://heroicons.com/)
+- Slider styling from https://toughengineer.github.io/demo/slider-styler/slider-styler.html
 
 ## Further reading
 
