@@ -24,11 +24,8 @@
         <p class="form-text">Select the root note to start with.</p>
       </div>
       <div class="relative mb-6">
-        <%= form.select :pattern_name,
-                    @pattern_names_and_labels,
-                    { selected: params[:pattern_name] },
-                    class: "form-select peer" %>
-        <%= form.label :pattern_name, "Pattern", class: "form-label" %>
+        <%= form.label :tempo, "Tempo", class: "text-base block mt-2 mb-3" %>
+        <%= render(SliderComponent.new(value: @tempo, range: 60..240, step: 5)) %>
       </div>
       <div class="relative mb-6">
         <%= form.label(
@@ -47,10 +44,12 @@
 
         <% end %>
       </div>
-
       <div class="relative mb-6">
-        <%= form.label :tempo, "Tempo", class: "text-base block mt-2 mb-3" %>
-        <%= render(SliderComponent.new(value: @tempo, range: 60..240, step: 5)) %>
+        <%= form.select :pattern_name,
+                    @pattern_names_and_labels,
+                    { selected: params[:pattern_name] },
+                    class: "form-select peer" %>
+        <%= form.label :pattern_name, "Pattern", class: "form-label" %>
       </div>
 
     <% end %>
