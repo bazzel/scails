@@ -20,14 +20,9 @@ export default class extends Controller {
       const progress = index / (stopIndicatorTargets.length - 1);
       const isRatioGreaterOrEqual = progress >= ratio;
 
-      console.log(isRatioGreaterOrEqual);
-      element.className = "";
-
-      if (isRatioGreaterOrEqual) {
-        element.classList.add(darkTextColor, `dark:${lightTextColor}`);
-      } else {
-        element.classList.add(lightTextColor, `dark:${darkTextColor}`);
-      }
+      element.className = isRatioGreaterOrEqual
+        ? `${darkTextColor} dark:${lightTextColor}`
+        : `${lightTextColor} dark:${darkTextColor}`;
     });
   }
 
