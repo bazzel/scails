@@ -3,7 +3,7 @@
     <button
       type="button"
       class="
-        relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white
+        relative p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white
         focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2
         focus:ring-offset-gray-800
       "
@@ -46,6 +46,11 @@
           <div class="form-switch peer"></div>
 
         <% end %>
+      </div>
+
+      <div class="relative mb-6">
+        <%= form.label :tempo, "Tempo", class: "text-base block mt-2 mb-3" %>
+        <%= render(SliderComponent.new(value: @tempo, range: 60..240, step: 5)) %>
       </div>
 
     <% end %>

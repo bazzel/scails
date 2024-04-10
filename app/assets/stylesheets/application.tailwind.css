@@ -16,14 +16,14 @@
 
   /* Form elements */
   .form-select {
-    @apply bg-white border border-gray-400 text-base rounded focus:ring-primary-500 focus:border-primary-500 dark:focus:border-primary-300 block w-full p-4 dark:bg-gray-600 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-300;
+    @apply block w-full p-4 text-base bg-white border border-gray-400 rounded focus:ring-primary-500 focus:border-primary-500 dark:focus:border-primary-300 dark:bg-gray-600 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-300;
   }
 
   .form-switch {
     @apply relative w-[52px] border-gray-400 border-2 h-8 bg-gray-200 rounded-full;
     @apply after:content-[''] after:absolute after:top-1.5 after:start-1.5 after:bg-gray-400 after:rounded-full after:h-4 after:w-4 after:transition-all after:hover:bg-gray-600;
     @apply dark:peer-focus:ring-primary-900 dark:bg-gray-600 dark:border-gray-300 dark:after:bg-gray-300 dark:after:hover:bg-gray-100 dark:peer-checked:bg-primary-300 dark:peer-checked:after:bg-primary-900 dark:peer-checked:after:hover:bg-primary-500;
-    @apply peer-checked:bg-primary-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 peer-checked:after:translate-x-full peer-checked:after:bg-white rtl:peer-checked:after:-translate-x-full peer-checked:after:h-6 peer-checked:after:w-6 peer-checked:border-none peer-checked:after:top-1 peer-checked:after:start-0 peer-checked:after:hover:bg-primary-200;
+    @apply peer-checked:bg-primary-600 peer-checked:border-primary-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 peer-checked:after:translate-x-full peer-checked:after:bg-white rtl:peer-checked:after:-translate-x-full peer-checked:after:h-6 peer-checked:after:w-6 peer-checked:after:top-0.5 peer-checked:after:-start-0.5 peer-checked:after:hover:bg-primary-200;
   }
 
   .form-label {
@@ -31,7 +31,11 @@
   }
 
   .form-text {
-    @apply mt-1 text-xs pl-4 dark:text-white;
+    @apply pl-4 mt-1 text-xs dark:text-white;
+  }
+
+  .form-range {
+    @apply h-4 dark:bg-gray-600 [&::-webkit-slider-runnable-track]:bg-primary-100 [&::-webkit-slider-thumb]:bg-primary-500 w-full cursor-pointer appearance-none focus:outline-none [&::-webkit-slider-runnable-track]:h-4 [&::-webkit-slider-runnable-track]:rounded-2xl [&::-webkit-slider-runnable-track]:border-none [&::-webkit-slider-runnable-track]:bg-[linear-gradient(to_right,_theme(colors.primary.500)_var(--ratio),_theme(colors.primary.100)_var(--ratio))] dark:[&::-webkit-slider-runnable-track]:bg-[linear-gradient(to_right,_theme(colors.primary.100)_var(--ratio),_theme(colors.primary.500)_var(--ratio))] [&::-webkit-slider-runnable-track]:shadow-none [&::-webkit-slider-thumb]:relative [&::-webkit-slider-thumb]:z-10 [&::-webkit-slider-thumb]:-mt-5 [&::-webkit-slider-thumb]:h-14 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-2xl [&::-webkit-slider-thumb]:border-[6px] [&::-webkit-slider-thumb]:border-solid [&::-webkit-slider-thumb]:border-white dark:[&::-webkit-slider-thumb]:border-gray-600 [&::-webkit-slider-thumb]:active:cursor-grabbing [&::-webkit-slider-thumb]:active:border-[7px];
   }
   /* End form elements */
 }

@@ -4,6 +4,7 @@
   data-player-mode-number-value="<%= @scale.mode_number %>"
   data-player-pattern-name-value="<%= @pattern_name %>"
   data-player-loop-value="<%= @loop %>"
+  data-player-tempo-value="<%= @tempo %>"
 >
   <% @chromatic_scale.each_with_index do |note, index| %>
     <div
@@ -18,9 +19,9 @@
   <% end %>
   <button
     class="
-      bg-primary-500 hover:bg-primary-600 focus:outline-none rounded-full p-2.5 ml-2.5
-      inline-flex items-center text-white border border-transparent text-sm
-      font-medium
+      inline-flex items-center text-sm font-medium text-white border
+      border-transparent rounded-full bg-primary-500 hover:bg-primary-600
+      focus:outline-none p-2.5 ml-2.5
     "
     type="button"
     data-action="click->player#play"
@@ -31,8 +32,8 @@
   </button>
   <button
     class="
-      hidden bg-primary-500 hover:bg-primary-600 focus:outline-none rounded-full p-2.5
-      ml-2.5 items-center text-white border border-transparent text-sm font-medium
+      items-center hidden text-sm font-medium text-white border border-transparent
+      rounded-full bg-primary-500 hover:bg-primary-600 focus:outline-none p-2.5 ml-2.5
     "
     type="button"
     data-action="click->player#stop"

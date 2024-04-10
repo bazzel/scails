@@ -1,0 +1,24 @@
+<div data-controller="slider">
+  <%= range_field_tag(
+    :tempo,
+    @value,
+    in: @range,
+    step: @step,
+    class: "form-range",
+    data: {
+      action: "slider#updateProgressIndicator",
+      slider_target: "input",
+    },
+  ) %>
+  <div class="absolute flex items-center justify-between w-full px-1 -mt-[27.5px]">
+
+    <%- stopIndicatorsCount.times do |indicator| %>
+      <span
+        class="text-primary-100 dark:text-primary-500"
+        # data-slider-target="stopIndicator"
+      >•</span>
+    <%- end %>
+  </div>
+
+
+</div>

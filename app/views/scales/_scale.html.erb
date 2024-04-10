@@ -1,5 +1,5 @@
 <li>
-  <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="peer hidden"/>
+  <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
   <label
     for="<%= dom_id(scale) %>"
     class="
@@ -16,6 +16,7 @@
         chromatic_scale: chromatic_scale,
         pattern_name: pattern_name,
         loop: loop,
+        tempo: tempo,
       ),
     ) %>
   </label>

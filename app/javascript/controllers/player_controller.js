@@ -1,11 +1,15 @@
 import { Controller } from "@hotwired/stimulus";
 import Tone from "tone";
 
+const hideClass = "none";
+const showClass = "inline-flex";
+
 export default class extends Controller {
   static values = {
     modeNumber: Number,
     patternName: String,
     loop: Boolean,
+    tempo: Number,
   };
   static targets = ["note", "playButton", "pauseButton"];
 
@@ -26,13 +30,13 @@ export default class extends Controller {
 
     this.pattern.start();
     this.pattern.callback = (time, note) =>
-      synth.triggerAttackRelease(note, "4n", time);
+      synth.triggerAttackRelease(note, "8n", time);
     this.pattern.pattern = patternName;
     this.pattern.values = scale;
 
     if (!this.loopValue) this.pattern.iterations = iterations;
 
-    Tone.Transport.bpm.value = 120;
+    Tone.Transport.bpm.value = this.tempoValue;
     Tone.Transport.start();
   }
 
@@ -42,13 +46,13 @@ export default class extends Controller {
   }
 
   #showPlayStatus() {
-    this.playButtonTarget.style.display = "none";
-    this.pauseButtonTarget.style.display = "inline-flex";
+    this.playButtonTarget.style.display = hideClass;
+    this.pauseButtonTarget.style.display = showClass;
   }
 
   #showStopStatus() {
-    this.playButtonTarget.style.display = "inline-flex";
-    this.pauseButtonTarget.style.display = "none";
+    this.playButtonTarget.style.display = showClass;
+    this.pauseButtonTarget.style.display = hideClass;
   }
 
   #getSynth() {
