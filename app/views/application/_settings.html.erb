@@ -25,7 +25,7 @@
       </div>
       <div class="relative mb-6">
         <%= form.label :tempo, "Tempo", class: "text-base block mt-2 mb-3" %>
-        <%= render(SliderComponent.new(value: @tempo, range: 60..240, step: 5)) %>
+        <%= render(SliderComponent.new(value: @tempo, range: @range, step: 5)) %>
       </div>
       <div class="relative mb-6">
         <%= form.label(
