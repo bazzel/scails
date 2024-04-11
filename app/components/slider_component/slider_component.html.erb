@@ -7,7 +7,7 @@
     step: @step,
     class: "form-range",
     data: {
-      action: "slider#updateValues mousedown->slider#toggleBalloon mouseup->slider#toggleBalloon",
+      action: "slider#updateValues mousedown->slider#toggleBalloon mouseup->slider#toggleBalloon touchstart->slider#toggleBalloon touchend->slider#toggleBalloon",
       slider_target: "input",
     },
   ) %>
