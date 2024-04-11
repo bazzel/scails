@@ -24,7 +24,7 @@
         <p class="form-text">Select the root note to start with.</p>
       </div>
       <div class="relative mb-6">
-        <%= form.label :tempo, "Tempo", class: "text-base block mt-2 mb-3" %>
+        <%= form.label :tempo, "Tempo", class: "text-base block mt-2" %>
         <%= render(SliderComponent.new(value: @tempo, range: @range, step: 5)) %>
       </div>
       <div class="relative mb-6">
