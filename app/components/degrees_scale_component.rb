@@ -9,11 +9,12 @@ class DegreesScaleComponent < ViewComponent::Base
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
-  def initialize(scale:, chromatic_scale:, pattern_name:, loop:, tempo:)
+  def initialize(scale:, chromatic_scale:, pattern_name:, loop:, range:, tempo:)
     @scale = scale
     @chromatic_scale = chromatic_scale
     @pattern_name = pattern_name
     @loop = loop
+    @range = range
     @tempo = tempo
   end
 

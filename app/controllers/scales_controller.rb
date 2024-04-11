@@ -8,7 +8,10 @@ class ScalesController < ApplicationController
     @pattern_names_and_labels = I18n.t('tonejs.pattern_names').map { |k, v| [v, k] }
     @pattern_name = params[:pattern_name] || @pattern_names_and_labels.first.last
     @loop = params[:loop] || false
-    @tempo = params[:tempo] || 120
+    @range = 60..240
+    @tempo = params[:tempo] || (((@range.max - @range.min) / 2) + @range.min)
+
+    p @tempo
 
     return if %i[root_note pattern_name loop].none? { |key| params.key?(key) }
 
