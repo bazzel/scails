@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ScalesController < ApplicationController
+  ActionController::Parameters.permit_all_parameters = true
+  
   # GET /scales or /scales.json
   def index
     @scales = Scale.all
