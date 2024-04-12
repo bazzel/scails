@@ -13,8 +13,6 @@ class ScalesController < ApplicationController
     @range = 60..240
     @tempo = params[:tempo] || (((@range.max - @range.min) / 2) + @range.min)
 
-    p @tempo
-
     return if %i[root_note pattern_name loop].none? { |key| params.key?(key) }
 
     flash.now[:notice] = 'Settings have been updated.'
