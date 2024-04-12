@@ -13,9 +13,6 @@ export default class extends Controller {
   }
 
   updateProgressIndicator() {
-    const lightTextColor = "text-primary-100";
-    const darkTextColor = "text-primary-500";
-
     const ratio = this.ratio;
     const stopIndicatorTargets = this.stopIndicatorTargets;
 
@@ -26,8 +23,8 @@ export default class extends Controller {
       const isRatioGreaterOrEqual = progress >= ratio;
 
       element.className = isRatioGreaterOrEqual
-        ? `${darkTextColor} dark:${lightTextColor}`
-        : `${lightTextColor} dark:${darkTextColor}`;
+        ? "text-primary-500 dark:text-primary-100"
+        : "text-primary-100 dark:text-primary-500";
     });
   }
 
