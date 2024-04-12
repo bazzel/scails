@@ -25,21 +25,19 @@ export default class extends Controller {
   }
 
   close(event) {
+    event.preventDefault();
+
     if (this.dialogTarget.classList.contains(this.visibleClass)) {
       this.toggle(event, true);
-      fetch(this.getCurrentURL);
+      location.reload();
     }
   }
 
   submitForm(event) {
-    event.preventDefault();
+    // event.preventDefault();
 
     if (this.hasFormTarget) {
       this.formTarget.submit();
     }
-  }
-
-  get getCurrentURL() {
-    return window.location.href;
   }
 }
