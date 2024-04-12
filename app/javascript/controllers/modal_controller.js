@@ -27,6 +27,7 @@ export default class extends Controller {
   close(event) {
     if (this.dialogTarget.classList.contains(this.visibleClass)) {
       this.toggle(event, true);
+      fetch(this.getCurrentURL);
     }
   }
 
@@ -36,5 +37,9 @@ export default class extends Controller {
     if (this.hasFormTarget) {
       this.formTarget.submit();
     }
+  }
+
+  get getCurrentURL() {
+    return window.location.href;
   }
 }
