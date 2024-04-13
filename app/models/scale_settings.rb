@@ -18,5 +18,9 @@ class ScaleSettings
     @tempo || (((range.max - range.min) / 2) + range.min)
   end
 
+  def chromatic_scale
+    @chromatic_scale ||= ChromaticScale.run!(root_note:)
+  end
+
 
 end

@@ -13,11 +13,10 @@
     <%= render(
       DegreesScaleComponent.new(
         scale: scale,
-        chromatic_scale: chromatic_scale,
-        pattern_name: pattern_name,
-        loop: loop,
-        range: range,
-        tempo: tempo,
+        chromatic_scale: scale_settings.chromatic_scale,
+        pattern_name: scale_settings.pattern_name,
+        loop: scale_settings.loop,
+        tempo: scale_settings.tempo,
       ),
     ) %>
   </label>
