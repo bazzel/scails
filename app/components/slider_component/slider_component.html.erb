@@ -1,10 +1,9 @@
 <div data-controller="slider" class="-mt-8">
   <span class="relative inline-flex items-center justify-center pt-3 pb-3 pl-4 pr-4 mb-1 text-gray-200 bg-black dark:text-black dark:bg-gray-200 rounded-full -top-4 left-[var(--offset)] -translate-x-1/2 duration-300 opacity-0 transition-transform scale-50 translate-y-3" data-slider-target="balloon">120</span>
-  <%= range_field_tag(
+  <%= @form.range_field(
     :tempo,
-    @value,
-    in: @range,
-    step: @step,
+    in: range,
+    step: step,
     class: "form-range",
     data: {
       action: "slider#updateValues mousedown->slider#toggleBalloon mouseup->slider#toggleBalloon touchstart->slider#toggleBalloon touchend->slider#toggleBalloon",
@@ -13,7 +12,7 @@
   ) %>
   <div class="absolute flex items-center justify-between w-full px-1 -mt-[27.5px]">
 
-    <%- stopIndicatorsCount.times do |indicator| %>
+    <%- stop_indicators_count.times do |indicator| %>
       <span
         class="text-primary-100 dark:text-primary-500"
         # data-slider-target="stopIndicator"
