@@ -9,12 +9,9 @@ class DegreesScaleComponent < ViewComponent::Base
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
-  def initialize(scale:, chromatic_scale:, pattern_name:, loop:, tempo:)
+  def initialize(scale:, scale_settings:)
     @scale = scale
-    @chromatic_scale = chromatic_scale
-    @pattern_name = pattern_name
-    @loop = loop
-    @tempo = tempo
+    @scale_settings = scale_settings
   end
 
   def note_class(position)
@@ -32,6 +29,22 @@ class DegreesScaleComponent < ViewComponent::Base
     elsif position == LAST_POSITION
       ROUNDED_BORDER_RIGHT_CLASS
     end
+  end
+
+  def tempo
+    @scale_settings.tempo
+  end
+
+  def loop
+    @scale_settings.loop
+  end
+  
+  def chromatic_scale
+    @scale_settings.chromatic_scale
+  end
+
+  def pattern_name
+@scale_settings.pattern_name
   end
 
   private

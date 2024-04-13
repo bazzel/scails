@@ -10,14 +10,6 @@
     "
   >
     <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
-    <%= render(
-      DegreesScaleComponent.new(
-        scale: scale,
-        chromatic_scale: scale_settings.chromatic_scale,
-        pattern_name: scale_settings.pattern_name,
-        loop: scale_settings.loop,
-        tempo: scale_settings.tempo,
-      ),
-    ) %>
+    <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>
   </label>
 </li>

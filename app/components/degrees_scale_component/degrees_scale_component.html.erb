@@ -2,11 +2,11 @@
   class="flex md:justify-between"
   data-controller="player"
   data-player-mode-number-value="<%= @scale.mode_number %>"
-  data-player-pattern-name-value="<%= @pattern_name %>"
-  data-player-loop-value="<%= @loop %>"
-  data-player-tempo-value="<%= @tempo %>"
+  data-player-pattern-name-value="<%= pattern_name %>"
+  data-player-loop-value="<%= loop %>"
+  data-player-tempo-value="<%= tempo %>"
 >
-  <% @chromatic_scale.each_with_index do |note, index| %>
+  <% chromatic_scale.each_with_index do |note, index| %>
     <div
       class="
         w-10 flex justify-center items-center rounded-md md:border border-gray-300
@@ -18,11 +18,7 @@
     </div>
   <% end %>
   <button
-    class="
-      inline-flex items-center text-sm font-medium text-white border
-      border-transparent rounded-full bg-primary-500 hover:bg-primary-600
-      focus:outline-none p-2.5 ml-2.5
-    "
+    class="inline-flex items-center text-sm font-medium text-white border border-transparent rounded-full  bg-primary-500 hover:bg-primary-600 focus:outline-none p-2.5 ml-2.5"
     type="button"
     data-action="click->player#play"
     data-player-target="playButton"
@@ -31,10 +27,7 @@
     <div class="sr-only">Play</div>
   </button>
   <button
-    class="
-      items-center hidden text-sm font-medium text-white border border-transparent
-      rounded-full bg-primary-500 hover:bg-primary-600 focus:outline-none p-2.5 ml-2.5
-    "
+    class="items-center hidden text-sm font-medium text-white border border-transparent rounded-full  bg-primary-500 hover:bg-primary-600 focus:outline-none p-2.5 ml-2.5"
     type="button"
     data-action="click->player#stop"
     data-player-target="pauseButton"
