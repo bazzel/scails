@@ -57,11 +57,26 @@ export default class extends Controller {
 
   #getSynth() {
     return new Tone.Synth({
-      oscillator: { type: "square16" },
       onsilence: (_instrument) => this.stop(),
+      oscillator: { type: "sine16" }, // https://github.com/Tonejs/Tone.js/blob/master/Tone/source/oscillator/OscillatorInterface.ts
+      // oscillator: { type: "square16" },
+      // oscillator: { type: "sawtooth16" },
+      // oscillator: { type: "triangle16" },
+
+      // oscillator: { type: "fmsine16" },
       // oscillator: { type: "fmsquare16" },
+      // oscillator: { type: "fmsawtooth16" },
+      // oscillator: { type: "fmtriangle16" },
+
+      // oscillator: { type: "amsine16" },
       // oscillator: { type: "amsquare16" },
+      // oscillator: { type: "amsawtooth16" },
+      // oscillator: { type: "amtriangle16" },
+
+      // oscillator: { type: "fatsine16" },
       // oscillator: { type: "fatsquare16" },
+      // oscillator: { type: "fatsawtooth16" },
+      // oscillator: { type: "fattriangle16" },
     }).toDestination();
   }
 
