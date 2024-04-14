@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="modal"
 export default class extends Controller {
   static targets = ["dialog", "backdrop", "form"];
   static classes = ["visible", "hidden"];
@@ -34,8 +33,6 @@ export default class extends Controller {
   }
 
   submitForm(event) {
-    // event.preventDefault();
-
     if (this.hasFormTarget) {
       this.formTarget.submit();
     }

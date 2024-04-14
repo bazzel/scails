@@ -7,6 +7,7 @@ export default class extends Controller {
   static values = {
     modeNumber: Number,
   };
+  static classes = ["shown", "hidden"];
 
   connect() {
     this.checkboxTarget.checked = this.#isFavorite();
