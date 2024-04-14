@@ -9,15 +9,13 @@ export default class extends Controller {
   };
 
   connect() {
-    if (this.#isFavorite()) {
-      this.checkboxTarget.checked = true;
-    }
+    this.checkboxTarget.checked = this.#isFavorite();
   }
 
   addOrRemoveFavorite() {
     const favorites = this.#getFavorites();
-
     const index = this.#favoriteIndex();
+
     if (index > -1) {
       favorites.splice(index, 1);
     } else {
