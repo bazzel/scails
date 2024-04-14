@@ -1,4 +1,4 @@
-<li>
+<li data-controller="favorites" data-favorites-mode-number-value="<%= scale.mode_number %>">
   <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
   <label
     for="<%= dom_id(scale) %>"
@@ -10,6 +10,9 @@
     "
   >
     <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
+
+        <input type="checkbox" data-action="favorites#addOrRemoveFavorite"></input>
+
     <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>
   </label>
 </li>
