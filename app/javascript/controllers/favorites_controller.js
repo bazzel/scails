@@ -1,24 +1,41 @@
 import { Controller } from "@hotwired/stimulus";
 
+const favoritesKey = "favorites";
+
 export default class extends Controller {
+  static targets = ["checkbox"];
   static values = {
     modeNumber: Number,
   };
 
   connect() {
-    console.log("Favorites controller connected");
+    if (this.#isFavorite()) {
+      this.checkboxTarget.checked = true;
+    }
   }
 
   addOrRemoveFavorite() {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favorites = this.#getFavorites();
 
-    const index = favorites.indexOf(this.modeNumberValue);
+    const index = this.#favoriteIndex();
     if (index > -1) {
       favorites.splice(index, 1);
     } else {
       favorites.push(this.modeNumberValue);
     }
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem(favoritesKey, JSON.stringify(favorites));
+  }
+
+  #isFavorite() {
+    return this.#favoriteIndex() > -1;
+  }
+
+  #getFavorites() {
+    return JSON.parse(localStorage.getItem(favoritesKey)) || [];
+  }
+
+  #favoriteIndex() {
+    return this.#getFavorites().indexOf(this.modeNumberValue);
   }
 }

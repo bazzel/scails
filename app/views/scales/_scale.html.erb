@@ -11,7 +11,7 @@
   >
     <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
 
-        <input type="checkbox" data-action="favorites#addOrRemoveFavorite"></input>
+        <input type="checkbox" data-action="favorites#addOrRemoveFavorite" data-favorites-target="checkbox"></input>
 
     <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>
   </label>
