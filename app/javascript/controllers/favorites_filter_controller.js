@@ -24,15 +24,8 @@ export default class extends Controller {
   }
 
   toggle() {
-    const isShowingFavoritesOnly = this.#isShowingFavoritesOnly();
-
-    if (isShowingFavoritesOnly) {
-      this.#showAll();
-    } else {
-      this.#showFavoritesOnly();
-    }
-
-    localStorage.setItem(favoritesOnlyKey, !isShowingFavoritesOnly);
+    localStorage.setItem(favoritesOnlyKey, !this.#isShowingFavoritesOnly());
+    this.restoreFilter();
   }
 
   #showAll() {
