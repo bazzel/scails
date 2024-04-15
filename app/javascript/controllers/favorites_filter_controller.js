@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
-const isShowingFavoritesOnlyKey = "isShowingFavorites";
+const favoritesOnlyKey = "favoritesOnly";
 const favoritesKey = "favorites";
 
 export default class extends Controller {
@@ -8,32 +8,23 @@ export default class extends Controller {
 
   connect() {
     console.log("FavoritesFilterController connected");
-
-    // debugger;
-    console.log(this.favoriteOutletElement);
-    // this.favoriteOutletElements.forEach((el) => {
-    //   // return console.log(el);
-    // });
   }
 
   toggle() {
-    const isShowingFavoritesOnly = this.#isShowingFavoritesOnly();
+    const shouldShowAll = this.#shouldShowAll();
+    const favorites = this.#getFavorites();
 
-    if (isShowingFavoritesOnly) {
-      this.favoriteOutlets.forEach((el) => {
-        el.element.classList.remove(el.hiddenClass);
-      });
+    if (shouldShowAll) {
+      this.favoriteOutlets.forEach((outlet) =>
+        outlet.element.classList.remove(outlet.hiddenClass)
+      );
     } else {
-      this.favoriteOutlets.forEach((el) => {
-        if (this.#getFavorites().indexOf(el.modeNumberValue) > -1) {
-          el.element.classList.add(el.shownClass);
-        } else {
-          el.element.classList.add(el.hiddenClass);
-        }
-      });
+      this.favoriteOutlets
+        .filter((outlet) => !favorites.includes(outlet.modeNumberValue))
+        .forEach((outlet) => outlet.element.classList.add(outlet.hiddenClass));
     }
 
-    localStorage.setItem(isShowingFavoritesOnlyKey, !isShowingFavoritesOnly);
+    localStorage.setItem(favoritesOnlyKey, !shouldShowAll);
   }
 
   #getFavorites() {
@@ -41,7 +32,15 @@ export default class extends Controller {
   }
 
   #isShowingFavoritesOnly() {
-    return JSON.parse(localStorage.getItem(isShowingFavoritesOnlyKey)) || false;
+    return JSON.parse(localStorage.getItem(favoritesOnlyKey)) || false;
+  }
+
+  #shouldShowAll() {
+    return this.#isShowingFavoritesOnly();
+  }
+
+  #shouldShowingFavorites() {
+    return !this.#shouldShowAll();
   }
 
   #favoriteIndex() {
