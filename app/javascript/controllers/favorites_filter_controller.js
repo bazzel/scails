@@ -4,27 +4,49 @@ const favoritesOnlyKey = "favoritesOnly";
 const favoritesKey = "favorites";
 
 export default class extends Controller {
+  static targets = ["checkbox"];
   static outlets = ["favorite"];
 
   connect() {
-    console.log("FavoritesFilterController connected");
+    this.restoreFilter();
+  }
+
+  restoreFilter() {
+    const isShowingFavoritesOnly = this.#isShowingFavoritesOnly();
+
+    if (isShowingFavoritesOnly) {
+      this.#showFavoritesOnly();
+    } else {
+      this.#showAll();
+    }
+
+    this.checkboxTarget.checked = isShowingFavoritesOnly;
   }
 
   toggle() {
-    const shouldShowAll = this.#shouldShowAll();
-    const favorites = this.#getFavorites();
+    const isShowingFavoritesOnly = this.#isShowingFavoritesOnly();
 
-    if (shouldShowAll) {
-      this.favoriteOutlets.forEach((outlet) =>
-        outlet.element.classList.remove(outlet.hiddenClass)
-      );
+    if (isShowingFavoritesOnly) {
+      this.#showAll();
     } else {
-      this.favoriteOutlets
-        .filter((outlet) => !favorites.includes(outlet.modeNumberValue))
-        .forEach((outlet) => outlet.element.classList.add(outlet.hiddenClass));
+      this.#showFavoritesOnly();
     }
 
-    localStorage.setItem(favoritesOnlyKey, !shouldShowAll);
+    localStorage.setItem(favoritesOnlyKey, !isShowingFavoritesOnly);
+  }
+
+  #showAll() {
+    this.favoriteOutlets.forEach((outlet) =>
+      outlet.element.classList.remove(outlet.hiddenClass)
+    );
+  }
+
+  #showFavoritesOnly() {
+    this.favoriteOutlets
+      .filter(
+        (outlet) => !this.#getFavorites().includes(outlet.modeNumberValue)
+      )
+      .forEach((outlet) => outlet.element.classList.add(outlet.hiddenClass));
   }
 
   #getFavorites() {
@@ -33,17 +55,5 @@ export default class extends Controller {
 
   #isShowingFavoritesOnly() {
     return JSON.parse(localStorage.getItem(favoritesOnlyKey)) || false;
-  }
-
-  #shouldShowAll() {
-    return this.#isShowingFavoritesOnly();
-  }
-
-  #shouldShowingFavorites() {
-    return !this.#shouldShowAll();
-  }
-
-  #favoriteIndex() {
-    return this.#getFavorites().indexOf(this.modeNumberValue);
   }
 }
