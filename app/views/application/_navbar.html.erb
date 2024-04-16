@@ -1,4 +1,9 @@
-<nav class="fixed top-0 z-20 w-full bg-gray-800 start-0">
+<nav
+  class="fixed top-0 z-20 w-full transition bg-primary-50 start-0"
+  data-controller="navbar"
+  data-action="scroll@window->navbar#waterfall"
+  data-navbar-waterfall-class="bg-primary-100"
+>
   <div class="px-2 mx-auto max-w-screen-2xl sm:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div
@@ -6,7 +11,7 @@
           flex items-center justify-center flex-1 sm:items-stretch sm:justify-start
         "
       >
-        <div class="flex items-center flex-shrink-0 text-white">
+        <div class="flex items-center flex-shrink-0 ">
           <%= inline_svg_tag("app.svg", size: "32") %>
         </div>
       </div>
