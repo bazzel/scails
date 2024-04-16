@@ -49,7 +49,10 @@ The application has been deployed to the following environments (not all may be 
 - List of musical scales from [Daqarta](https://www.daqarta.com/dw_ss0a.htm)
 - Musical scale icons by erifqizeicon from [Noun Project](https://thenounproject.com/browse/icons/term/musical-scale/) (CC BY 3.0) (but slightly modified)
 - Interactive music from [Tone.js](https://tonejs.github.io/)
-- App icons from ~~[Flowbite](https://flowbite.com/icons/)~~ [Heroicons](https://heroicons.com/)
+- App icons from
+  - ~~[Flowbite](https://flowbite.com/icons/)~~
+  - [Heroicons](https://heroicons.com/)
+  - [VeryIcon](https://www.veryicon.com/icons/object/material_design_icons/) (and adjusted w/ [Inkscape](https://inkscape.org/))
 - Slider styling from https://toughengineer.github.io/demo/slider-styler/slider-styler.html
 
 ## Further reading

@@ -15,13 +15,38 @@
       dark:border-gray-600 dark:hover:bg-gray-700
     "
   >
-    <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
+    <div class="flex justify-between">
 
-    <input
-      type="checkbox"
-      data-action="favorite#addOrRemoveFavorite"
-      data-favorite-target="checkbox"
-    />
+      <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
+
+      <div>
+        <input
+          type="checkbox"
+          id="<%= dom_id(scale, 'pin') %>"
+          value=""
+          class="hidden peer"
+          required=""
+          data-action="favorite#addOrRemoveFavorite"
+          data-favorite-target="checkbox"
+        >
+        <label
+          for="<%= dom_id(scale, 'pin') %>"
+          class="
+            inline-flex items-center justify-between w-full p-2 text-gray-800 rounded-full
+            cursor-pointer dark:hover:text-gray-300 dark:border-gray-700
+            peer-checked:text-primary-500 dark:peer-checked:text-gray-200
+            hover:peer-checked:bg-primary-100 focus:peer-checked:bg-primary-200
+            active:peer-checked:bg-primary-200 hover:bg-gray-200 dark:text-gray-400
+            dark:bg-gray-800 dark:hover:bg-gray-700
+          "
+        >
+          <div class="block">
+            <span class="sr-only">Pin</span>
+            <%= inline_svg_tag("icons/pin.svg") %>
+          </div>
+        </label>
+      </div>
+    </div>
 
     <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>
   </label>
