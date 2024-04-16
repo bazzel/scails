@@ -1,18 +1,16 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+  static classes = ["waterfall"];
   connect() {
-    // this.element.textContent = "Hello World!"
+    this.waterfall();
   }
 
-  static classes = ["waterfall"];
-
   waterfall() {
-    console.log("waterfall");
     if (window.scrollY > 0) {
-      this.element.classList.add(this.waterfallClass);
+      this.element.classList.add(...this.waterfallClasses);
     } else {
-      this.element.classList.remove(this.waterfallClass);
+      this.element.classList.remove(...this.waterfallClasses);
     }
   }
 }
