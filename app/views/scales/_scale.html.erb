@@ -1,9 +1,9 @@
 <li
-  data-controller="favorite"
-  data-favorite-mode-number-value="<%= scale.mode_number %>"
+  data-controller="pin"
+  data-pin-mode-number-value="<%= scale.mode_number %>"
   class="scale-outlet"
-  data-favorite-shown-class="block"
-  data-favorite-hidden-class="hidden"
+  data-pin-shown-class="block"
+  data-pin-hidden-class="hidden"
 >
   <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
   <label
@@ -26,8 +26,8 @@
           value=""
           class="hidden peer"
           required=""
-          data-action="favorite#addOrRemoveFavorite"
-          data-favorite-target="checkbox"
+          data-action="pin#addOrRemovePin"
+          data-pin-target="checkbox"
         >
         <label
           for="<%= dom_id(scale, 'pin') %>"
