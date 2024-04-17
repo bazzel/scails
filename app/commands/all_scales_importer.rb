@@ -4,7 +4,17 @@
 class AllScalesImporter < ActiveInteraction::Base
   def execute
     delete_all_scales
-    each_line { |line| create_scale(line) }
+    each_line do |line|
+      mode_number = line[0..6].strip
+
+      if (scale = Scale.find_by(mode_number:))
+        common_name = line[23..].strip
+        aliases = scale.aliases + [common_name]
+        scale.update!(aliases:)
+      else
+        create_scale(line)
+      end
+    end
   end
 
   private

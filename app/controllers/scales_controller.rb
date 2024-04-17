@@ -3,7 +3,7 @@
 class ScalesController < ApplicationController
   # GET /scales or /scales.json
   def index
-    @scales = Scale.all
+    @scales = Scale.order(:id)
     @pattern_names_and_labels = I18n.t('tonejs.pattern_names').map { |k, v| [v, k] }
     @scale_settings = ScaleSettings.new(scale_settings_params)
 

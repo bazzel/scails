@@ -17,7 +17,10 @@
   >
     <div class="flex justify-between">
 
-      <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
+      <div class="flex justify-start gap-1">
+        <h2 class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></h2>
+        <%= render partial: "aliases", locals: { scale: scale } %>
+      </div>
       <%= render(PlainTooltipComponent.new(tooltip: "Pin or unpin this scale")) do %>
         <input
           type="checkbox"
