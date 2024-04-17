@@ -1,44 +1,47 @@
-<div
-  data-controller="pins-filter"
-  data-pins-filter-pin-outlet=".scale-outlet"
-  class="px-2"
->
-  <label for="pinsFilter" class="flex items-center cursor-pointer select-none">
-    <div class="relative">
-      <input
-        type="checkbox"
-        id="pinsFilter"
-        class="sr-only peer"
-        data-action="pins-filter#toggle"
-        data-pins-filter-target="checkbox"
-      />
-      <div
-        class="
-          block w-[52px] h-8 transition rounded-full bg-gray-500/10 dark:bg-gray-500/20
-          peer-checked:bg-primary-500 border-gray-500/50 border-2
-          peer-checked:border-primary-500 peer-checked:dark:bg-primary-200
-          peer-checked:dark:border-primary-200
-        "
-      ></div>
-      <div
-        class="
-          absolute flex items-center justify-center w-6 h-6 transition-all rotate-45
-          rounded-full text-primary-100 bg-gray-500/50 left-1 top-1
-          peer-checked:translate-x-full peer-checked:bg-white
-          peer-checked:dark:bg-primary-900 peer-checked:dark:hover:bg-primary-800
-          peer-checked:dark:text-primary-200 peer-checked:text-primary-500
-          peer-checked:rotate-0 peer-checked:top-1 peer-checked:-start-0
-          hover:bg-gray-500/70 hover:ring-8 focus:ring-8 hover:ring-gray-500/10
-          focus:ring-gray-500/10 active:w-7 active:h-7 active:top-0.5 active:left-0.5
-          peer-checked:active:top-0.5 peer-checked:active:-start-1.5
-          peer-checked:hover:ring-primary-500/10
-          peer-checked:dark:hover:ring-primary-900/10
-        "
-      >
-        <span class="text-current">
-          <%= inline_svg_tag("icons/pin.svg") %>
-        </span>
+<%= render(PlainTooltipComponent.new(tooltip: "Filter pinned scales", position: 'bottom')) do %>
+  <div
+    data-controller="pins-filter"
+    data-pins-filter-pin-outlet=".scale-outlet"
+    class="px-2"
+  >
+    <label for="pinsFilter" class="flex items-center cursor-pointer select-none">
+      <div class="relative">
+        <input
+          type="checkbox"
+          id="pinsFilter"
+          class="sr-only peer"
+          data-action="pins-filter#toggle"
+          data-pins-filter-target="checkbox"
+        />
+        <div
+          class="
+            block w-[52px] h-8 transition rounded-full bg-gray-500/10 dark:bg-gray-500/20
+            peer-checked:bg-primary-500 border-gray-500/50 border-2
+            peer-checked:border-primary-500 peer-checked:dark:bg-primary-200
+            peer-checked:dark:border-primary-200
+          "
+        ></div>
+        <div
+          class="
+            absolute flex items-center justify-center w-6 h-6 transition-all rotate-45
+            rounded-full text-primary-100 bg-gray-500/50 left-1 top-1
+            peer-checked:translate-x-full peer-checked:bg-white
+            peer-checked:dark:bg-primary-900 peer-checked:dark:hover:bg-primary-800
+            peer-checked:dark:text-primary-200 peer-checked:text-primary-500
+            peer-checked:rotate-0 peer-checked:top-1 peer-checked:-start-0
+            hover:bg-gray-500/70 hover:ring-8 focus:ring-8 hover:ring-gray-500/10
+            focus:ring-gray-500/10 active:w-7 active:h-7 active:top-0.5 active:left-0.5
+            peer-checked:active:top-0.5 peer-checked:active:-start-1.5
+            peer-checked:hover:ring-primary-500/10
+            peer-checked:dark:hover:ring-primary-900/10
+          "
+        >
+          <span class="text-current">
+            <%= inline_svg_tag("icons/pin.svg") %>
+          </span>
+        </div>
       </div>
-    </div>
-  </label>
-</div>
+    </label>
+  </div>
+
+<% end %>

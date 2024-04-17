@@ -7,7 +7,18 @@
 # <% end %>
 # ```
 class PlainTooltipComponent < ViewComponent::Base
-  def initialize(tooltip:)
+  POSITIONS = {
+    top: 'mb-1 -translate-x-1/2 left-1/2 bottom-full',
+    bottom: 'mt-1 -translate-x-1/2 left-1/2 top-full',
+    left: 'mr-1 -translate-y-1/2 top-1/2 right-full',
+    right: 'ml-1 -translate-y-1/2 top-1/2 left-full'
+  }
+  def initialize(tooltip:, position: :top)
     @tooltip = tooltip
+    @position = position
+  end
+
+  def position_class
+    POSITIONS[@position.to_sym]
   end
 end

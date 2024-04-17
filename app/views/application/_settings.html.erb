@@ -1,17 +1,19 @@
 <%= render(ModalComponent.new(title: "Settings")) do |m| %>
   <%= m.with_controller do %>
-    <button
-      type="button"
-      class="
-        inline-flex items-center justify-center p-2 m-1 rounded-full cursor-pointer
-        text-black/80 dark:hover:text-gray-300 dark:border-gray-700 hover:bg-gray-500/10
-        focus:bg-gray-500/15 active:bg-gray-500/15 dark:text-gray-200
-        dark:hover:bg-gray-100/10 dark:focus:bg-gray-100/15 dark:active:bg-gray-100/15
-      "
-    >
-      <span class="sr-only">Settings</span>
-      <%= inline_svg_tag("icons/cog-6-tooth.svg") %>
-    </button>
+    <%= render(PlainTooltipComponent.new(tooltip: "Settings", position: :bottom)) do %>
+      <button
+        type="button"
+        class="
+          inline-flex items-center justify-center p-2 m-1 rounded-full cursor-pointer
+          text-black/80 dark:hover:text-gray-300 dark:border-gray-700 hover:bg-gray-500/10
+          focus:bg-gray-500/15 active:bg-gray-500/15 dark:text-gray-200
+          dark:hover:bg-gray-100/10 dark:focus:bg-gray-100/15 dark:active:bg-gray-100/15
+        "
+      >
+        <span class="sr-only">Settings</span>
+        <%= inline_svg_tag("icons/cog-6-tooth.svg") %>
+      </button>
+    <% end %>
   <% end %>
   <%= m.with_body do %>
     <%= form_with model: @scale_settings, url: root_path, method: :get, data: { modal_target: "form" } do |form| %>
