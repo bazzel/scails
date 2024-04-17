@@ -19,7 +19,7 @@
 
       <div class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></div>
 
-      <div>
+      <div class="relative group">
         <input
           type="checkbox"
           id="<%= dom_id(scale, 'pin') %>"
@@ -46,6 +46,15 @@
             <%= inline_svg_tag("icons/pin.svg") %>
           </div>
         </label>
+        <div
+          class="
+            absolute z-20 px-2 py-1 mb-1 text-xs transition -translate-x-1/2 bg-gray-800
+            rounded opacity-0 dark:bg-gray-100 dark:text-gray-800 bottom-full left-1/2
+            whitespace-nowrap text-gray-50 group-hover:opacity-100
+          "
+        >
+          Pin or unpin this scale
+        </div>
       </div>
     </div>
 
