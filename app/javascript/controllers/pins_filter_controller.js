@@ -15,9 +15,9 @@ export default class extends Controller {
     const isShowingPinnedOnly = this.#isShowingPinnedOnly();
 
     if (isShowingPinnedOnly) {
-      this.#showPinnedOnly();
+      this.#startViewTransition(() => this.#showPinnedOnly());
     } else {
-      this.#showAll();
+      this.#startViewTransition(() => this.#showAll());
     }
 
     this.checkboxTarget.checked = isShowingPinnedOnly;
@@ -28,16 +28,27 @@ export default class extends Controller {
     this.restoreFilter();
   }
 
+  #startViewTransition(fn) {
+    if (!document.startViewTransition) {
+      fn();
+      return;
+    }
+
+    document.startViewTransition(() => fn());
+  }
+
   #showAll() {
     this.pinOutlets.forEach((outlet) =>
-      outlet.element.classList.remove(outlet.hiddenClass)
+      outlet.element.classList.remove(...outlet.hiddenClasses)
     );
   }
 
   #showPinnedOnly() {
     this.pinOutlets
       .filter((outlet) => !this.#getPinned().includes(outlet.modeNumberValue))
-      .forEach((outlet) => outlet.element.classList.add(outlet.hiddenClass));
+      .forEach((outlet) =>
+        outlet.element.classList.add(...outlet.hiddenClasses)
+      );
   }
 
   #getPinned() {
