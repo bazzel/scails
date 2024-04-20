@@ -7,6 +7,7 @@ export default class extends Controller {
   static values = {
     modeNumber: Number,
   };
+  static targets = ["snackbar"];
 
   connect() {
     const isDeleted = this.#getDeleted().includes(this.modeNumberValue);
@@ -23,12 +24,18 @@ export default class extends Controller {
     deleted.push(this.modeNumberValue);
     localStorage.setItem(deletedKey, JSON.stringify([...new Set(deleted)]));
 
+    this.#showSnackbar();
+
     this.#removeFromDOM();
     this.#updateURL();
   }
 
   #getDeleted() {
     return JSON.parse(localStorage.getItem(deletedKey)) || [];
+  }
+
+  #showSnackbar() {
+    this.snackbarTarget.classList.remove("hidden");
   }
 
   #removeFromDOM() {
