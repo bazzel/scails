@@ -26,7 +26,7 @@ export default class extends Controller {
 
     this.#showSnackbar();
 
-    this.#removeFromDOM();
+    // this.#removeFromDOM();
     this.#updateURL();
   }
 

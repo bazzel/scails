@@ -1,16 +1,15 @@
 import { Controller } from "@hotwired/stimulus";
+import { useVisibility, useIntersection } from "stimulus-use";
 
 const dismissAfter = 3000;
 const fadeOutDuration = 1000;
 
 export default class extends Controller {
-  static values = {
-    invokeOnConnect: Boolean,
-  };
-
   connect() {
-    if (!this.invokeOnConnectValue) return;
+    useIntersection(this);
+  }
 
+  appear(entry, observer) {
     this.invokeDismissal();
   }
 
