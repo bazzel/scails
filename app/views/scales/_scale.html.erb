@@ -1,6 +1,7 @@
 <li
-  data-controller="pin"
+  data-controller="pin delete"
   data-pin-mode-number-value="<%= scale.mode_number %>"
+  data-delete-mode-number-value="<%= scale.mode_number %>"
   class="scale-outlet sm:mb-2 sm:last:mb-0"
   data-pin-hidden-class="hidden"
 >
@@ -19,27 +20,10 @@
         <h2 class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></h2>
         <%= render partial: "aliases", locals: { scale: scale } %>
       </div>
-      <%= render(PlainTooltipComponent.new(tooltip: "Pin or unpin this scale")) do %>
-        <input
-          type="checkbox"
-          id="<%= dom_id(scale, 'pin') %>"
-          value=""
-          class="hidden peer"
-          required=""
-          data-action="pin#addOrRemovePin"
-          data-pin-target="checkbox"
-        >
-        <label
-          for="<%= dom_id(scale, 'pin') %>"
-          class="inline-flex items-center justify-center p-2 m-1 rounded-full cursor-pointer  text-black/80 dark:hover:text-gray-300 dark:border-gray-700 peer-checked:text-primary-500 dark:peer-checked:text-primary-200 hover:peer-checked:bg-primary-500/10 focus:peer-checked:bg-primary-500/20 active:peer-checked:bg-primary-500/20 hover:bg-gray-500/10 dark:text-gray-200 dark:hover:bg-gray-100/10 dark:focus:bg-gray-100/15 dark:active:bg-gray-100/15 focus:bg-gray-500/15 active:bg-gray-500/15"
-        >
-          <div class="block">
-            <span class="sr-only">Pin</span>
-            <%= inline_svg_tag("icons/pin.svg") %>
-          </div>
-        </label>
-
-      <% end %>
+      <div class="flex">
+        <%= render partial: "scales/delete", locals: { scale: scale } %>
+        <%= render partial: "scales/pin", locals: { scale: scale } %>
+      </div>
     </div>
 
     <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>

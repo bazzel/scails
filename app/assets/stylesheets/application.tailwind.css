@@ -14,6 +14,19 @@
   }
   /* End buttons */
 
+  /* Icon buttons */
+  /* Buttons are styled according to the Material Design guidelines.
+  See https://m3.material.io/components/icon-buttons/overview */
+  .icon-button {
+    @apply inline-flex items-center justify-center p-2 m-1 rounded-full cursor-pointer;
+  }
+
+  .standard-icon-button {
+    @apply icon-button;
+    @apply text-black/80 dark:hover:text-gray-300 dark:border-gray-700 hover:bg-gray-500/10 focus:bg-gray-500/15 active:bg-gray-500/15 dark:text-gray-200 dark:hover:bg-gray-100/10 dark:focus:bg-gray-100/15 dark:active:bg-gray-100/15;
+  }
+  /* End icon buttons */
+
   /* Form elements */
   .form-select {
     @apply block w-full p-4 text-base bg-white border border-gray-400 rounded focus:ring-primary-500 focus:border-primary-500 dark:focus:border-primary-300 dark:bg-gray-600 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-300;

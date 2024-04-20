@@ -1,0 +1,6 @@
+<%= render(PlainTooltipComponent.new(tooltip: "Delete")) do %>
+  <%= button_tag type: 'button', class: 'standard-icon-button', data: { action: "delete#deleteScale" } do %>
+    <span class="sr-only">Delete</span>
+    <%= inline_svg_tag("icons/trash.svg") %>
+  <% end %>
+<% end %>

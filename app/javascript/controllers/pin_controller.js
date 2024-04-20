@@ -17,7 +17,7 @@ export default class extends Controller {
     const pinned = this.#getPinned();
     const index = this.#pinIndex();
 
-    if (index > -1) {
+    if (this.#isPinned()) {
       pinned.splice(index, 1);
     } else {
       pinned.push(this.modeNumberValue);
