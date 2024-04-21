@@ -43,7 +43,7 @@ export default class extends Controller {
   }
 
   #updateURL() {
-    const name = "excluded_mode_numbers[]";
+    const name = "excluded[]";
     const url = new URL(window.location.href);
     const params = url.searchParams;
 

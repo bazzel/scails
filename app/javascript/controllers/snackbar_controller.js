@@ -1,8 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
-import { useVisibility, useIntersection } from "stimulus-use";
+import { useIntersection } from "stimulus-use";
 
-const dismissAfter = 3000;
-const fadeOutDuration = 1000;
+import {
+  dismissSnackbarAfter as dismissAfter,
+  fadeOutSnackbarDuration as fadeOutDuration,
+} from "../variables";
 
 export default class extends Controller {
   connect() {
