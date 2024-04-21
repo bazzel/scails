@@ -1,13 +1,13 @@
-<div data-controller="slider" class="-mt-8">
-  <span class="relative inline-flex items-center justify-center pt-3 pb-3 pl-4 pr-4 mb-1 text-gray-200 bg-black dark:text-black dark:bg-gray-200 rounded-full -top-4 left-[var(--offset)] -translate-x-1/2 duration-300 opacity-0 transition-transform scale-50 translate-y-3" data-slider-target="balloon">120</span>
+<div data-controller="slider-component" class="-mt-8">
+  <span class="relative inline-flex items-center justify-center pt-3 pb-3 pl-4 pr-4 mb-1 text-gray-200 bg-black dark:text-black dark:bg-gray-200 rounded-full -top-4 left-[var(--offset)] -translate-x-1/2 duration-300 opacity-0 transition-transform scale-50 translate-y-3" data-slider-component-target="balloon">120</span>
   <%= @form.range_field(
     :tempo,
     in: range,
     step: step,
     class: "form-range",
     data: {
-      action: "slider#updateValues mousedown->slider#toggleBalloon mouseup->slider#toggleBalloon touchstart->slider#toggleBalloon touchend->slider#toggleBalloon",
-      slider_target: "input",
+      action: "slider-component#updateValues mousedown->slider-component#toggleBalloon mouseup->slider-component#toggleBalloon touchstart->slider-component#toggleBalloon touchend->slider-component#toggleBalloon",
+      slider_component_target: "input",
     },
   ) %>
   <div class="absolute flex items-center justify-between w-full px-1 -mt-[27.5px]">
@@ -15,10 +15,8 @@
     <%- stop_indicators_count.times do |indicator| %>
       <span
         class="text-primary-100 dark:text-primary-500"
-        # data-slider-target="stopIndicator"
+        # data-slider-component-target="stopIndicator"
       >•</span>
     <%- end %>
   </div>
-
-
 </div>
