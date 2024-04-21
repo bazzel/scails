@@ -4,12 +4,14 @@
   data-controller="snackbar"
 >
   <div class="text-sm"><%= @message %></div>
-  <button
-    type="button"
-    class="relative p-2 -my-3 text-current rounded-full  ms-auto -mx-2.5 hover:bg-gray-600 dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-current focus:ring-offset-2"
-    data-action="snackbar#close"
-  >
-    <span class="sr-only">Close</span>
-    <%= inline_svg_tag("icons/x-mark.svg") %>
-  </button>
+  <% if @close_button %>
+    <button
+      type="button"
+      class="relative p-2 -my-3 text-current rounded-full  ms-auto -mx-2.5 hover:bg-gray-600 dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-current focus:ring-offset-2"
+      data-action="snackbar#close"
+    >
+      <span class="sr-only">Close</span>
+      <%= inline_svg_tag("icons/x-mark.svg") %>
+    </button>
+  <% end %>
 </div>

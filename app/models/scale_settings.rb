@@ -21,6 +21,4 @@ class ScaleSettings
   def chromatic_scale
     @chromatic_scale ||= ChromaticScale.run!(root_note:)
   end
-
-
 end
