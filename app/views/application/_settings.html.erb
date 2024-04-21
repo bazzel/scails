@@ -8,7 +8,7 @@
     <% end %>
   <% end %>
   <%= m.with_body do %>
-    <%= form_with model: @scale_settings, url: root_path, method: :get, data: { modal_target: "form" } do |form| %>
+    <%= form_with model: @scale_settings, url: root_path, method: :get, data: { modal_component_target: "form" } do |form| %>
       <div class="relative mb-6">
         <%= form.select :root_note, ChromaticScale::NOTES, {}, class: "form-select peer" %>
         <%= form.label :root_note, "Root note", class: "form-label" %>
@@ -46,12 +46,12 @@
     class: "button text-button",
     type: "button",
     data: {
-      action: "modal#close",
+      action: "modal-component#close",
     } %>
     <%= button_tag "Save changes",
     class: "button text-button",
     data: {
-      action: "modal#submitForm",
+      action: "modal-component#submitForm",
     } %>
   <% end %>
 <% end %>

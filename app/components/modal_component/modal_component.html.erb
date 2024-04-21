@@ -1,9 +1,9 @@
 <%# Inspired by https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation %>
 <div
-  data-controller="modal"
-  data-action="keydown.esc->modal#close"
-  data-modal-visible-class="block"
-  data-modal-hidden-class="hidden"
+  data-controller="modal-component"
+  data-action="keydown.esc->modal-component#close"
+  data-modal-component-visible-class="block"
+  data-modal-component-hidden-class="hidden"
 >
   <%= controller %>
   <div
@@ -11,8 +11,8 @@
       fixed inset-0 z-50 items-center justify-center hidden overflow-x-hidden
       overflow-y-auto outline-none focus:outline-none
     "
-    data-modal-target="dialog"
-    data-action="click->modal#toggle"
+    data-modal-component-target="dialog"
+    data-action="click->modal-component#toggle"
   >
     <div class="relative mx-auto sm:my-6 sm:min-w-72 sm:max-w-xl">
       <!--content-->
@@ -37,7 +37,7 @@
                 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2
                 focus:ring-offset-gray-800
               "
-              data-action="modal#close"
+              data-action="modal-component#close"
             >
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">Cancel</span>
@@ -50,7 +50,7 @@
           <%= button_tag "Save",
           class: "button text-button",
           data: {
-            action: "modal#submitForm",
+            action: "modal-component#submitForm",
           } %>
         </div>
         <!--body-->
@@ -64,6 +64,6 @@
   </div>
   <div
     class="fixed inset-0 z-40 hidden bg-black opacity-25"
-    data-modal-target="backdrop"
+    data-modal-component-target="backdrop"
   ></div>
 </div>
