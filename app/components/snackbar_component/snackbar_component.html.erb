@@ -1,14 +1,21 @@
 <div
-  class="fixed flex items-center p-4 text-gray-300 bg-gray-800 rounded shadow-md  bottom-5 left-5 right-5 sm:w-full sm:max-w-xs dark:text-gray-800 dark:bg-primary-50"
+  class="
+    fixed flex items-center p-4 text-gray-300 bg-gray-800 rounded shadow-md bottom-5
+    left-5 right-5 sm:w-full sm:max-w-xs dark:text-gray-800 dark:bg-primary-50
+  "
   role="alert"
-  data-controller="snackbar"
+  data-controller="snackbar-component"
 >
   <div class="text-sm"><%= @message %></div>
   <% if @close_button %>
     <button
       type="button"
-      class="relative p-2 -my-3 text-current rounded-full  ms-auto -mx-2.5 hover:bg-gray-600 dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-current focus:ring-offset-2"
-      data-action="snackbar#close"
+      class="
+        relative p-2 -my-3 text-current rounded-full ms-auto -mx-2.5 hover:bg-gray-600
+        dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-current
+        focus:ring-offset-2
+      "
+      data-action="snackbar-component#close"
     >
       <span class="sr-only">Close</span>
       <%= inline_svg_tag("icons/x-mark.svg") %>
