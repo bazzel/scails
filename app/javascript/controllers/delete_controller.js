@@ -7,7 +7,6 @@ export default class extends Controller {
   static values = {
     modeNumber: Number,
   };
-  static targets = ["snackbar"];
 
   connect() {
     const isDeleted = this.#getDeleted().includes(this.modeNumberValue);
@@ -19,12 +18,25 @@ export default class extends Controller {
   }
 
   deleteScale() {
+    // console.log(this);
+
     const deleted = this.#getDeleted();
 
     deleted.push(this.modeNumberValue);
     localStorage.setItem(deletedKey, JSON.stringify([...new Set(deleted)]));
 
     this.#showSnackbar();
+
+    // Fade out DIV
+
+    // If cancelled
+    // Show DIV again
+    // Make sure snackbar is still there
+
+    // If not cancelled
+    // Remove DIV (which includes snackbar)
+    // Update localStorage
+    // Update URL
 
     // this.#removeFromDOM();
     this.#updateURL();
@@ -35,7 +47,11 @@ export default class extends Controller {
   }
 
   #showSnackbar() {
-    this.snackbarTarget.classList.remove("hidden");
+    this.#snackbarComponent.classList.remove("hidden");
+  }
+
+  get #snackbarComponent() {
+    return this.element.querySelector('[data-controller="snackbar-component"]');
   }
 
   #removeFromDOM() {

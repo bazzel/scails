@@ -3,7 +3,14 @@
     <span class="sr-only">Delete</span>
     <%= inline_svg_tag("icons/trash.svg") %>
   <% end %>
-  <div class="hidden" data-delete-target="snackbar">
-    <%= render(SnackbarComponent.new(message: "Lorem Ipsum")) %>
-  </div>
+  <%= render(SnackbarComponent.new(message: "Scale #{scale.common_name} has been deleted.", show_on_render: false)) do |component| %>
+    <% component.with_action do %>
+      <%= button_tag "Undo",
+      class:
+        "button text-primary-200 hover:bg-primary-200/10 focus:bg-primary-200/15 active:bg-primary-200/15 px-3",
+      data: {
+        action: "modal-component#submitForm",
+      } %>
+    <% end %>
+  <% end %>
 <% end %>

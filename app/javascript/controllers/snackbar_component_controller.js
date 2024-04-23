@@ -7,26 +7,40 @@ import {
 } from "../variables";
 
 export default class extends Controller {
+  static classes = ["hidden", "visible", "fadingOut"];
+
   connect() {
+    // Check if the component is visible after is it rendered
+    // so we now how to restore it after it fading out.
+    this.isHidden = this.hasHiddenClass;
+    this.element.classList.add(`duration-${fadeOutDuration}`);
+
     useIntersection(this);
   }
 
   appear(entry, observer) {
-    this.invokeDismissal();
+    // this.invokeDismissal();
   }
 
   invokeDismissal() {
+    this.element.classList.remove(...this.fadingOutClasses);
+    this.element.classList.add(...this.visibleClasses);
+
     setTimeout(() => {
       if (this.element) this.close();
     }, dismissAfter);
   }
 
   close() {
-    this.element.classList.add(
-      "opacity-0",
-      "transition-opacity",
-      `duration-${fadeOutDuration}`
-    );
-    setTimeout(() => this.element.remove(), fadeOutDuration);
+    this.element.classList.remove(...this.visibleClasses);
+    this.element.classList.add(...this.fadingOutClasses);
+
+    setTimeout(() => {
+      if (this.isHidden) {
+        this.element.classList.add(...this.hiddenClasses);
+      }
+
+      // this.element.remove();
+    }, fadeOutDuration);
   }
 }

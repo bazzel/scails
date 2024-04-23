@@ -1,24 +1,37 @@
 <div
   class="
-    fixed flex items-center p-4 text-gray-300 bg-gray-800 rounded shadow-md bottom-5
-    left-5 right-5 sm:w-full sm:max-w-xs dark:text-gray-800 dark:bg-primary-50
+    <%= container_class %> fixed flex items-center justify-between
+    h-12 pl-4 pe-2 text-gray-300 bg-gray-800 rounded shadow-md bottom-5 left-5
+    right-5 sm:w-full sm:max-w-lg dark:text-gray-800 dark:bg-primary-50
   "
   role="alert"
   data-controller="snackbar-component"
+  data-snackbar-component-hidden-class="<%= HIDDEN_CLASS %>"
+  data-snackbar-component-visible-class="opacity-100"
+  data-snackbar-component-fading-out-class="transition-opacity opacity-0"
 >
   <div class="text-sm"><%= @message %></div>
-  <% if @close_button %>
-    <button
-      type="button"
-      class="
-        relative p-2 -my-3 text-current rounded-full ms-auto -mx-2.5 hover:bg-gray-600
-        dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-current
-        focus:ring-offset-2
-      "
-      data-action="snackbar-component#close"
-    >
-      <span class="sr-only">Close</span>
-      <%= inline_svg_tag("icons/x-mark.svg") %>
-    </button>
-  <% end %>
+
+  <div class="flex items-center gap-3">
+
+    <% if action %>
+      <%= action %>
+    <% end %>
+    <% if @close_button %>
+      <div class='me-1'>
+        <button
+          type="button"
+          class="
+            relative p-2 text-current rounded-full ms-auto hover:bg-gray-600
+            dark:hover:bg-gray-300 focus:outline-none
+          "
+          data-action="snackbar-component#close"
+        >
+          <span class="sr-only">Close</span>
+          <%= inline_svg_tag("icons/x-mark.svg") %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+
 </div>
