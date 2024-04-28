@@ -1,0 +1,20 @@
+<% if scale && params[:soft_delete] == scale.id.to_s %>
+  <div
+    data-controller='undo-delete'
+    data-undo-delete-mode-number-value="<%= scale.mode_number %>"
+  >
+    <%= render(SnackbarComponent.new(message: "#{scale.common_name} scale has been deleted.")) do |component| %>
+      <% component.with_action do %>
+        <%= form_with data: { action: 'undo-delete#undo' } do |form| %>
+          <%= form.hidden_field :id, value: scale.id %>
+          <%= excluded_fields %>
+          <%= button_to "Undo",
+        class:
+          "button text-primary-200 hover:bg-primary-200/10 focus:bg-primary-200/15 active:bg-primary-200/15 px-3 dark:text-primary-600 dark:hover:bg-primary-600/10 dark:focus:bg-primary-600/15 dark:active:bg-primary-600/15" do %>
+            Undo
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

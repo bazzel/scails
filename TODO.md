@@ -1,7 +1,11 @@
 - [x] Pin scales (https://seibert.group/blog/en/wp-content/uploads/sites/2/2019/07/Inbox-Anpinnen-1.gif)
 - [x] Group scales (same scale, different name)
 - [x] Animate filter
-- [ ] Delete scales
+- [x] Delete scales
 - [ ] Change order
 - [ ] Share settings
 - [ ] Reset form (i.o. reload page)
+- [ ] Show actions only on hover. Show pinned icon permanently.
+- [ ] Choose 'instrument'.
+- [ ] Extract strings to en.yml
+- [ ] Highlight note when playing

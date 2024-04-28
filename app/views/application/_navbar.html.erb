@@ -4,7 +4,7 @@
   "
   data-controller="navbar"
   data-action="scroll@window->navbar#waterfall"
-  data-navbar-waterfall-class="!bg-primary-100 dark:!bg-gray-900"
+  data-navbar-waterfall-class="!bg-primary-100 shadow dark:!bg-gray-900 shadow-black/30"
 >
   <div class="pl-4 pr-3 mx-auto max-w-screen-2xl sm:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -18,3 +18,10 @@
     </div>
   </div>
 </nav>
+
+<form
+  data-controller="search"
+  data-search-loading-class="bg-gray-500 animate-spinner cursor-busy"
+>
+  <input data-action="search#loadResults">
+</form>

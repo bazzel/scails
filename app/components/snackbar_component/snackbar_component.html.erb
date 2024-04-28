@@ -1,14 +1,14 @@
 <div
   class="
-    <%= container_class %> fixed flex items-center justify-between
-    h-12 pl-4 pe-2 text-gray-300 bg-gray-800 rounded shadow-md bottom-5 left-5
-    right-5 sm:w-full sm:max-w-lg dark:text-gray-800 dark:bg-primary-50
+    fixed flex items-center justify-between h-12 pl-4 text-gray-300 bg-gray-800
+    rounded shadow-md pe-2 bottom-5 left-5 right-5 sm:w-full sm:max-w-lg
+    dark:text-gray-800 dark:bg-primary-50
   "
   role="alert"
   data-controller="snackbar-component"
-  data-snackbar-component-hidden-class="<%= HIDDEN_CLASS %>"
+  data-snackbar-component-hidden-class="hidden"
   data-snackbar-component-visible-class="opacity-100"
-  data-snackbar-component-fading-out-class="transition-opacity opacity-0"
+  data-snackbar-component-fading-out-class="transition-opacity duration-300 opacity-0"
 >
   <div class="text-sm"><%= @message %></div>
 

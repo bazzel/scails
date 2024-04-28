@@ -1,6 +1,10 @@
 // Snackbar
-const dismissSnackbarAfter = 3000;
+const dismissSnackbarAfter = 6000;
 const fadeOutSnackbarDuration = 1000;
 // End snackbar
 
-export { dismissSnackbarAfter, fadeOutSnackbarDuration };
+// Local Storage keys
+const deletedKey = "deleted";
+// End Local Storage keys
+
+export { dismissSnackbarAfter, fadeOutSnackbarDuration, deletedKey };

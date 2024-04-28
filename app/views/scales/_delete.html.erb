@@ -1,16 +1,10 @@
 <%= render(PlainTooltipComponent.new(tooltip: "Delete")) do %>
-  <%= button_tag type: 'button', class: 'standard-icon-button', data: { action: "delete#deleteScale" } do %>
-    <span class="sr-only">Delete</span>
-    <%= inline_svg_tag("icons/trash.svg") %>
-  <% end %>
-  <%= render(SnackbarComponent.new(message: "Scale #{scale.common_name} has been deleted.", show_on_render: false)) do |component| %>
-    <% component.with_action do %>
-      <%= button_tag "Undo",
-      class:
-        "button text-primary-200 hover:bg-primary-200/10 focus:bg-primary-200/15 active:bg-primary-200/15 px-3",
-      data: {
-        action: "modal-component#submitForm",
-      } %>
+  <%= form_with model: scale, method: :delete, data: { action: 'delete#updateLocalStorage' } do |form| %>
+
+    <%= excluded_fields %>
+    <%= button_tag class: 'standard-icon-button' do %>
+      <span class="sr-only">Delete</span>
+      <%= inline_svg_tag("icons/trash.svg") %>
     <% end %>
   <% end %>
 <% end %>
