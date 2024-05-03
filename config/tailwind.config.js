@@ -1,5 +1,4 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
 const {
   withMaterialColors,
 } = require("../vendor/javascript/tailwind-material-colors");
@@ -15,13 +14,8 @@ const config = {
   safelist: ["w-6", "h-6"],
   theme: {
     extend: {
-      colors: {
-        // primary: colors.purple,
-        // secondary: colors.yellow,
-        // neutral: colors.gray,
-      },
       fontFamily: {
-        // sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        sans: ["Roboto", ...defaultTheme.fontFamily.sans],
       },
     },
   },
