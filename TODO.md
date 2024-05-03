@@ -9,3 +9,4 @@
 - [ ] Choose 'instrument'.
 - [ ] Extract strings to en.yml
 - [ ] Highlight note when playing
+- [ ] Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)

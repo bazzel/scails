@@ -10,7 +10,11 @@
   >
   <label
     for="<%= dom_id(scale, 'pin') %>"
-    class=" standard-icon-button peer-checked:text-primary-500 dark:peer-checked:text-primary-200 hover:peer-checked:bg-primary-500/10 focus:peer-checked:bg-primary-500/20 active:peer-checked:bg-primary-500/20"
+    class="
+      standard-icon-button peer-checked:text-primary
+      hover:peer-checked:bg-primary/[.08] focus:peer-checked:bg-primary/[.12]
+      active:peer-checked:bg-primary/[.16]
+    "
   >
     <div class="block">
       <span class="sr-only">Pin</span>

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["input", "stopIndicator", "balloon"];
+  static targets = ["input", "trackDot", "valueIndicator"];
 
   connect() {
     this.updateValues();
@@ -9,29 +9,29 @@ export default class extends Controller {
 
   updateValues() {
     this.updateProgressIndicator();
-    this.updateBalloon();
+    this.updateValueIndicator();
   }
 
   updateProgressIndicator() {
     const ratio = this.ratio;
-    const stopIndicatorTargets = this.stopIndicatorTargets;
+    const trackDotTargets = this.trackDotTargets;
 
     this.inputTarget.style.setProperty("--ratio", this.ratioAsPercentage);
 
-    stopIndicatorTargets.forEach((element, index) => {
-      const progress = index / (stopIndicatorTargets.length - 1);
+    trackDotTargets.forEach((element, index) => {
+      const progress = index / (trackDotTargets.length - 1);
       const isRatioGreaterOrEqual = progress >= ratio;
 
       element.className = isRatioGreaterOrEqual
-        ? "text-primary-500 dark:text-primary-100"
-        : "text-primary-100 dark:text-primary-500";
+        ? "text-primary"
+        : "text-primary-container";
     });
   }
 
-  updateBalloon() {
+  updateValueIndicator() {
     const offset = `calc(${this.ratioAsPercentage})`;
-    this.balloonTarget.textContent = this.inputTarget.value;
-    this.balloonTarget.style.setProperty("--offset", offset);
+    this.valueIndicatorTarget.textContent = this.inputTarget.value;
+    this.valueIndicatorTarget.style.setProperty("--offset", offset);
   }
 
   get ratio() {
@@ -45,9 +45,9 @@ export default class extends Controller {
     return `${this.ratio * 100}%`;
   }
 
-  toggleBalloon() {
-    this.balloonTarget.classList.toggle("opacity-0");
-    this.balloonTarget.classList.toggle("scale-50");
-    this.balloonTarget.classList.toggle("translate-y-3");
+  toggleValueIndicator() {
+    this.valueIndicatorTarget.classList.toggle("opacity-0");
+    this.valueIndicatorTarget.classList.toggle("scale-50");
+    this.valueIndicatorTarget.classList.toggle("translate-y-3");
   }
 }

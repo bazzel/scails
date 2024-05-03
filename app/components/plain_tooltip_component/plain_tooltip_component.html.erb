@@ -2,9 +2,9 @@
   <%= content %>
   <div
     class="
-      absolute <%= position_class %> z-20 px-2 py-1 text-xs
-      transition bg-gray-800 rounded opacity-0 dark:bg-gray-100 dark:text-gray-800
-      whitespace-nowrap text-gray-50 group-hover:opacity-100
+      hidden absolute <%= position_class %> z-20 px-2 py-1 text-xs
+      transition bg-inverse-surface rounded opacity-0 whitespace-nowrap text-gray-50
+      group-hover:opacity-100 group-hover:block
     "
   >
     <%= @tooltip %>

@@ -15,30 +15,27 @@
         />
         <div
           class="
-            block w-[52px] h-8 transition rounded-full bg-gray-500/10 dark:bg-gray-500/20
-            peer-checked:bg-primary-500 border-gray-500/50 border-2
-            peer-checked:border-primary-500 peer-checked:dark:bg-primary-200
-            peer-checked:dark:border-primary-200
+            block w-[52px] h-8 transition rounded-full bg-surface-container-highest
+            peer-checked:bg-primary border-outline border-2 peer-checked:border-primary
           "
         ></div>
         <div
           class="
             absolute flex items-center justify-center w-6 h-6 transition-all rotate-45
-            rounded-full text-primary-100 bg-gray-500/50 left-1 top-1
-            peer-checked:translate-x-full peer-checked:bg-white
-            peer-checked:dark:bg-primary-900 peer-checked:dark:hover:bg-primary-800
-            peer-checked:dark:text-primary-200 peer-checked:text-primary-500
-            peer-checked:rotate-0 peer-checked:top-1 peer-checked:-start-0
-            hover:bg-gray-500/70 hover:ring-8 focus:ring-8 hover:ring-gray-500/10
-            focus:ring-gray-500/10 active:w-7 active:h-7 active:top-0.5 active:left-0.5
-            peer-checked:active:top-0.5 peer-checked:active:-start-1.5
-            peer-checked:hover:ring-primary-500/10
-            peer-checked:dark:hover:ring-primary-900/10
+            rounded-full bg-outline left-1 top-1 text-surface-container-highest
+            hover:bg-on-surface-variant hover:ring-8 focus:ring-8
+            hover:ring-on-surface/[.08] focus:ring-on-surface/[.12]
+            active:ring-on-surface/[.16] active:w-7 active:h-7 active:top-0.5
+            active:left-0.5 peer-checked:translate-x-full peer-checked:rotate-0
+            peer-checked:top-1 peer-checked:-start-0 peer-checked:bg-on-primary
+            peer-checked:text-on-primary-container peer-checked:hover:bg-primary-container
+            peer-checked:hover:text-on-primary-container
+            peer-checked:hover:ring-primary/[.08] peer-checked:focus:ring-primary/[.12]
+            peer-checked:active:ring-primary/[.16] peer-checked:active:top-0.5
+            peer-checked:active:-start-1.5
           "
         >
-          <span class="text-current">
-            <%= inline_svg_tag("icons/pin.svg") %>
-          </span>
+          <%= inline_svg_tag("icons/pin.svg") %>
         </div>
       </div>
     </label>

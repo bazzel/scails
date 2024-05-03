@@ -1,10 +1,8 @@
 <nav
-  class="
-    fixed top-0 z-20 w-full transition bg-primary-50 dark:bg-gray-950 start-0
-  "
+  class="fixed top-0 z-20 w-full transition bg-background start-0"
   data-controller="navbar"
   data-action="scroll@window->navbar#waterfall"
-  data-navbar-waterfall-class="!bg-primary-100 shadow dark:!bg-gray-900 shadow-black/30"
+  data-navbar-waterfall-class="!bg-surface-container"
 >
   <div class="pl-4 pr-3 mx-auto max-w-screen-2xl sm:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -18,10 +16,3 @@
     </div>
   </div>
 </nav>
-
-<form
-  data-controller="search"
-  data-search-loading-class="bg-gray-500 animate-spinner cursor-busy"
->
-  <input data-action="search#loadResults">
-</form>

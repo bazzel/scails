@@ -1,7 +1,10 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
+const {
+  withMaterialColors,
+} = require("../vendor/javascript/tailwind-material-colors");
 
-module.exports = {
+const config = {
   content: [
     "./public/*.html",
     "./app/helpers/**/*.rb",
@@ -13,12 +16,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.purple,
+        // primary: colors.purple,
         // secondary: colors.yellow,
         // neutral: colors.gray,
       },
       fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        // sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
     },
   },
@@ -29,3 +32,23 @@ module.exports = {
     require("@tailwindcss/container-queries"),
   ],
 };
+
+module.exports = withMaterialColors(
+  config,
+  {
+    // Your base colors as HEX values. 'primary' is required.
+    primary: "#3565A3",
+    // secondary and/or tertiary are optional, if not set they will be derived from the primary color.
+    secondary: "#023D79",
+    tertiary: "#F5D5D6",
+    // add any named colors you need:
+    // green: "#00ff00",
+    // blue: "#0000ff",
+  },
+  {
+    /* one of 'content', 'expressive', 'fidelity', 'monochrome', 'neutral', 'tonalSpot' or 'vibrant' */
+    scheme: "vibrant",
+    // contrast is optional and ranges from -1 (less contrast) to 1 (more contrast).
+    contrast: 0,
+  }
+);

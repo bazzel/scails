@@ -11,7 +11,9 @@
     <%= form_with model: @scale_settings, url: root_path, method: :get, data: { modal_component_target: "form" } do |form| %>
       <div class="relative mb-6">
         <%= form.select :root_note, ChromaticScale::NOTES, {}, class: "form-select peer" %>
-        <%= form.label :root_note, "Root note", class: "form-label" %>
+        <%= form.label :root_note,
+                   "Root note",
+                   class: "form-label sm:bg-surface-container-high bg-surface-container" %>
         <p class="form-text">Select the root note to start with.</p>
       </div>
       <div class="relative mb-6">
@@ -25,7 +27,7 @@
         ) do |builder| %>
           <div>
             <div class="text-base">Loop</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">Keep playing until you click the Stop button</div>
+            <div class="text-xs text-on-surface-variant">Keep playing until you click the Stop button</div>
           </div>
           <%= form.check_box :loop, class: "sr-only peer" %>
           <div class="form-switch peer"></div>
@@ -36,7 +38,9 @@
                     @pattern_names_and_labels,
                     {},
                     class: "form-select peer" %>
-        <%= form.label :pattern_name, "Pattern", class: "form-label" %>
+        <%= form.label :pattern_name,
+                   "Pattern",
+                   class: "form-label sm:bg-surface-container-high bg-surface-container" %>
       </div>
 
     <% end %>

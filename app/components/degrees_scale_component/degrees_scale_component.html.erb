@@ -9,8 +9,8 @@
   <% chromatic_scale.each_with_index do |note, index| %>
     <div
       class="
-        w-10 flex justify-center items-center rounded-md md:border border-gray-300
-        <%= note_class(index) %>
+        w-10 flex justify-center items-center rounded-md md:border
+        md:border-outline-variant <%= note_class(index) %>
       "
       data-player-target="note"
     >
@@ -18,21 +18,27 @@
     </div>
   <% end %>
   <button
-    class="inline-flex items-center text-sm font-medium text-white border border-transparent rounded-full  bg-primary-500 hover:bg-primary-600 focus:outline-none p-2.5 ml-2.5"
+    class="
+      inline-flex items-center text-sm font-medium border border-transparent
+      rounded-full interactive-bg-primary focus:outline-none p-2.5 ml-2.5
+    "
     type="button"
     data-action="click->player#play"
     data-player-target="playButton"
   >
-    <%= inline_svg_tag("icons/play.svg") %>
+    <%= inline_svg_tag("icons/play.svg", class: "text-on-primary") %>
     <div class="sr-only">Play</div>
   </button>
   <button
-    class="items-center hidden text-sm font-medium text-white border border-transparent rounded-full  bg-primary-500 hover:bg-primary-600 focus:outline-none p-2.5 ml-2.5"
+    class="
+      items-center hidden text-sm font-medium border border-transparent rounded-full
+      interactive-bg-primary focus:outline-none p-2.5 ml-2.5
+    "
     type="button"
     data-action="click->player#stop"
     data-player-target="pauseButton"
   >
-    <%= inline_svg_tag("icons/pause.svg") %>
+    <%= inline_svg_tag("icons/pause.svg", class: "text-on-primary") %>
     <div class="sr-only">Pause</div>
   </button>
 </div>

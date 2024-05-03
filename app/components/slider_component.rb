@@ -8,7 +8,7 @@ class SliderComponent < ViewComponent::Base
     @scale_settings = scale_settings
   end
 
-  def stop_indicators_count
+  def track_dots_count
     (((range.max - range.min) / step) + 1).to_i
   end
 end
