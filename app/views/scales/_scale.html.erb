@@ -17,12 +17,12 @@
       hover:bg-surface-container-low md:hover:border-surface-container-low
     "
   >
-    <div class="flex justify-between group">
+    <div class="flex justify-between group/actions">
       <div class="flex justify-start gap-1">
         <h2 class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></h2>
         <%= render partial: "aliases", locals: { scale: scale } %>
       </div>
-      <div class="flex invisible group-hover:visible">
+      <div class="flex justify-end invisible group-hover/actions:visible grow">
         <%= render partial: "scales/delete", locals: { scale: scale } %>
         <%= render partial: "scales/pin", locals: { scale: scale } %>
       </div>
