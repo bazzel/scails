@@ -15,12 +15,16 @@ class DegreesScaleComponent < ViewComponent::Base
   end
 
   def note_class(position)
-    if [FIRST_POSITION,
-        LAST_POSITION].include?(position) || in_scale?(position)
+    if note_in_scale?(position)
       NOTE_IN_SCALE_CLASS
     else
       NOTE_NOT_IN_SCALE_CLASS
     end
+  end
+
+  def note_in_scale?(position)
+    [FIRST_POSITION,
+     LAST_POSITION].include?(position) || in_scale?(position)
   end
 
   private
