@@ -1,25 +1,26 @@
-<%= render(PlainTooltipComponent.new(tooltip: "Pin or unpin this scale")) do %>
-  <input
-    type="checkbox"
-    id="<%= dom_id(scale, 'pin') %>"
-    value=""
-    class="hidden peer"
-    required=""
-    data-action="pin#addOrRemovePin"
-    data-pin-target="checkbox"
-  >
-  <label
-    for="<%= dom_id(scale, 'pin') %>"
-    class="
-      standard-icon-button peer-checked:text-primary
-      hover:peer-checked:bg-primary/[.08] focus:peer-checked:bg-primary/[.12]
-      active:peer-checked:bg-primary/[.16]
-    "
-  >
-    <div class="block">
-      <span class="sr-only">Pin</span>
-      <%= inline_svg_tag("icons/pin.svg") %>
-    </div>
-  </label>
-
-<% end %>
+<div data-pin-target="pinContainer">
+  <%= render(PlainTooltipComponent.new(tooltip: "Pin or unpin this scale")) do %>
+    <input
+      type="checkbox"
+      id="<%= dom_id(scale, 'pin') %>"
+      value=""
+      class="hidden peer"
+      required=""
+      data-action="pin#addOrRemovePin"
+      data-pin-target="checkbox"
+    >
+    <label
+      for="<%= dom_id(scale, 'pin') %>"
+      class="
+        standard-icon-button peer-checked:text-primary
+        hover:peer-checked:bg-primary/[.08] focus:peer-checked:bg-primary/[.12]
+        active:peer-checked:bg-primary/[.16]
+      "
+    >
+      <div class="block">
+        <span class="sr-only">Pin</span>
+        <%= inline_svg_tag("icons/pin.svg") %>
+      </div>
+    </label>
+  <% end %>
+</div>
