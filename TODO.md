@@ -2,11 +2,12 @@
 - [x] Group scales (same scale, different name)
 - [x] Animate filter
 - [x] Delete scales
-- [ ] Change order
-- [ ] Share settings
-- [ ] Reset form (i.o. reload page)
-- [ ] Show actions only on hover. Show pinned icon permanently.
-- [ ] Choose 'instrument'.
-- [ ] Extract strings to en.yml
-- [ ] Highlight note when playing
-- [ ] Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
+- [x] Show actions only on hover. Show pinned icon permanently.
+- [ ] FEATURE: Change order
+- [ ] FEATURE: Share settings
+- [ ] BUG: Reset form (i.o. reload page)
+- [ ] FEATURE: Choose 'instrument'.
+- [ ] IMPROVEMENT: Extract strings to en.yml
+- [ ] FEATURE: Highlight note when playing
+- [ ] FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
+- [ ] BUG: Hide scale when unpinned and filter is active
