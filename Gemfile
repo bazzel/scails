@@ -82,7 +82,6 @@ gem 'view_component', '~> 3.6'
 
 gem 'dockerfile-rails', '>= 1.6', group: :development
 
+gem 'inline_svg', '~> 1.9'
 
-gem "inline_svg", "~> 1.9"
-
-gem "erb-formatter", "~> 0.7.2"
+gem 'erb-formatter', '~> 0.7.2'
