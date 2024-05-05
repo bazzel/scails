@@ -2,7 +2,7 @@
 
 # Renders the scale degrees with a play button to play the scale
 class DegreesScaleComponent < ViewComponent::Base
-  NOTE_IN_SCALE_CLASS = 'md:bg-surface-container-high md:font-normal'
+  NOTE_IN_SCALE_CLASS = 'md:bg-surface-container-high md:font-normal transition'
   NOTE_NOT_IN_SCALE_CLASS = 'text-surface-dim md:bg-surface-container-lowest md:blur-[2px] hover:blur-none md:opacity-50 hover:opacity-100 transition'
   FIRST_POSITION = 0
   LAST_POSITION = 12

@@ -3,6 +3,7 @@ import Tone from "tone";
 
 const hideClass = "none";
 const showClass = "inline-flex";
+const classNames = ["!bg-tertiary", "!text-on-tertiary"];
 
 export default class extends Controller {
   static values = {
@@ -20,7 +21,7 @@ export default class extends Controller {
 
   play() {
     const synth = this.#getSynth();
-    const scale = this.#getScale();
+    const scale = this.#scale;
     const patternName = this.patternNameValue;
     const iterations = this.#isGoingBackToStart
       ? scale.length * 2 - 1
@@ -29,8 +30,11 @@ export default class extends Controller {
     this.#showPlayStatus();
 
     this.pattern.start();
-    this.pattern.callback = (time, note) =>
+    this.pattern.callback = (time, note) => {
+      this.#deemphasizeNote();
+      this.#emphasizeNote(note);
       synth.triggerAttackRelease(note, "8n", time);
+    };
     this.pattern.pattern = patternName;
     this.pattern.values = scale;
 
@@ -42,6 +46,7 @@ export default class extends Controller {
 
   stop() {
     this.pattern.stop();
+    this.#deemphasizeNote();
     this.#showStopStatus();
   }
 
@@ -80,12 +85,25 @@ export default class extends Controller {
     }).toDestination();
   }
 
-  #getScale() {
+  get #scale() {
     return this.noteTargets.map((e) => e.dataset.noteName);
   }
 
   get #isGoingBackToStart() {
     const patternNames = ["upDown", "downUp"];
     return patternNames.includes(this.patternNameValue);
+  }
+
+  #emphasizeNote(note) {
+    this.emphasizedNote = this.noteTargets.find(
+      (e) => e.dataset.noteName === note
+    );
+    this.emphasizedNote.classList.add(...classNames);
+  }
+
+  #deemphasizeNote() {
+    if (this.emphasizedNote) {
+      this.emphasizedNote.classList.remove(...classNames);
+    }
   }
 }
