@@ -81,49 +81,11 @@ export default class extends Controller {
   }
 
   #getScale() {
-    const allNotes = this.#allNotes;
-    const notes = this.#playableNotes();
-    const middleC = allNotes.indexOf("C");
-
-    let octaveNumber;
-
-    const scale = notes.map((element) => {
-      const chromaticNote = allNotes.indexOf(element);
-      octaveNumber = chromaticNote < middleC ? 3 : 4;
-      return `${element}${octaveNumber}`;
-    });
-
-    if (middleC == 0) octaveNumber = 5;
-
-    const note = `${notes[0]}${octaveNumber}`;
-    scale.push(note);
-
-    return scale;
-  }
-
-  #playableNotes() {
-    const allNotes = this.#allNotes;
-    let arr = [];
-
-    for (const [index, element] of this.#binaryScale.entries()) {
-      if (element == 1) {
-        arr.push(allNotes[index]);
-      }
-    }
-
-    return arr;
+    return this.noteTargets.map((e) => e.dataset.noteName);
   }
 
   get #isGoingBackToStart() {
     const patternNames = ["upDown", "downUp"];
     return patternNames.includes(this.patternNameValue);
-  }
-
-  get #binaryScale() {
-    return Number(this.modeNumberValue).toString(2).split("");
-  }
-
-  get #allNotes() {
-    return this.noteTargets.map((element) => element.textContent.trim());
   }
 }

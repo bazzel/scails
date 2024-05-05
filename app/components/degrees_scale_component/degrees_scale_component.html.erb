@@ -7,13 +7,7 @@
   data-player-tempo-value="<%= tempo %>"
 >
   <% chromatic_scale.each_with_index do |note, index| %>
-    <div
-      class="
-        w-10 flex justify-center items-center rounded-md md:border
-        md:border-outline-variant <%= note_class(index) %>
-      "
-      data-player-target="note"
-    >
+    <div <%= tag.attributes(note_attributes(index)) %>>
       <%= note %>
     </div>
   <% end %>
