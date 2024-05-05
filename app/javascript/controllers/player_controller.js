@@ -3,6 +3,7 @@ import Tone from "tone";
 
 const hideClass = "none";
 const showClass = "inline-flex";
+const classNames = ["!bg-tertiary", "!text-on-tertiary"];
 
 export default class extends Controller {
   static values = {
@@ -20,7 +21,7 @@ export default class extends Controller {
 
   play() {
     const synth = this.#getSynth();
-    const scale = this.#getScale();
+    const scale = this.#scale;
     const patternName = this.patternNameValue;
     const iterations = this.#isGoingBackToStart
       ? scale.length * 2 - 1
@@ -29,8 +30,11 @@ export default class extends Controller {
     this.#showPlayStatus();
 
     this.pattern.start();
-    this.pattern.callback = (time, note) =>
+    this.pattern.callback = (time, note) => {
+      this.#deemphasizeNote();
+      this.#emphasizeNote(note);
       synth.triggerAttackRelease(note, "8n", time);
+    };
     this.pattern.pattern = patternName;
     this.pattern.values = scale;
 
@@ -42,6 +46,7 @@ export default class extends Controller {
 
   stop() {
     this.pattern.stop();
+    this.#deemphasizeNote();
     this.#showStopStatus();
   }
 
@@ -80,38 +85,8 @@ export default class extends Controller {
     }).toDestination();
   }
 
-  #getScale() {
-    const allNotes = this.#allNotes;
-    const notes = this.#playableNotes();
-    const middleC = allNotes.indexOf("C");
-
-    let octaveNumber;
-
-    const scale = notes.map((element) => {
-      const chromaticNote = allNotes.indexOf(element);
-      octaveNumber = chromaticNote < middleC ? 3 : 4;
-      return `${element}${octaveNumber}`;
-    });
-
-    if (middleC == 0) octaveNumber = 5;
-
-    const note = `${notes[0]}${octaveNumber}`;
-    scale.push(note);
-
-    return scale;
-  }
-
-  #playableNotes() {
-    const allNotes = this.#allNotes;
-    let arr = [];
-
-    for (const [index, element] of this.#binaryScale.entries()) {
-      if (element == 1) {
-        arr.push(allNotes[index]);
-      }
-    }
-
-    return arr;
+  get #scale() {
+    return this.noteTargets.map((e) => e.dataset.noteName);
   }
 
   get #isGoingBackToStart() {
@@ -119,11 +94,16 @@ export default class extends Controller {
     return patternNames.includes(this.patternNameValue);
   }
 
-  get #binaryScale() {
-    return Number(this.modeNumberValue).toString(2).split("");
+  #emphasizeNote(note) {
+    this.emphasizedNote = this.noteTargets.find(
+      (e) => e.dataset.noteName === note
+    );
+    this.emphasizedNote.classList.add(...classNames);
   }
 
-  get #allNotes() {
-    return this.noteTargets.map((element) => element.textContent.trim());
+  #deemphasizeNote() {
+    if (this.emphasizedNote) {
+      this.emphasizedNote.classList.remove(...classNames);
+    }
   }
 }
