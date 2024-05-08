@@ -5,9 +5,9 @@
 - [x] Show actions only on hover. Show pinned icon permanently.
 - [x] FEATURE: Highlight note when playing
 - [x] BUG: Reset form (i.o. reload page)
+- [x] BUG: Hide scale when unpinned and filter is active
 - [ ] FEATURE: Change order
 - [ ] FEATURE: Share settings
 - [ ] FEATURE: Choose 'instrument'.
 - [ ] IMPROVEMENT: Extract strings to en.yml
 - [ ] FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
-- [ ] BUG: Hide scale when unpinned and filter is active

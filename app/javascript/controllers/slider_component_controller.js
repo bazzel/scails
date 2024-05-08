@@ -16,10 +16,6 @@ export default class extends Controller {
     this.updateValues();
   }
 
-  disappear(entry, observer) {
-    console.log("disappear", entry, observer);
-  }
-
   updateValues() {
     this.updateProgressIndicator();
     this.updateValueIndicator();

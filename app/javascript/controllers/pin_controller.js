@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { startViewTransition } from "../utils";
 
 const pinnedKey = "pinned";
 const visibilityClass = "!visible";
@@ -13,7 +14,7 @@ export default class extends Controller {
   connect() {
     if (this.#isPinned()) {
       this.checkboxTarget.checked = true;
-      this.#makeVisible();
+      this.#makePinVisible();
     }
   }
 
@@ -23,10 +24,11 @@ export default class extends Controller {
 
     if (this.#isPinned()) {
       pinned.splice(index, 1);
-      this.#makeInvisible();
+      this.#makePinInvisible();
+      this.#makeScaleInvisible();
     } else {
       pinned.push(this.modeNumberValue);
-      this.#makeVisible();
+      this.#makePinVisible();
     }
 
     localStorage.setItem(pinnedKey, JSON.stringify(pinned));
@@ -40,12 +42,18 @@ export default class extends Controller {
     return this.#getPinned().indexOf(this.modeNumberValue);
   }
 
-  #makeVisible() {
+  #makePinVisible() {
     this.pinContainerTarget.classList.add(visibilityClass);
   }
 
-  #makeInvisible() {
+  #makePinInvisible() {
     this.pinContainerTarget.classList.remove(visibilityClass);
+  }
+
+  #makeScaleInvisible() {
+    startViewTransition(() =>
+      this.element.classList.add(...this.hiddenClasses)
+    );
   }
 
   #getPinned() {

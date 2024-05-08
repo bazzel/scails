@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { startViewTransition } from "../utils";
 
 const pinsOnlyKey = "pinsOnly";
 const pinnedKey = "pinned";
@@ -15,9 +16,9 @@ export default class extends Controller {
     const isShowingPinnedOnly = this.#isShowingPinnedOnly();
 
     if (isShowingPinnedOnly) {
-      this.#startViewTransition(() => this.#showPinnedOnly());
+      this.#showPinnedOnly();
     } else {
-      this.#startViewTransition(() => this.#showAll());
+      this.#showAll();
     }
 
     this.checkboxTarget.checked = isShowingPinnedOnly;
@@ -28,27 +29,22 @@ export default class extends Controller {
     this.restoreFilter();
   }
 
-  #startViewTransition(fn) {
-    if (!document.startViewTransition) {
-      fn();
-      return;
-    }
-
-    document.startViewTransition(() => fn());
-  }
-
   #showAll() {
-    this.pinOutlets.forEach((outlet) =>
-      outlet.element.classList.remove(...outlet.hiddenClasses)
+    startViewTransition(() =>
+      this.pinOutlets.forEach((outlet) =>
+        outlet.element.classList.remove(...outlet.hiddenClasses)
+      )
     );
   }
 
   #showPinnedOnly() {
-    this.pinOutlets
-      .filter((outlet) => !this.#getPinned().includes(outlet.modeNumberValue))
-      .forEach((outlet) =>
-        outlet.element.classList.add(...outlet.hiddenClasses)
-      );
+    startViewTransition(() =>
+      this.pinOutlets
+        .filter((outlet) => !this.#getPinned().includes(outlet.modeNumberValue))
+        .forEach((outlet) =>
+          outlet.element.classList.add(...outlet.hiddenClasses)
+        )
+    );
   }
 
   #getPinned() {
