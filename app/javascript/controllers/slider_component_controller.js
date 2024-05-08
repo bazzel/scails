@@ -1,10 +1,23 @@
 import { Controller } from "@hotwired/stimulus";
+import { useIntersection } from "stimulus-use";
 
 export default class extends Controller {
   static targets = ["input", "trackDot", "valueIndicator"];
 
   connect() {
+    useIntersection(this);
+  }
+
+  appear(entry, observer) {
+    // Calling updateValues() here also makes
+    // sure that the values are updated when the
+    // form containing the slider is reset
+    // (and thus this controller is NOT disconnected).
     this.updateValues();
+  }
+
+  disappear(entry, observer) {
+    console.log("disappear", entry, observer);
   }
 
   updateValues() {
