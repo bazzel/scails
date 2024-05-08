@@ -4,9 +4,9 @@
 - [x] Delete scales
 - [x] Show actions only on hover. Show pinned icon permanently.
 - [x] FEATURE: Highlight note when playing
+- [x] BUG: Reset form (i.o. reload page)
 - [ ] FEATURE: Change order
 - [ ] FEATURE: Share settings
-- [ ] BUG: Reset form (i.o. reload page)
 - [ ] FEATURE: Choose 'instrument'.
 - [ ] IMPROVEMENT: Extract strings to en.yml
 - [ ] FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
