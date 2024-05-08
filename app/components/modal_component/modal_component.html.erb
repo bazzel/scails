@@ -7,21 +7,14 @@
 >
   <%= controller %>
   <div
-    class="
-      fixed inset-0 z-50 items-center justify-center hidden overflow-x-hidden
-      overflow-y-auto outline-none focus:outline-none
-    "
+    class="fixed inset-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none  focus:outline-none"
     data-modal-component-target="dialog"
-    data-action="click->modal-component#toggle"
+    data-action="click->modal-component#close"
   >
     <div class="relative mx-auto sm:my-6 sm:min-w-72 sm:max-w-xl">
       <!--content-->
       <div
-        class="
-          relative flex flex-col w-full h-screen px-6 pb-6 border-0 outline-none
-          sm:bg-surface-container-high bg-surface-container sm:p-6 sm:h-auto
-          sm:rounded-3xl sm:shadow-lg focus:outline-none
-        "
+        class="relative flex flex-col w-full h-screen px-6 pb-6 border-0 outline-none  sm:bg-surface-container-high bg-surface-container sm:p-6 sm:h-auto sm:rounded-3xl sm:shadow-lg focus:outline-none"
       >
         <!--header-->
         <div class="hidden sm:block">
