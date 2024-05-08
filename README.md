@@ -41,8 +41,8 @@ The project comes with a `seed.rb` which you can use to populate your developmen
 The application has been deployed to the following environments (not all may be available at the time of writing):
 
 - [Render](https://render.com/)
-- [Koyeb](https://www.koyeb.com/)
-- [Fly.io](https://fly.io/)
+- [Koyeb](https://www.koyeb.com/) ([goto app](https://injured-ophelie-patrickbaselier.koyeb.app/))
+- [Fly.io](https://fly.io/) ([goto app](https://scails-fragrant-forest-7349.fly.dev))
 
 ## Credits
 
