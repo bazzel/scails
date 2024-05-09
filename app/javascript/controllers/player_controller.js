@@ -63,7 +63,7 @@ export default class extends Controller {
   #getSynth() {
     return new Tone.Synth({
       onsilence: (_instrument) => this.stop(),
-      oscillator: { type: "sine16" }, // https://github.com/Tonejs/Tone.js/blob/master/Tone/source/oscillator/OscillatorInterface.ts
+      oscillator: { type: "sine16" }, // https://github.com/Tonejs/Tone.js/blob/14.7.39/Tone/source/oscillator/OscillatorInterface.ts`
       // oscillator: { type: "square16" },
       // oscillator: { type: "sawtooth16" },
       // oscillator: { type: "triangle16" },
