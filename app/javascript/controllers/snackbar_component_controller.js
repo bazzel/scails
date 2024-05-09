@@ -4,7 +4,7 @@ import { useIntersection } from "stimulus-use";
 import {
   dismissSnackbarAfter as dismissAfter,
   fadeOutSnackbarDuration as fadeOutDuration,
-} from "../variables";
+} from "custom/variables";
 
 export default class extends Controller {
   static classes = ["hidden", "visible", "fadingOut"];
