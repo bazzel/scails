@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { startViewTransition } from "../utils";
+import { startViewTransition } from "./utils";
 
 const pinnedKey = "pinned";
 const visibilityClass = "!visible";
