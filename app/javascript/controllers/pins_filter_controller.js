@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { startViewTransition } from "../utils";
+import { startViewTransition } from "../utils.js";
 
 const pinsOnlyKey = "pinsOnly";
 const pinnedKey = "pinned";
