@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { deletedKey } from "./variables";
+import { deletedKey } from "../variables";
 
 export default class extends Controller {
   static values = {
