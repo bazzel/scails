@@ -3,7 +3,7 @@
 class ScalesController < ApplicationController
   # GET /scales or /scales.json
   def index
-    @scales = Scale.order(:id).where.not(mode_number: params[:excluded]).limit(10)
+    @scales = Scale.order(:id).where.not(mode_number: params[:excluded])
     @scale = Scale.find(params[:soft_delete]) if params[:soft_delete]
     @scale_settings = ScaleSettings.new(scale_settings_params)
 
