@@ -53,6 +53,7 @@ The application has been deployed to the following environments (not all may be 
   - ~~[Flowbite](https://flowbite.com/icons/)~~
   - [Heroicons](https://heroicons.com/)
   - [VeryIcon](https://www.veryicon.com/icons/object/material_design_icons/) (and adjusted w/ [Inkscape](https://inkscape.org/))
+  - [Material Design Icons](https://pictogrammers.com/library/mdi/category/audio/) (for oscillator types)
 - Slider styling from https://toughengineer.github.io/demo/slider-styler/slider-styler.html
 - Material Design 3 Color System from [Tailwind Material Colors](https://tailwind-material-colors-docs.vercel.app/)
 - Color scheme from [Color Leap](https://colorleap.app/time/1950)
