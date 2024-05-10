@@ -7,6 +7,7 @@
   data-player-tempo-value="<%= tempo %>"
   data-player-wave-value="<%= wave %>"
   data-player-prefix-value="<%= prefix %>"
+  data-player-partials-range-value="<%= partials_range %>"
 >
   <% chromatic_scale.each_with_index do |note, index| %>
     <div <%= tag.attributes(note_attributes(index)) %>>
@@ -14,10 +15,7 @@
     </div>
   <% end %>
   <button
-    class="
-      inline-flex items-center text-sm font-medium border border-transparent
-      rounded-full interactive-bg-primary focus:outline-none p-2.5 ml-2.5
-    "
+    class="inline-flex items-center text-sm font-medium border border-transparent rounded-full  interactive-bg-primary focus:outline-none p-2.5 ml-2.5"
     type="button"
     data-action="click->player#play"
     data-player-target="playButton"
@@ -26,10 +24,7 @@
     <div class="sr-only">Play</div>
   </button>
   <button
-    class="
-      items-center hidden text-sm font-medium border border-transparent rounded-full
-      interactive-bg-primary focus:outline-none p-2.5 ml-2.5
-    "
+    class="items-center hidden text-sm font-medium border border-transparent rounded-full  interactive-bg-primary focus:outline-none p-2.5 ml-2.5"
     type="button"
     data-action="click->player#stop"
     data-player-target="pauseButton"

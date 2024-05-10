@@ -49,6 +49,13 @@
         <%= render(OscillatorTypesComponent.new(form: form, collection: Tone.waves)) %>
         <div class="mt-4 mb-2 text-xs font-medium">Prefix</div>
         <%= render(OscillatorPrefixesComponent.new(form: form, collection: Tone.prefixes)) %>
+        <div class="mt-4 text-xs font-medium">Partial range</div>
+        <%= render(
+          OscillatorPartialsRangeComponent.new(
+            form: form,
+            partials_range: Tone.partials_range,
+          ),
+        ) %>
       </div>
     <% end %>
   <% end %>

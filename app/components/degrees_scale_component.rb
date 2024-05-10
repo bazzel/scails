@@ -7,7 +7,7 @@ class DegreesScaleComponent < ViewComponent::Base
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
-  delegate :tempo, :loop, :chromatic_scale, :pattern_name, :wave, :prefix, to: :@scale_settings
+  delegate :tempo, :loop, :chromatic_scale, :pattern_name, :wave, :prefix, :partials_range, to: :@scale_settings
 
   def initialize(scale:, scale_settings:)
     @scale = scale

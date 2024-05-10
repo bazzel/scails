@@ -45,7 +45,7 @@ class ScalesController < ApplicationController
 
   def scale_settings_params
     params.fetch(:scale_settings, {}).permit(:root_note, :tempo, :loop,
-                                             :pattern_name, :wave, :prefix).tap do |scale_settings_params|
+                                             :pattern_name, :wave, :prefix, :partials_range).tap do |scale_settings_params|
                                                scale_settings_params.permit(:soft_delete, excluded: [])
                                              end
   end
