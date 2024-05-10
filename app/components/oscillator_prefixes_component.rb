@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OscillatorTypesComponent < ViewComponent::Base
+class OscillatorPrefixesComponent < ViewComponent::Base
   def initialize(form:, collection:)
     @form = form
     @collection = collection

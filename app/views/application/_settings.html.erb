@@ -45,8 +45,10 @@
 
       <div class="relative mb-6">
         <%= label_tag nil, "Sound", class: "text-base block mt-2 mb-2" %>
-        <div class="mb-2 text-xs">Oscillator</div>
-        <%= render(OscillatorTypesComponent.new(form: form, waves: Tone.waves)) %>
+        <div class="mb-2 text-xs font-medium">Oscillator</div>
+        <%= render(OscillatorTypesComponent.new(form: form, collection: Tone.waves)) %>
+        <div class="mt-4 mb-2 text-xs font-medium">Prefix</div>
+        <%= render(OscillatorPrefixesComponent.new(form: form, collection: Tone.prefixes)) %>
       </div>
     <% end %>
   <% end %>

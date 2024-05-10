@@ -1,16 +1,16 @@
 <div class="flex border divide-x rounded-full border-outline">
   <% @collection.each do |k, v| %>
     <div class="w-full">
-      <%= @form.radio_button :wave, k, id: "#{k}-wave", class: "hidden peer" %>
-      <%= @form.label(:wave,
-                  for: "#{k}-wave",
+      <%= @form.radio_button :prefix, k, id: "#{k}-prefix", class: "hidden peer" %>
+      <%= @form.label(:prefix,
+                  for: "#{k}-prefix",
                   class:
                     unselected_label_class_names(k)) do %>
-        <%- inline_svg_tag("icons/#{k}-wave.svg", class: "pe-2") + v %>
+        <%- v %>
       <% end %>
 
-      <%= @form.label(:wave,
-                  for: "#{k}-wave",
+      <%= @form.label(:prefix,
+                  for: "#{k}-prefix",
                   class:
                     selected_label_class_names(k)) do %>
         <%- inline_svg_tag("icons/check.svg", class: "pe-2") + v %>

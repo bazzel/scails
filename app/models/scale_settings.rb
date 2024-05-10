@@ -8,6 +8,7 @@ class ScaleSettings
 
   attribute :loop, default: false
   attribute :wave, default: -> { Tone.waves.keys.first }
+  attribute :prefix, default: -> { Tone.prefixes.keys.first }
   attribute :step, default: 5
   attribute :pattern_name, default: -> { I18n.t('tonejs.pattern_names').keys.first }
 
