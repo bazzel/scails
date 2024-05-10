@@ -11,6 +11,7 @@ export default class extends Controller {
     patternName: String,
     loop: Boolean,
     tempo: Number,
+    wave: String,
   };
   static targets = ["note", "playButton", "pauseButton"];
 
@@ -63,7 +64,7 @@ export default class extends Controller {
   #getSynth() {
     return new Tone.Synth({
       onsilence: (_instrument) => this.stop(),
-      oscillator: { type: "sine16" }, // https://github.com/Tonejs/Tone.js/blob/14.7.39/Tone/source/oscillator/OscillatorInterface.ts`
+      oscillator: { type: `${this.waveValue}16` }, // https://github.com/Tonejs/Tone.js/blob/14.7.39/Tone/source/oscillator/OscillatorInterface.ts`
       // oscillator: { type: "square16" },
       // oscillator: { type: "sawtooth16" },
       // oscillator: { type: "triangle16" },
@@ -86,7 +87,7 @@ export default class extends Controller {
       // oscillator: { type: "pwm" }
       // oscillator: { type: "pulse" }
 
-      // basic types: sine, square, triangle, sawtooth
+      // basic types: sine, square, triangle, sawtooth ✅
       // prefix the basic types with "fm", "am", or "fat" to use the FMOscillator, AMOscillator or FatOscillator types
       // PartialsRange (1-32)
     }).toDestination();

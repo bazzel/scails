@@ -5,6 +5,7 @@
   data-player-pattern-name-value="<%= pattern_name %>"
   data-player-loop-value="<%= loop %>"
   data-player-tempo-value="<%= tempo %>"
+  data-player-wave-value="<%= wave %>"
 >
   <% chromatic_scale.each_with_index do |note, index| %>
     <div <%= tag.attributes(note_attributes(index)) %>>

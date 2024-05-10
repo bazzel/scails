@@ -3,7 +3,7 @@
 class ScalesController < ApplicationController
   # GET /scales or /scales.json
   def index
-    @scales = Scale.order(:id).where.not(mode_number: params[:excluded])
+    @scales = Scale.order(:id).where.not(mode_number: params[:excluded]).limit(10)
     @scale = Scale.find(params[:soft_delete]) if params[:soft_delete]
     @pattern_names_and_labels = I18n.t('tonejs.pattern_names').map { |k, v| [v, k] }
     @scale_settings = ScaleSettings.new(scale_settings_params)
@@ -45,7 +45,7 @@ class ScalesController < ApplicationController
 
   def scale_settings_params
     params.fetch(:scale_settings, {}).permit(:root_note, :tempo, :loop,
-                                             :pattern_name).tap do |scale_settings_params|
+                                             :pattern_name, :wave).tap do |scale_settings_params|
                                                scale_settings_params.permit(:soft_delete, excluded: [])
                                              end
   end

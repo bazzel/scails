@@ -7,6 +7,7 @@ class ScaleSettings
   attr_accessor :root_note, :tempo
 
   attribute :loop, default: false
+  attribute :wave, default: -> { Tone.waves.keys.first }
   attribute :step, default: 5
   attribute :pattern_name, default: -> { I18n.t('tonejs.pattern_names').keys.first }
 
@@ -14,7 +15,7 @@ class ScaleSettings
     60..240
   end
 
-  def tempo # rubocop:disable Lint/DuplicateMethods
+  def tempo
     @tempo || (((range.max - range.min) / 2) + range.min)
   end
 
