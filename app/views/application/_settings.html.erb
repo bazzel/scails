@@ -42,56 +42,95 @@
                    "Pattern",
                    class: "form-label sm:bg-surface-container-high bg-surface-container" %>
       </div>
+
       <div class="relative mb-6">
-        <div class="flex rounded-full shadow-sm" role="group">
-          <button
-            type="button"
-            class="
-              inline-flex items-center w-full px-3 py-2 text-sm font-medium border
-              border-on-surface text-on-surface rounded-s-full focus:z-10
-              hover:bg-on-secondary-container/[.08] focus:bg-on-secondary-container/[.12]
-              active:bg-on-secondary-container/[.16]
-            "
-          >
-            <%= inline_svg_tag("icons/sine-wave.svg", class: "pe-2") %>
-            Sine
-          </button>
-          <button
-            type="button"
-            class="
-              inline-flex items-center w-full px-3 py-2 text-sm font-medium border-t border-b
-              text-on-surface border-on-surface border-e focus:z-10
-              hover:bg-on-secondary-container/[.08] focus:bg-on-secondary-container/[.12]
-              active:bg-on-secondary-container/[.16]
-            "
-          >
-            <%= inline_svg_tag("icons/square-wave.svg", class: "pe-2") %>
-            Square
-          </button>
-          <button
-            type="button"
-            class="
-              inline-flex items-center w-full px-3 py-2 text-sm font-medium border-t border-b
-              text-on-surface border-on-surface focus:z-10
-              hover:bg-on-secondary-container/[.08] focus:bg-on-secondary-container/[.12]
-              active:bg-on-secondary-container/[.16]
-            "
-          >
-            <%= inline_svg_tag("icons/triangle-wave.svg", class: "pe-2") %>
-            Triangle
-          </button>
-          <button
-            type="button"
-            class="
-              inline-flex items-center w-full px-3 py-2 text-sm font-medium border
-              text-on-surface border-on-surface rounded-e-full focus:z-10
-              hover:bg-on-secondary-container/[.08] focus:bg-on-secondary-container/[.12]
-              active:bg-on-secondary-container/[.16]
-            "
-          >
-            <%= inline_svg_tag("icons/sawtooth-wave.svg", class: "pe-2") %>
-            Sawtooth
-          </button>
+        <div class="flex border divide-x rounded-full border-outline">
+          <div class="w-full">
+            <input
+              type="radio"
+              id="sine-wave"
+              name="wave"
+              value="hosting-small"
+              class="hidden peer"
+              required
+            />
+            <label
+              for="sine-wave"
+              class="
+                rounded-s-full inline-flex items-center w-full px-3 py-2 text-sm font-medium
+                text-on-surface focus:z-10 hover:bg-on-secondary-container/[.08]
+                focus:bg-on-secondary-container/[.12] active:bg-on-secondary-container/[.16]
+                peer-checked:interactive-bg-secondary-container cursor-pointer
+              "
+            >
+              <%= inline_svg_tag("icons/sine-wave.svg", class: "pe-2") %>
+              Sine
+            </label>
+          </div>
+          <div class="w-full">
+            <input
+              type="radio"
+              id="square-wave"
+              name="wave"
+              value="hosting-big"
+              class="hidden peer"
+            >
+            <label
+              for="square-wave"
+              class="
+                inline-flex items-center w-full px-3 py-2 text-sm font-medium text-on-surface
+                focus:z-10 hover:bg-on-secondary-container/[.08]
+                focus:bg-on-secondary-container/[.12] active:bg-on-secondary-container/[.16]
+                peer-checked:interactive-bg-secondary-container cursor-pointer
+              "
+            >
+              <%= inline_svg_tag("icons/square-wave.svg", class: "pe-2") %>
+              Square
+            </label>
+          </div>
+          <div class="w-full">
+            <input
+              type="radio"
+              id="triangle-wave"
+              name="wave"
+              value="hosting-big"
+              class="hidden peer"
+            >
+            <label
+              for="triangle-wave"
+              class="
+                inline-flex items-center w-full px-3 py-2 text-sm font-medium text-on-surface
+                focus:z-10 hover:bg-on-secondary-container/[.08]
+                focus:bg-on-secondary-container/[.12] active:bg-on-secondary-container/[.16]
+                peer-checked:interactive-bg-secondary-container cursor-pointer
+              "
+            >
+              <%= inline_svg_tag("icons/triangle-wave.svg", class: "pe-2") %>
+              Triangle
+            </label>
+          </div>
+
+          <div class="w-full">
+            <input
+              type="radio"
+              id="sawtooth-wave"
+              name="wave"
+              value="hosting-big"
+              class="hidden peer"
+            >
+            <label
+              for="sawtooth-wave"
+              class="
+                rounded-e-full inline-flex items-center w-full px-3 py-2 text-sm font-medium
+                text-on-surface focus:z-10 hover:bg-on-secondary-container/[.08]
+                focus:bg-on-secondary-container/[.12] active:bg-on-secondary-container/[.16]
+                peer-checked:interactive-bg-secondary-container cursor-pointer
+              "
+            >
+              <%= inline_svg_tag("icons/sawtooth-wave.svg", class: "pe-2") %>
+              Sawtooth
+            </label>
+          </div>
         </div>
 
       </div>
