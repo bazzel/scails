@@ -35,7 +35,7 @@
       </div>
       <div class="relative mb-6">
         <%= form.select :pattern_name,
-                    @pattern_names_and_labels,
+                    Tone.pattern_names.map { |k, v| [v, k] },
                     {},
                     class: "form-select peer" %>
         <%= form.label :pattern_name,

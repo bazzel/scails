@@ -5,7 +5,6 @@ class ScalesController < ApplicationController
   def index
     @scales = Scale.order(:id).where.not(mode_number: params[:excluded]).limit(10)
     @scale = Scale.find(params[:soft_delete]) if params[:soft_delete]
-    @pattern_names_and_labels = I18n.t('tonejs.pattern_names').map { |k, v| [v, k] }
     @scale_settings = ScaleSettings.new(scale_settings_params)
 
     return if scale_settings_params.empty?

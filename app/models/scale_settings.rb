@@ -11,7 +11,7 @@ class ScaleSettings
   attribute :prefix, default: -> { Tone.prefixes.keys.first }
   attribute :partials_range, default: -> { Tone.partials_range.to_a[(Tone.partials_range.size / 2) - 1] }
   attribute :step, default: 5
-  attribute :pattern_name, default: -> { I18n.t('tonejs.pattern_names').keys.first }
+  attribute :pattern_name, default: -> { Tone.pattern_names.keys.first }
 
   def range
     60..240

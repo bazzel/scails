@@ -40,3 +40,13 @@ en:
       random: "Randomly select a note"
       randomOnce: "Randomly plays a every note once"
       randomWalk: "Randomly plays a note above the current one"
+    waves:
+      sine: "Sine"
+      square: "Square"
+      triangle: "Triangle"
+      sawtooth: "Sawtooth"
+    prefix:
+      none: "None"
+      fm: "FM"
+      am: "AM"
+      fat: "Fat"

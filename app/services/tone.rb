@@ -1,13 +1,17 @@
 class Tone
   def self.waves
-    { sine: 'Sine', square: 'Square', triangle: 'Triangle', sawtooth: 'Sawtooth' }
+    I18n.t('tonejs.waves')
   end
 
   def self.prefixes
-    { none: 'None', fm: 'FM', am: 'AM', fat: 'Fat' }
+    I18n.t('tonejs.prefix')
   end
 
   def self.partials_range
     (1..32)
+  end
+
+  def self.pattern_names
+    I18n.t('tonejs.pattern_names')
   end
 end
