@@ -82,6 +82,13 @@ export default class extends Controller {
       // oscillator: { type: "fatsquare16" },
       // oscillator: { type: "fatsawtooth16" },
       // oscillator: { type: "fattriangle16" },
+
+      // oscillator: { type: "pwm" }
+      // oscillator: { type: "pulse" }
+
+      // basic types: sine, square, triangle, sawtooth
+      // prefix the basic types with "fm", "am", or "fat" to use the FMOscillator, AMOscillator or FatOscillator types
+      // PartialsRange (1-32)
     }).toDestination();
   }
 
