@@ -1,5 +1,4 @@
 <div class="flex border divide-x rounded-full border-outline">
-
   <% @waves.each do |k, v| %>
     <div class="w-full">
       <%= @form.radio_button :wave, k, id: "#{k}-wave", class: "hidden peer" %>
@@ -17,7 +16,5 @@
         <%- inline_svg_tag("icons/check.svg", class: "pe-2") + v %>
       <% end %>
     </div>
-
   <% end %>
-
 </div>

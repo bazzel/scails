@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OscillatorOptionsComponent < ViewComponent::Base
+class OscillatorTypesComponent < ViewComponent::Base
   def initialize(form:, waves:)
     @form = form
     @waves = waves
