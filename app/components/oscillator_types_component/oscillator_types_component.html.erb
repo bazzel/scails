@@ -6,14 +6,29 @@
                   for: "#{k}-wave",
                   class:
                     unselected_label_class_names(k)) do %>
-        <%- inline_svg_tag("icons/#{k}-wave.svg", class: "pe-2") + v %>
+        <%- tag.div(
+          inline_svg_tag("icons/#{k}-wave.svg", class: "pe-2") + v,
+          class: "hidden sm:flex sm:items-center",
+        ) +
+          tag.div(
+            inline_svg_tag("icons/#{k}-wave.svg", class: "px-1 -mx-1"),
+            class: "flex items-center sm:hidden",
+          ) %>
       <% end %>
 
       <%= @form.label(:wave,
                   for: "#{k}-wave",
                   class:
                     selected_label_class_names(k)) do %>
-        <%- inline_svg_tag("icons/check.svg", class: "pe-2") + v %>
+        <%- tag.div(
+          inline_svg_tag("icons/check.svg", class: "pe-2") + v,
+          class: "hidden sm:flex sm:items-center",
+        ) +
+          tag.div(
+            inline_svg_tag("icons/check.svg", class: "pe-2") +
+              inline_svg_tag("icons/#{k}-wave.svg", class: "px-1 -mx-1"),
+            class: "flex items-center sm:hidden",
+          ) %>
       <% end %>
     </div>
   <% end %>
