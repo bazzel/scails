@@ -18,14 +18,17 @@ export default class extends Controller {
   }
 
   close(event) {
-    if (event.key === "Escape" || event.target === event.currentTarget) {
+    if (
+      event.key === "Escape" ||
+      event.target === event.currentTarget ||
+      event.currentTarget.dataset.action === "modal-component#close"
+    ) {
       event.preventDefault();
 
       if (this.dialogTarget.classList.contains(this.visibleClass)) {
         this.toggle();
 
         this.formTarget.reset();
-        // location.reload();
       }
     }
   }
