@@ -14,7 +14,7 @@ export default class extends Controller {
       store: {
         get: function (sortable) {
           var order = localStorage.getItem(sortable.options.group.name);
-          return JSON.parse(order ? order : []);
+          return order ? JSON.parse(order) : [];
         },
         set: function (sortable) {
           var order = sortable.toArray().map((item) => parseInt(item));
