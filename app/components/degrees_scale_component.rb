@@ -26,7 +26,7 @@ class DegreesScaleComponent < ViewComponent::Base
   # => note_attributes(0) => { class: 'w-10 flex...', data: { player_target: 'note' } }
   #   <div <%= tag.attributes(note_attributes(0)) %>... => <div class="w-10 flex..." data-player-target="note"...>
   def note_attributes(position)
-    class_names = %w[w-10 flex justify-center items-center rounded-md md:border md:border-outline-variant]
+    class_names = %w[w-8 md:w-10 flex justify-center items-center rounded-md md:border md:border-outline-variant]
     class_names << note_class(position)
 
     { class: class_names.join(' ') }.tap do |h|
