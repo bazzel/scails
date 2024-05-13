@@ -7,7 +7,7 @@
 - [x] BUG: Reset form (i.o. reload page)
 - [x] BUG: Hide scale when unpinned and filter is active
 - [x] FEATURE: Choose 'instrument'.
-- [ ] FEATURE: Change order (`Scale.in_order_of(:mode_number, [..., ...]).or(Scale.all).order(:id)`???)
+- [x] FEATURE: Change order
 - [ ] FEATURE: Share settings
 - [ ] IMPROVEMENT: Extract strings to en.yml
 - [ ] FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
