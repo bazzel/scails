@@ -2,6 +2,7 @@
   data-controller="pin delete"
   data-pin-mode-number-value="<%= scale.mode_number %>"
   data-delete-mode-number-value="<%= scale.mode_number %>"
+  data-sortable-mode-number-value="<%= scale.mode_number %>"
   class="scale-outlet sm:mb-2 sm:last:mb-0"
   data-pin-hidden-class="hidden"
   data-delete-hidden-class="hidden"
@@ -9,13 +10,7 @@
   <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
   <label
     for="<%= dom_id(scale) %>"
-    class="
-      flex flex-col gap-2 p-4 transition cursor-pointer sm:border
-      border-outline-variant sm:rounded-lg
-      md:peer-checked:border-surface-container-highest md:hover:shadow
-      peer-checked:bg-surface-container-highest bg-surface
-      hover:bg-surface-container-low md:hover:border-surface-container-low
-    "
+    class="flex flex-col gap-2 p-4 transition cursor-pointer  sm:border border-outline-variant sm:rounded-lg md:peer-checked:border-surface-container-highest md:hover:shadow peer-checked:bg-surface-container-highest bg-surface hover:bg-surface-container-low md:hover:border-surface-container-low"
   >
     <div class="flex justify-between group/actions">
       <div class="flex justify-start gap-1">

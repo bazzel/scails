@@ -1,4 +1,7 @@
-<ul class="flex flex-col divide-y divide-outline-variant sm:divide-y-0">
+<ul
+  class="flex flex-col divide-y divide-outline-variant sm:divide-y-0"
+  data-controller="sortable"
+>
   <%= render partial: "scale",
   collection: @scales,
   locals: {
