@@ -11,6 +11,7 @@ export default class extends Controller {
       // animation: 350,
       group: "order",
       dataIdAttr: "data-sortable-mode-number-value",
+      handle: ".drag-handle",
       store: {
         get: function (sortable) {
           var order = localStorage.getItem(sortable.options.group.name);
