@@ -1,25 +1,51 @@
-<%= turbo_frame_tag dom_id(scale),
-    src: url_for(action: :show, id: scale.id, params: params.permit!),
-    loading: "lazy" do %>
-  <li
-    class="flex flex-col gap-2 py-4 pl-4 pr-2 transition  animate-pulse sm:mb-2 sm:p-4 sm:border border-outline-variant sm:rounded-lg bg-surface"
+<li
+  data-controller="pin delete"
+  data-pin-mode-number-value="<%= scale.mode_number %>"
+  data-delete-mode-number-value="<%= scale.mode_number %>"
+  data-sortable-mode-number-value="<%= scale.mode_number %>"
+  class="scale-outlet sm:mb-2"
+  data-pin-hidden-class="hidden"
+  data-delete-hidden-class="hidden"
+>
+  <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
+  <label
+    for="<%= dom_id(scale) %>"
+    class="
+      flex flex-col gap-2 py-4 pl-4 pr-2 transition cursor-pointer sm:p-4 sm:border
+      border-outline-variant sm:rounded-lg
+      md:peer-checked:border-surface-container-highest md:hover:shadow
+      peer-checked:bg-surface-container-highest bg-surface
+      hover:bg-surface-container-low md:hover:border-surface-container-low
+    "
   >
     <div class="flex">
       <div
-        class='w-6 py-4 mr-2 -my-4 -ml-4  md:mr-4 bg-surface-container-high sm:rounded-tl-lg sm:rounded-bl-lg sm:border-outline-variant'
+        class='
+          py-4 mr-2 -my-4 -ml-4 active:cursor-grabbing md:mr-4 bg-surface-container-high
+          sm:rounded-tl-lg sm:rounded-bl-lg sm:border-outline-variant drag-handle
+        '
       >
+        <%= inline_svg_tag("icons/drag-vertical.svg") %>
       </div>
       <div class="grow">
-        <div class="w-48 h-6 mb-6 rounded-full bg-surface-dim"></div>
-        <div class="flex items-center justify-between">
-          <% 13.times do %>
-            <div
-              class="w-4 h-6 rounded-md  sm:h-10 sm:w-8 md:w-10 grow-0 sm:grow-0 bg-surface-container"
-            ></div>
-          <% end %>
-          <div class="w-10 h-10 rounded-full p-2.5 ml-2.5 bg-surface-container"></div>
-        </div>
+        <%= turbo_frame_tag dom_id(scale),
+    src: url_for(action: :show, id: scale.id, params: params.permit!),
+    loading: "lazy" do %>
+          <div class="animate-pulse">
+            <div class="w-48 h-6 mb-6 rounded-full bg-surface-dim"></div>
+            <div class="flex items-center justify-between">
+              <% 13.times do %>
+                <div
+                  class="
+                    w-4 h-6 rounded-md sm:h-10 sm:w-8 md:w-10 grow-0 sm:grow-0 bg-surface-container
+                  "
+                ></div>
+              <% end %>
+              <div class="w-10 h-10 rounded-full p-2.5 ml-2.5 bg-surface-container"></div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  </li>
-<% end %>
+  </label>
+</li>
