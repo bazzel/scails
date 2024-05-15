@@ -12,6 +12,11 @@ class ScalesController < ApplicationController
     flash.now[:notice] = 'Settings have been updated.'
   end
 
+  def show
+    @scale = Scale.find(params[:id])
+    @scale_settings = ScaleSettings.new(scale_settings_params)
+  end
+
   # POST /scales
   def create
     scale = Scale.find(params[:id])

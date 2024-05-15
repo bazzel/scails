@@ -1,36 +1,38 @@
-<li
-  data-controller="pin delete"
-  data-pin-mode-number-value="<%= scale.mode_number %>"
-  data-delete-mode-number-value="<%= scale.mode_number %>"
-  data-sortable-mode-number-value="<%= scale.mode_number %>"
-  class="scale-outlet sm:mb-2 sm:last:mb-0"
-  data-pin-hidden-class="hidden"
-  data-delete-hidden-class="hidden"
->
-  <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
-  <label
-    for="<%= dom_id(scale) %>"
-    class="flex flex-col gap-2 py-4 pl-4 pr-2 transition cursor-pointer  sm:p-4 sm:border border-outline-variant sm:rounded-lg md:peer-checked:border-surface-container-highest md:hover:shadow peer-checked:bg-surface-container-highest bg-surface hover:bg-surface-container-low md:hover:border-surface-container-low"
+<%= turbo_frame_tag dom_id(scale) do %>
+  <li
+    data-controller="pin delete"
+    data-pin-mode-number-value="<%= scale.mode_number %>"
+    data-delete-mode-number-value="<%= scale.mode_number %>"
+    data-sortable-mode-number-value="<%= scale.mode_number %>"
+    class="scale-outlet sm:mb-2"
+    data-pin-hidden-class="hidden"
+    data-delete-hidden-class="hidden"
   >
-    <div class="flex">
-      <div
-        class='py-4 mr-2 -my-4 -ml-4  active:cursor-grabbing md:mr-4 bg-surface-container-high sm:rounded-tl-lg sm:rounded-bl-lg sm:border-outline-variant drag-handle'
-      >
-        <%= inline_svg_tag("icons/drag-vertical.svg") %>
-      </div>
-      <div class='grow'>
-        <div class="flex justify-between group/actions">
-          <div class="flex justify-start gap-1">
-            <h2 class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></h2>
-            <%= render partial: "aliases", locals: { scale: scale } %>
-          </div>
-          <div class="flex justify-end invisible group-hover/actions:visible grow">
-            <%= render partial: "scales/delete", locals: { scale: scale } %>
-            <%= render partial: "scales/pin", locals: { scale: scale } %>
-          </div>
+    <input type="radio" name="scale" id="<%= dom_id(scale) %>" class="hidden peer"/>
+    <label
+      for="<%= dom_id(scale) %>"
+      class="flex flex-col gap-2 py-4 pl-4 pr-2 transition cursor-pointer  sm:p-4 sm:border border-outline-variant sm:rounded-lg md:peer-checked:border-surface-container-highest md:hover:shadow peer-checked:bg-surface-container-highest bg-surface hover:bg-surface-container-low md:hover:border-surface-container-low"
+    >
+      <div class="flex">
+        <div
+          class='py-4 mr-2 -my-4 -ml-4  active:cursor-grabbing md:mr-4 bg-surface-container-high sm:rounded-tl-lg sm:rounded-bl-lg sm:border-outline-variant drag-handle'
+        >
+          <%= inline_svg_tag("icons/drag-vertical.svg") %>
         </div>
-        <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>
+        <div class='grow'>
+          <div class="flex justify-between group/actions">
+            <div class="flex justify-start gap-1">
+              <h2 class="text-sm sm:text-lg sm:font-medium"><%= scale.common_name %></h2>
+              <%= render partial: "aliases", locals: { scale: scale } %>
+            </div>
+            <div class="flex justify-end invisible group-hover/actions:visible grow">
+              <%= render partial: "scales/delete", locals: { scale: scale } %>
+              <%= render partial: "scales/pin", locals: { scale: scale } %>
+            </div>
+          </div>
+          <%= render(DegreesScaleComponent.new(scale: scale, scale_settings: scale_settings)) %>
+        </div>
       </div>
-    </div>
-  </label>
-</li>
+    </label>
+  </li>
+<% end %>
