@@ -1,6 +1,5 @@
 <%= render(PlainTooltipComponent.new(tooltip: "Delete")) do %>
-  <%= form_with model: scale, method: :delete, data: { action: 'delete#updateLocalStorage' } do |form| %>
-
+  <%= form_with model: scale, method: :delete, data: { turbo: false, action: 'delete#updateLocalStorage' } do |form| %>
     <%= excluded_fields %>
     <%= button_tag class: 'standard-icon-button' do %>
       <span class="sr-only">Delete</span>
