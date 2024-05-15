@@ -2,11 +2,5 @@
   class="flex flex-col divide-y divide-outline-variant sm:divide-y-0"
   data-controller="sortable"
 >
-  <%- @scales.each do |scale| %>
-    <%= turbo_frame_tag dom_id(scale),
-    src: url_for(action: :show, id: scale.id, params: params.permit!),
-    loading: "lazy" do %>
-      <%= render "skeleton-loader" %>
-    <% end %>
-  <% end %>
+  <%= render partial: "skeleton-loader", collection: @scales, as: :scale %>
 </ul>

@@ -1,21 +1,25 @@
-<li
-  class="flex flex-col gap-2 py-4 pl-4 pr-2 transition  animate-pulse sm:mb-2 sm:p-4 sm:border border-outline-variant sm:rounded-lg bg-surface"
->
-  <div class="flex">
-    <div
-      class='w-6 py-4 mr-2 -my-4 -ml-4  md:mr-4 bg-surface-container-high sm:rounded-tl-lg sm:rounded-bl-lg sm:border-outline-variant'
-    >
-    </div>
-    <div class="grow">
-      <div class="w-48 h-6 mb-6 rounded-full bg-surface-dim"></div>
-      <div class="flex items-center justify-between">
-        <% 13.times do %>
-          <div
-            class="w-4 h-6 rounded-md  sm:h-10 sm:w-8 md:w-10 grow-0 sm:grow-0 bg-surface-container"
-          ></div>
-        <% end %>
-        <div class="w-10 h-10 rounded-full p-2.5 ml-2.5 bg-surface-container"></div>
+<%= turbo_frame_tag dom_id(scale),
+    src: url_for(action: :show, id: scale.id, params: params.permit!),
+    loading: "lazy" do %>
+  <li
+    class="flex flex-col gap-2 py-4 pl-4 pr-2 transition  animate-pulse sm:mb-2 sm:p-4 sm:border border-outline-variant sm:rounded-lg bg-surface"
+  >
+    <div class="flex">
+      <div
+        class='w-6 py-4 mr-2 -my-4 -ml-4  md:mr-4 bg-surface-container-high sm:rounded-tl-lg sm:rounded-bl-lg sm:border-outline-variant'
+      >
+      </div>
+      <div class="grow">
+        <div class="w-48 h-6 mb-6 rounded-full bg-surface-dim"></div>
+        <div class="flex items-center justify-between">
+          <% 13.times do %>
+            <div
+              class="w-4 h-6 rounded-md  sm:h-10 sm:w-8 md:w-10 grow-0 sm:grow-0 bg-surface-container"
+            ></div>
+          <% end %>
+          <div class="w-10 h-10 rounded-full p-2.5 ml-2.5 bg-surface-container"></div>
+        </div>
       </div>
     </div>
-  </div>
-</li>
+  </li>
+<% end %>
