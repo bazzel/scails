@@ -11,7 +11,10 @@ export default class extends Controller {
   };
   static classes = ["shown", "hidden"];
 
-  connect() {
+  checkboxTargetConnected(target) {
+    // Do not execute this in the `connect` method
+    // as the target is not yet connected/rendered due
+    // to turbo-frame rendering.
     if (this.#isPinned()) {
       this.checkboxTarget.checked = true;
       this.#makePinVisible();
