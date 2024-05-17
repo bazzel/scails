@@ -15,21 +15,21 @@
     </div>
   <% end %>
   <button
-    class="inline-flex items-center text-sm font-medium border border-transparent rounded-full  interactive-bg-primary focus:outline-none p-2.5 ml-2.5"
+    class="rounded-full interactive-bg-primary focus:outline-none p-2.5 ml-2.5"
     type="button"
     data-action="click->player#play"
     data-player-target="playButton"
   >
     <%= inline_svg_tag("icons/play.svg", class: "text-on-primary") %>
-    <div class="sr-only">Play</div>
+    <div class="sr-only"><%= t("actions.play") %></div>
   </button>
   <button
-    class="items-center hidden text-sm font-medium border border-transparent rounded-full  interactive-bg-primary focus:outline-none p-2.5 ml-2.5"
+    class="hidden rounded-full  interactive-bg-primary focus:outline-none p-2.5 ml-2.5"
     type="button"
     data-action="click->player#stop"
     data-player-target="pauseButton"
   >
     <%= inline_svg_tag("icons/pause.svg", class: "text-on-primary") %>
-    <div class="sr-only">Pause</div>
+    <div class="sr-only"><%= t("actions.pause") %></div>
   </button>
 </div>

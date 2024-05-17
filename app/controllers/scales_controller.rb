@@ -9,7 +9,7 @@ class ScalesController < ApplicationController
 
     return if scale_settings_params.empty?
 
-    flash.now[:notice] = 'Settings have been updated.'
+    flash.now[:notice] = t('.notice')
   end
 
   def show
@@ -26,7 +26,7 @@ class ScalesController < ApplicationController
       remove_mode_number_from_params(scale.mode_number)
     end
 
-    redirect_to scales_path(params.permit!), notice: "#{scale.common_name} scale has been restored."
+    redirect_to scales_path(params.permit!), notice: t('.notice', common_name: scale.common_name)
   end
 
   # DELETE /scales/:id

@@ -1,5 +1,5 @@
 <div data-pin-target="pinContainer">
-  <%= render(PlainTooltipComponent.new(tooltip: "Pin or unpin this scale")) do %>
+  <%= render(PlainTooltipComponent.new(tooltip: t('.tooltip'))) do %>
     <input
       type="checkbox"
       id="<%= dom_id(scale, 'pin') %>"
@@ -18,7 +18,7 @@
       "
     >
       <div class="block">
-        <span class="sr-only">Pin</span>
+        <span class="sr-only"><%= t("actions.pin") %></span>
         <%= inline_svg_tag("icons/pin.svg") %>
       </div>
     </label>

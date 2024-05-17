@@ -3,15 +3,15 @@
     data-controller='undo-delete'
     data-undo-delete-mode-number-value="<%= scale.mode_number %>"
   >
-    <%= render(SnackbarComponent.new(message: "#{scale.common_name} scale has been deleted.")) do |component| %>
+    <%= render(SnackbarComponent.new(message: t('.delete_confirmation', common_name: scale.common_name))) do |component| %>
       <% component.with_action do %>
         <%= form_with data: { action: 'undo-delete#undo' } do |form| %>
           <%= form.hidden_field :id, value: scale.id %>
           <%= excluded_fields %>
-          <%= button_to "Undo",
+          <%= button_to t('actions.undo'),
         class:
           "button text-inverse-primary hover:bg-inverse-primary/10 focus:bg-inverse-primary/15 active:bg-inverse-primary/15 px-3" do %>
-            Undo
+            <%= t("actions.undo") %>
           <% end %>
         <% end %>
       <% end %>
