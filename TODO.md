@@ -8,6 +8,7 @@
 - [x] BUG: Hide scale when unpinned and filter is active
 - [x] FEATURE: Choose 'instrument'.
 - [x] FEATURE: Change order
+- [x] IMPROVEMENT: Extract strings to en.yml
 - [ ] FEATURE: Share settings
-- [ ] IMPROVEMENT: Extract strings to en.yml
-- [ ] FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
+- [ ] ~~FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)~~
+- [ ] BUG: 'unpin' always removes item from screen
