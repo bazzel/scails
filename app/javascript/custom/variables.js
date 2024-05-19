@@ -5,6 +5,15 @@ const fadeOutSnackbarDuration = 1000;
 
 // Local Storage keys
 const deletedKey = "deleted";
+const pinsOnlyKey = "pinsOnly";
+const pinnedKey = "pinned";
+
 // End Local Storage keys
 
-export { dismissSnackbarAfter, fadeOutSnackbarDuration, deletedKey };
+export {
+  dismissSnackbarAfter,
+  fadeOutSnackbarDuration,
+  deletedKey,
+  pinsOnlyKey,
+  pinnedKey,
+};

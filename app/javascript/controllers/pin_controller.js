@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import { startViewTransition } from "custom/utils";
+import { isShowingPinnedOnly, getPinned } from "custom/local_storage";
 
-const pinnedKey = "pinned";
 const visibilityClass = "!visible";
 
 export default class extends Controller {
@@ -22,19 +22,17 @@ export default class extends Controller {
   }
 
   addOrRemovePin() {
-    const pinned = this.#getPinned();
+    const pinned = getPinned();
     const index = this.#pinIndex();
 
     if (this.#isPinned()) {
       pinned.splice(index, 1);
       this.#makePinInvisible();
-      this.#makeScaleInvisible();
+      if (isShowingPinnedOnly()) this.#makeScaleInvisible();
     } else {
       pinned.push(this.modeNumberValue);
       this.#makePinVisible();
     }
-
-    localStorage.setItem(pinnedKey, JSON.stringify(pinned));
   }
 
   #isPinned() {
@@ -42,7 +40,7 @@ export default class extends Controller {
   }
 
   #pinIndex() {
-    return this.#getPinned().indexOf(this.modeNumberValue);
+    return getPinned().indexOf(this.modeNumberValue);
   }
 
   #makePinVisible() {
@@ -57,9 +55,5 @@ export default class extends Controller {
     startViewTransition(() =>
       this.element.classList.add(...this.hiddenClasses)
     );
-  }
-
-  #getPinned() {
-    return JSON.parse(localStorage.getItem(pinnedKey)) || [];
   }
 }

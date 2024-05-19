@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import { startViewTransition } from "custom/utils";
-
-const pinsOnlyKey = "pinsOnly";
-const pinnedKey = "pinned";
+import { isShowingPinnedOnly, getPinned } from "custom/local_storage";
+import { pinsOnlyKey } from "custom/variables";
 
 export default class extends Controller {
   static targets = ["checkbox"];
@@ -13,19 +12,16 @@ export default class extends Controller {
   }
 
   restoreFilter() {
-    const isShowingPinnedOnly = this.#isShowingPinnedOnly();
-
-    if (isShowingPinnedOnly) {
+    if (isShowingPinnedOnly()) {
       this.#showPinnedOnly();
+      this.checkboxTarget.checked = true;
     } else {
       this.#showAll();
     }
-
-    this.checkboxTarget.checked = isShowingPinnedOnly;
   }
 
   toggle() {
-    localStorage.setItem(pinsOnlyKey, !this.#isShowingPinnedOnly());
+    localStorage.setItem(pinsOnlyKey, !isShowingPinnedOnly());
     this.restoreFilter();
   }
 
@@ -40,18 +36,10 @@ export default class extends Controller {
   #showPinnedOnly() {
     startViewTransition(() =>
       this.pinOutlets
-        .filter((outlet) => !this.#getPinned().includes(outlet.modeNumberValue))
+        .filter((outlet) => !getPinned().includes(outlet.modeNumberValue))
         .forEach((outlet) =>
           outlet.element.classList.add(...outlet.hiddenClasses)
         )
     );
-  }
-
-  #getPinned() {
-    return JSON.parse(localStorage.getItem(pinnedKey)) || [];
-  }
-
-  #isShowingPinnedOnly() {
-    return JSON.parse(localStorage.getItem(pinsOnlyKey)) || false;
   }
 }
