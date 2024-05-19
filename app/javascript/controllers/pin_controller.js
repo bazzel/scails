@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import { startViewTransition } from "custom/utils";
 import { isShowingPinnedOnly, getPinned } from "custom/local_storage";
+import { pinnedKey } from "custom/variables";
 
 const visibilityClass = "!visible";
 
@@ -33,6 +34,8 @@ export default class extends Controller {
       pinned.push(this.modeNumberValue);
       this.#makePinVisible();
     }
+
+    localStorage.setItem(pinnedKey, JSON.stringify(pinned));
   }
 
   #isPinned() {
