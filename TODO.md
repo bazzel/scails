@@ -11,4 +11,4 @@
 - [x] IMPROVEMENT: Extract strings to en.yml
 - [ ] FEATURE: Share settings
 - [ ] ~~FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)~~
-- [ ] BUG: 'unpin' always removes item from screen
+- [x] BUG: 'unpin' always removes item from screen
