@@ -14,7 +14,7 @@
     <div class="relative mx-auto sm:my-6 sm:min-w-72 sm:max-w-xl">
       <!--content-->
       <div
-        class="relative flex flex-col w-full h-screen px-6 pb-6 border-0 outline-none  sm:bg-surface-container-high bg-surface-container sm:p-6 sm:h-auto sm:rounded-3xl sm:shadow-lg focus:outline-none"
+        class="relative flex flex-col w-full h-screen px-6 pb-6 overflow-y-scroll border-0 outline-none  sm:bg-surface-container-high bg-surface-container sm:p-6 sm:h-auto sm:rounded-3xl sm:shadow-lg focus:outline-none"
       >
         <!--header-->
         <div class="hidden sm:block">
@@ -29,14 +29,14 @@
               class="standard-icon-button"
               data-action="modal-component#close"
             >
-              <span class="sr-only">Cancel</span>
+              <span class="sr-only"><%= t("actions.cancel") %></span>
               <%= inline_svg_tag("icons/x-mark.svg") %>
             </button>
             <h3 class="text-xl font-normal">
               <%= @title %>
             </h3>
           </div>
-          <%= button_tag "Save",
+          <%= button_tag t("actions.save"),
           class: "button text-button",
           data: {
             action: "modal-component#submitForm",

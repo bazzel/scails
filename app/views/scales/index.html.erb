@@ -1,8 +1,6 @@
-<ul class="flex flex-col divide-y divide-outline-variant sm:divide-y-0">
-  <%= render partial: "scale",
-  collection: @scales,
-  locals: {
-    chromatic_scale: @chromatic_scale,
-    scale_settings: @scale_settings,
-  } %>
+<ul
+  class="flex flex-col divide-y divide-outline-variant sm:divide-y-0"
+  data-controller="sortable"
+>
+  <%= render @scales %>
 </ul>

@@ -1,8 +1,8 @@
-<%= render(ModalComponent.new(title: "Settings")) do |m| %>
+<%= render(ModalComponent.new(title: t('.title'))) do |m| %>
   <%= m.with_controller do %>
-    <%= render(PlainTooltipComponent.new(tooltip: "Settings", position: :bottom)) do %>
+    <%= render(PlainTooltipComponent.new(tooltip: t('.tooltip'), position: :bottom)) do %>
       <button type="button" class="standard-icon-button">
-        <span class="sr-only">Settings</span>
+        <span class="sr-only"><%= t(".title") %></span>
         <%= inline_svg_tag("icons/cog-6-tooth.svg") %>
       </button>
     <% end %>
@@ -12,12 +12,11 @@
       <div class="relative mb-6">
         <%= form.select :root_note, ChromaticScale::NOTES, {}, class: "form-select peer" %>
         <%= form.label :root_note,
-                   "Root note",
                    class: "form-label sm:bg-surface-container-high bg-surface-container" %>
-        <p class="form-text">Select the root note to start with.</p>
+        <p class="form-text"><%= t("helpers.supporting_text.scale_settings.root_note") %></p>
       </div>
       <div class="relative mb-6">
-        <%= form.label :tempo, "Tempo", class: "text-base block mt-2" %>
+        <%= form.label :tempo, class: "text-base block mt-2" %>
         <%= render(SliderComponent.new(form: form, scale_settings: @scale_settings)) %>
       </div>
       <div class="relative mb-6">
@@ -26,8 +25,8 @@
           class: "flex justify-between items-center cursor-pointer gap-2",
         ) do |builder| %>
           <div>
-            <div class="text-base">Loop</div>
-            <div class="text-xs text-on-surface-variant">Keep playing until you click the Stop button</div>
+            <div class="text-base"><%= t("helpers.label.scale_settings.loop") %></div>
+            <div class="text-xs text-on-surface-variant"><%= t("helpers.supporting_text.scale_settings.loop") %></div>
           </div>
           <%= form.check_box :loop, class: "sr-only peer" %>
           <div class="form-switch peer"></div>
@@ -35,24 +34,39 @@
       </div>
       <div class="relative mb-6">
         <%= form.select :pattern_name,
-                    @pattern_names_and_labels,
+                    Tone.pattern_names.map { |k, v| [v, k] },
                     {},
                     class: "form-select peer" %>
         <%= form.label :pattern_name,
-                   "Pattern",
                    class: "form-label sm:bg-surface-container-high bg-surface-container" %>
       </div>
 
+      <div class="relative mb-6">
+        <%= label_tag nil,
+        t("helpers.label.scale_settings.sound"),
+        class: "text-base block mt-2 mb-2" %>
+        <div class="mb-2 text-xs font-medium"><%= t("helpers.label.scale_settings.wave") %></div>
+        <%= render(OscillatorTypesComponent.new(form: form, collection: Tone.waves)) %>
+        <div class="mt-4 mb-2 text-xs font-medium"><%= t("helpers.label.scale_settings.prefix") %></div>
+        <%= render(OscillatorPrefixesComponent.new(form: form, collection: Tone.prefixes)) %>
+        <div class="mt-4 text-xs font-medium"><%= t("helpers.label.scale_settings.partials_range") %></div>
+        <%= render(
+          OscillatorPartialsRangeComponent.new(
+            form: form,
+            partials_range: Tone.partials_range,
+          ),
+        ) %>
+      </div>
     <% end %>
   <% end %>
   <%= m.with_footer do %>
-    <%= button_tag "Cancel",
+    <%= button_tag t("actions.cancel"),
     class: "button text-button",
     type: "button",
     data: {
       action: "modal-component#close",
     } %>
-    <%= button_tag "Save changes",
+    <%= button_tag t("actions.save"),
     class: "button text-button",
     data: {
       action: "modal-component#submitForm",

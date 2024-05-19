@@ -1,0 +1,13 @@
+<div class="animate-pulse">
+  <div class="w-48 h-6 mb-6 rounded-full bg-surface-dim"></div>
+  <div class="flex items-center justify-between">
+    <% (ChromaticScale::NOTES.size + 1).times do %>
+      <div
+        class="
+          w-4 h-6 rounded-md sm:h-10 sm:w-8 md:w-10 grow-0 sm:grow-0 bg-surface-container
+        "
+      ></div>
+    <% end %>
+    <div class="w-10 h-10 rounded-full p-2.5 ml-2.5 bg-surface-container"></div>
+  </div>
+</div>

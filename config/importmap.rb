@@ -10,3 +10,5 @@ pin_all_from 'app/javascript/controllers', under: 'controllers'
 pin 'tone', to: 'https://ga.jspm.io/npm:tone@14.7.77/build/Tone.js'
 pin 'stimulus-use' # @0.52.2
 pin 'tailwind-material-colors' # @3.0.0
+pin_all_from 'app/javascript/custom', under: 'custom' # See: https://stackoverflow.com/a/72855705
+pin 'sortablejs' # @1.15.2

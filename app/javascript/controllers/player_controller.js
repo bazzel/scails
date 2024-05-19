@@ -11,6 +11,9 @@ export default class extends Controller {
     patternName: String,
     loop: Boolean,
     tempo: Number,
+    wave: String,
+    prefix: String,
+    partialsRange: Number,
   };
   static targets = ["note", "playButton", "pauseButton"];
 
@@ -50,11 +53,8 @@ export default class extends Controller {
     this.#showStopStatus();
   }
 
-  #showPlayStatus() {
-    this.playButtonTarget.style.display = hideClass;
-    this.pauseButtonTarget.style.display = showClass;
-  }
-
+  // Private methods
+  //
   #showStopStatus() {
     this.playButtonTarget.style.display = showClass;
     this.pauseButtonTarget.style.display = hideClass;
@@ -63,28 +63,32 @@ export default class extends Controller {
   #getSynth() {
     return new Tone.Synth({
       onsilence: (_instrument) => this.stop(),
-      oscillator: { type: "sine16" }, // https://github.com/Tonejs/Tone.js/blob/master/Tone/source/oscillator/OscillatorInterface.ts
-      // oscillator: { type: "square16" },
-      // oscillator: { type: "sawtooth16" },
-      // oscillator: { type: "triangle16" },
-
-      // oscillator: { type: "fmsine16" },
-      // oscillator: { type: "fmsquare16" },
-      // oscillator: { type: "fmsawtooth16" },
-      // oscillator: { type: "fmtriangle16" },
-
-      // oscillator: { type: "amsine16" },
-      // oscillator: { type: "amsquare16" },
-      // oscillator: { type: "amsawtooth16" },
-      // oscillator: { type: "amtriangle16" },
-
-      // oscillator: { type: "fatsine16" },
-      // oscillator: { type: "fatsquare16" },
-      // oscillator: { type: "fatsawtooth16" },
-      // oscillator: { type: "fattriangle16" },
+      oscillator: { type: this.#oscillatorType },
     }).toDestination();
   }
 
+  #showPlayStatus() {
+    this.playButtonTarget.style.display = hideClass;
+    this.pauseButtonTarget.style.display = showClass;
+  }
+
+  #deemphasizeNote() {
+    if (this.emphasizedNote) {
+      this.emphasizedNote.classList.remove(...classNames);
+    }
+  }
+
+  #emphasizeNote(note) {
+    this.emphasizedNote = this.noteTargets.find(
+      (e) => e.dataset.noteName === note
+    );
+    this.emphasizedNote.classList.add(...classNames);
+  }
+  //
+  // End private methods
+
+  // Getters
+  //
   get #scale() {
     return this.noteTargets.map((e) => e.dataset.noteName);
   }
@@ -94,16 +98,14 @@ export default class extends Controller {
     return patternNames.includes(this.patternNameValue);
   }
 
-  #emphasizeNote(note) {
-    this.emphasizedNote = this.noteTargets.find(
-      (e) => e.dataset.noteName === note
-    );
-    this.emphasizedNote.classList.add(...classNames);
-  }
+  get #oscillatorType() {
+    // https://github.com/Tonejs/Tone.js/blob/14.7.39/Tone/source/oscillator/OscillatorInterface.ts`
+    const prefix = this.prefixValue === "none" ? "" : this.prefixValue;
+    const wave = this.waveValue;
+    const partialsRange = this.partialsRangeValue;
 
-  #deemphasizeNote() {
-    if (this.emphasizedNote) {
-      this.emphasizedNote.classList.remove(...classNames);
-    }
+    return `${prefix}${wave}${partialsRange}`;
   }
+  //
+  // End getters
 }

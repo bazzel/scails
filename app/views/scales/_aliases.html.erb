@@ -1,8 +1,7 @@
 <%- if scale.aliases.any? %>
-  <%= render(RichTooltipComponent.new(title: "Alternative names")) do |tooltip| %>
+  <%= render(RichTooltipComponent.new(title: t('.title'))) do |tooltip| %>
     <% tooltip.with_tooltip do %>
-      <p>This scale is also known as
-        <%= scale.aliases.to_sentence %>.</p>
+      <p><%= t(".also_known_as", aliases: scale.aliases.to_sentence) %></p>
     <% end %>
     <%= inline_svg_tag(
       "icons/question-mark-circle.svg",

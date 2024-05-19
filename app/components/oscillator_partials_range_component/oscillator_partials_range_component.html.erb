@@ -1,0 +1,22 @@
+<div data-controller="slider-component" class="-mt-8">
+  <span class="relative inline-flex items-center justify-center pt-3 pb-3 pl-4 pr-4 mb-1 bg-inverse-surface rounded-full -top-4 left-[var(--offset)] -translate-x-1/2 duration-300 opacity-0 transition-transform scale-50 translate-y-3" data-slider-component-target="valueIndicator">120</span>
+  <%= @form.range_field(
+    :partials_range,
+    in: @partials_range,
+    step: 1,
+    class: "form-range bg-surface-container-high [&::-webkit-slider-thumb]:border-surface-container-high",
+    data: {
+      action: "slider-component#updateValues mousedown->slider-component#toggleValueIndicator mouseup->slider-component#toggleValueIndicator touchstart->slider-component#toggleValueIndicator touchend->slider-component#toggleValueIndicator",
+      slider_component_target: "input",
+    },
+  ) %>
+  <div class="absolute flex items-center justify-between w-full px-1 -mt-[27.5px]">
+
+    <%- @partials_range.to_a.each do %>
+      <span
+        class="text-primary-container"
+        data-slider-component-target="trackDot"
+      >•</span>
+    <%- end %>
+  </div>
+</div>

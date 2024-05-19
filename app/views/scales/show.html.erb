@@ -1,0 +1,15 @@
+<%= turbo_frame_tag dom_id(@scale) do %>
+  <div class="flex justify-between group/actions">
+    <div class="flex justify-start gap-1">
+      <h2 class="text-sm sm:text-lg sm:font-medium"><%= @scale.common_name %></h2>
+      <%= render partial: "aliases", locals: { scale: @scale } %>
+    </div>
+    <div class="flex justify-end invisible group-hover/actions:visible grow">
+      <%= render partial: "scales/delete", locals: { scale: @scale } %>
+      <%= render partial: "scales/pin", locals: { scale: @scale } %>
+    </div>
+  </div>
+  <%= render(
+    DegreesScaleComponent.new(scale: @scale, scale_settings: @scale_settings),
+  ) %>
+<% end %>

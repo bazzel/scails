@@ -1,0 +1,20 @@
+<div class="flex border divide-x rounded-full border-outline">
+  <% @collection.each do |k, v| %>
+    <div class="w-full">
+      <%= @form.radio_button :prefix, k, id: "#{k}-prefix", class: "hidden peer" %>
+      <%= @form.label(:prefix,
+                  for: "#{k}-prefix",
+                  class:
+                    unselected_label_class_names(k)) do %>
+        <%- v %>
+      <% end %>
+
+      <%= @form.label(:prefix,
+                  for: "#{k}-prefix",
+                  class:
+                    selected_label_class_names(k)) do %>
+        <%- inline_svg_tag("icons/check.svg", class: "pe-2") + v %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

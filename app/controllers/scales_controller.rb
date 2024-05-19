@@ -5,12 +5,16 @@ class ScalesController < ApplicationController
   def index
     @scales = Scale.order(:id).where.not(mode_number: params[:excluded])
     @scale = Scale.find(params[:soft_delete]) if params[:soft_delete]
-    @pattern_names_and_labels = I18n.t('tonejs.pattern_names').map { |k, v| [v, k] }
     @scale_settings = ScaleSettings.new(scale_settings_params)
 
     return if scale_settings_params.empty?
 
-    flash.now[:notice] = 'Settings have been updated.'
+    flash.now[:notice] = t('.notice')
+  end
+
+  def show
+    @scale = Scale.find(params[:id])
+    @scale_settings = ScaleSettings.new(scale_settings_params)
   end
 
   # POST /scales
@@ -22,7 +26,7 @@ class ScalesController < ApplicationController
       remove_mode_number_from_params(scale.mode_number)
     end
 
-    redirect_to scales_path(params.permit!), notice: "#{scale.common_name} scale has been restored."
+    redirect_to scales_path(params.permit!), notice: t('.notice', common_name: scale.common_name)
   end
 
   # DELETE /scales/:id
@@ -45,7 +49,7 @@ class ScalesController < ApplicationController
 
   def scale_settings_params
     params.fetch(:scale_settings, {}).permit(:root_note, :tempo, :loop,
-                                             :pattern_name).tap do |scale_settings_params|
+                                             :pattern_name, :wave, :prefix, :partials_range).tap do |scale_settings_params|
                                                scale_settings_params.permit(:soft_delete, excluded: [])
                                              end
   end

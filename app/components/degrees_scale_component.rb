@@ -2,12 +2,12 @@
 
 # Renders the scale degrees with a play button to play the scale
 class DegreesScaleComponent < ViewComponent::Base
-  NOTE_IN_SCALE_CLASS = 'md:bg-surface-container-high md:font-normal transition'
-  NOTE_NOT_IN_SCALE_CLASS = 'text-surface-dim md:bg-surface-container-lowest md:blur-[2px] hover:blur-none md:opacity-50 hover:opacity-100 transition'
+  NOTE_IN_SCALE_CLASS = 'md:bg-surface-container-high md:font-normal transition grow sm:grow-0'
+  NOTE_NOT_IN_SCALE_CLASS = 'text-surface-dim md:bg-surface-container-lowest md:blur-[2px] hover:blur-none md:opacity-50 hover:opacity-100 transition grow sm:grow-0'
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
-  delegate :tempo, :loop, :chromatic_scale, :pattern_name, to: :@scale_settings
+  delegate :tempo, :loop, :chromatic_scale, :pattern_name, :wave, :prefix, :partials_range, to: :@scale_settings
 
   def initialize(scale:, scale_settings:)
     @scale = scale
@@ -26,7 +26,7 @@ class DegreesScaleComponent < ViewComponent::Base
   # => note_attributes(0) => { class: 'w-10 flex...', data: { player_target: 'note' } }
   #   <div <%= tag.attributes(note_attributes(0)) %>... => <div class="w-10 flex..." data-player-target="note"...>
   def note_attributes(position)
-    class_names = %w[w-10 flex justify-center items-center rounded-md md:border md:border-outline-variant]
+    class_names = %w[md:w-10 flex justify-center items-center rounded-md md:border md:border-outline-variant]
     class_names << note_class(position)
 
     { class: class_names.join(' ') }.tap do |h|

@@ -74,7 +74,7 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'solargraph', '~> 0.49.0'
+gem 'solargraph'
 
 gem 'active_interaction', '~> 5.3'
 

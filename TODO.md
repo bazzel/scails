@@ -6,8 +6,9 @@
 - [x] FEATURE: Highlight note when playing
 - [x] BUG: Reset form (i.o. reload page)
 - [x] BUG: Hide scale when unpinned and filter is active
-- [ ] FEATURE: Change order
+- [x] FEATURE: Choose 'instrument'.
+- [x] FEATURE: Change order
+- [x] IMPROVEMENT: Extract strings to en.yml
 - [ ] FEATURE: Share settings
-- [ ] FEATURE: Choose 'instrument'.
-- [ ] IMPROVEMENT: Extract strings to en.yml
-- [ ] FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)
+- [ ] ~~FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)~~
+- [ ] BUG: 'unpin' always removes item from screen
