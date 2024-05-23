@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+/* Prevent Page Scrolling When a Modal is Open */
+body:has(div[data-modal-component-target="dialog"].block) {
+  overflow: hidden;
+}
+
+/* Show action buttons to ensure the visibility of the modal dialog */
+div[data-controller="modal-component"]:has(
+    div[data-modal-component-target="dialog"].block
+  ) {
+  visibility: visible;
+}

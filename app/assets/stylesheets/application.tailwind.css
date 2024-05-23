@@ -12,7 +12,13 @@
   }
 
   .text-button {
+    @apply button;
     @apply text-primary hover:bg-primary/[.08] focus:bg-primary/[.12] active:bg-primary/[.16];
+  }
+
+  .filled-button {
+    @apply button;
+    @apply interactive-bg-primary;
   }
   /* End buttons */
 
@@ -31,6 +37,10 @@
   /* End icon buttons */
 
   /* Form elements */
+  .form-control {
+    @apply block w-full pl-4 text-base bg-transparent border rounded text-on-surface;
+  }
+
   .form-select {
     @apply block w-full p-4 text-base bg-transparent border rounded text-on-surface focus:ring-primary focus:border-primary;
   }

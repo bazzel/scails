@@ -5,6 +5,7 @@
       <%= render partial: "aliases", locals: { scale: @scale } %>
     </div>
     <div class="flex justify-end invisible group-hover/actions:visible grow">
+      <%= render partial: "scales/share", locals: { scale: @scale } %>
       <%= render partial: "scales/delete", locals: { scale: @scale } %>
       <%= render partial: "scales/pin", locals: { scale: @scale } %>
     </div>

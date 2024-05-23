@@ -28,7 +28,7 @@ export default class extends Controller {
       if (this.dialogTarget.classList.contains(this.visibleClass)) {
         this.toggle();
 
-        this.formTarget.reset();
+        if (this.hasFormTarget) this.formTarget.reset();
       }
     }
   }

@@ -9,6 +9,8 @@ en:
     save: Save
     delete: &delete Delete
     pin: Pin
+    share: &share Share
+    copy: Copy
   helpers:
     label:
       scale_settings:
@@ -44,6 +46,9 @@ en:
       tooltip: Pin or unpin this scale
     delete:
       tooltip: *delete
+    share:
+      tooltip: *share
+      title: Share the %{common_name} scale
   tonejs:
     pattern_names:
       up: Walk upward

@@ -1,0 +1,45 @@
+<div
+  data-controller="shareable"
+  data-shareable-mode-number-value="<%= scale.mode_number %>"
+>
+  <%= render(ModalComponent.new(title: t('.title', common_name: scale.common_name))) do |m| %>
+    <%= m.with_controller do %>
+      <%= render(PlainTooltipComponent.new(tooltip: t('.tooltip'), position: :bottom)) do %>
+        <button type="button" class="standard-icon-button">
+          <span class="sr-only"><%= t(".title") %></span>
+          <%= inline_svg_tag("icons/share-variant.svg") %>
+        </button>
+      <% end %>
+    <% end %>
+    <%= m.with_body do %>
+      <div class="relative mb-6">
+        <div class="flex justify-between gap-2 p-1 border rounded">
+
+          <%= text_field_tag "url",
+          nil,
+          class: "grow border-none bg-transparent outline-none",
+          readonly: true,
+          disabled: true,
+          data: {
+            shareable_target: "url",
+          } %>
+          <%= button_tag t("actions.copy"),
+          class: "filled-button",
+          type: "button",
+          data: {
+            action: "shareable#copy",
+          } %>
+
+        </div>
+      </div>
+    <% end %>
+    <%= m.with_footer do %>
+      <%= button_tag t("actions.close"),
+      class: "text-button",
+      type: "button",
+      data: {
+        action: "modal-component#close",
+      } %>
+    <% end %>
+  <% end %>
+</div>
