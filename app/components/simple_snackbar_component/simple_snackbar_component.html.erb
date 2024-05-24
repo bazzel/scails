@@ -1,0 +1,26 @@
+<div
+  class="<%= component_class_names %>"
+  role="alert"
+  data-controller="simple-snackbar-component"
+  data-simple-snackbar-component-hidden-class="hidden"
+  data-simple-snackbar-component-visible-class="opacity-100"
+  data-simple-snackbar-component-fading-out-class="transition-opacity duration-300 opacity-0"
+>
+  <div class="text-sm" data-simple-snackbar-component-target="message">Message...</div>
+
+  <div class="flex items-center gap-3">
+    <% if @close_button %>
+      <div class='me-1'>
+        <button
+          type="button"
+          class="relative p-2 rounded-full  ms-auto interactive-bg-inverse-surface focus:outline-none"
+          data-action="simple-snackbar-component#close"
+        >
+          <span class="sr-only"><%= t("actions.close") %></span>
+          <%= inline_svg_tag("icons/x-mark.svg") %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+
+</div>

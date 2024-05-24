@@ -6,7 +6,7 @@ import {
   fadeOutSnackbarDuration as fadeOutDuration,
 } from "custom/variables";
 
-export default class extends Controller {
+export default class SnackbarComponentController extends Controller {
   static classes = ["hidden", "visible", "fadingOut"];
 
   connect() {

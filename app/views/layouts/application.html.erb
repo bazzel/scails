@@ -14,6 +14,8 @@
   <body class="bg-background">
     <%= render "flash" %>
     <%= render partial: "confirm_deletion", locals: { scale: @scale } %>
+    <%= render(SimpleSnackbarComponent.new) %>
+
     <%= render "navbar" %>
     <main class="container mx-auto mt-20 sm:px-8">
       <%= yield %>

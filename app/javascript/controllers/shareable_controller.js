@@ -5,8 +5,9 @@ export default class extends Controller {
   static targets = ["url"];
   static values = {
     modeNumber: Number,
+    snackbarMessage: String,
   };
-  static outlets = ["snackbar-component"];
+  static outlets = ["simple-snackbar-component"];
 
   connect() {
     this.#fillInUrl();
@@ -14,7 +15,7 @@ export default class extends Controller {
 
   copy() {
     navigator.clipboard.writeText(this.urlTarget.value);
-    this.snackbarComponentOutlet.show();
+    this.#showSnackbar();
   }
 
   #fillInUrl() {
@@ -22,5 +23,10 @@ export default class extends Controller {
     const hash = this.modeNumberValue;
     const url = `${href.origin}/#${hash}`;
     this.urlTarget.value = url;
+  }
+
+  #showSnackbar() {
+    this.simpleSnackbarComponentOutlet.setMessage(this.snackbarMessageValue);
+    this.simpleSnackbarComponentOutlet.show();
   }
 }

@@ -1,7 +1,8 @@
 <div
   data-controller="shareable"
+  data-shareable-simple-snackbar-component-outlet=".simple-snackbar-component"
   data-shareable-mode-number-value="<%= scale.mode_number %>"
-  data-shareable-snackbar-component-outlet=".snackbar-component"
+  data-shareable-snackbar-message-value="<%= t('.copy_confirmation') %>"
 >
   <%= render(ModalComponent.new(title: t('.title', common_name: scale.common_name))) do |m| %>
     <%= m.with_controller do %>
@@ -43,5 +44,4 @@
       } %>
     <% end %>
   <% end %>
-  <%= render(SnackbarComponent.new(message: t(".copy_confirmation"), visible: false)) %>
 </div>
