@@ -1,4 +1,4 @@
-import SnackbarComponentController from "./snackbar_component_controller";
+import SnackbarComponentController from "controllers/snackbar_component_controller";
 
 export default class extends SnackbarComponentController {
   static targets = ["message"];
