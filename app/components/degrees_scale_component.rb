@@ -36,6 +36,8 @@ class DegreesScaleComponent < ViewComponent::Base
 
   private
 
+  # => note_data_attributes(0) => {player_target: "note", note_name: "C4"}
+  # => note_data_attributes(12) => {player_target: "note", note_name: "C5"}
   def note_data_attributes(position)
     return unless note_in_scale?(position)
 
@@ -48,6 +50,8 @@ class DegreesScaleComponent < ViewComponent::Base
     { player_target: }
   end
 
+  # => note_name_data_attribute(0) => {note_name: "C4"}
+  # => note_name_data_attribute(12) => {note_name: "C5"}
   def note_name_data_attribute(position)
     note_wo_octave_number = chromatic_scale[position]
     octave_number = octave_number(note_wo_octave_number, position)
