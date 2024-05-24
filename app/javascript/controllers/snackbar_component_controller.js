@@ -21,6 +21,11 @@ export default class extends Controller {
     this.element.remove();
   }
 
+  show() {
+    this.element.classList.remove(...this.hiddenClasses);
+    this.element.classList.add(...this.visibleClasses);
+  }
+
   invokeDismissal() {
     setTimeout(() => {
       if (this.element) this.close();

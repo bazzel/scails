@@ -49,6 +49,7 @@ en:
     share:
       tooltip: *share
       title: Share the %{common_name} scale
+      copy_confirmation: Link copied to clipboard
   tonejs:
     pattern_names:
       up: Walk upward

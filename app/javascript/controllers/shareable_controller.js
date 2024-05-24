@@ -6,6 +6,7 @@ export default class extends Controller {
   static values = {
     modeNumber: Number,
   };
+  static outlets = ["snackbar-component"];
 
   connect() {
     this.#fillInUrl();
@@ -13,6 +14,7 @@ export default class extends Controller {
 
   copy() {
     navigator.clipboard.writeText(this.urlTarget.value);
+    this.snackbarComponentOutlet.show();
   }
 
   #fillInUrl() {

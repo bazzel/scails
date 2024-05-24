@@ -1,5 +1,5 @@
 <div
-  class="fixed z-10 flex items-center justify-between h-12 pl-4 rounded shadow-md  bg-inverse-surface pe-2 bottom-5 left-5 right-5 sm:w-full sm:max-w-lg"
+  class="<%= component_class_names %>"
   role="alert"
   data-controller="snackbar-component"
   data-snackbar-component-hidden-class="hidden"
@@ -17,7 +17,10 @@
       <div class='me-1'>
         <button
           type="button"
-          class="relative p-2 rounded-full  ms-auto interactive-bg-inverse-surface focus:outline-none"
+          class="
+            relative p-2 rounded-full ms-auto interactive-bg-inverse-surface
+            focus:outline-none
+          "
           data-action="snackbar-component#close"
         >
           <span class="sr-only"><%= t("actions.close") %></span>
