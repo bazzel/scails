@@ -62,3 +62,4 @@ The application has been deployed to the following environments (not all may be 
 
 - [A very extensive reading about how to use Tone.js starting from playing a simple tone to playing blues and arpeggios](https://www.guitarland.com/MusicTheoryWithToneJS/TonejsSetup.html).
 - [Piano scales – overviews and instructions](https://www.pianoscales.org/).
+- [List of scales](https://www.musicca.com/dictionary/scales).
