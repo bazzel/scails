@@ -11,7 +11,7 @@
 >
   <% chromatic_scale.each_with_index do |note, index| %>
     <div <%= tag.attributes(note_attributes(index)) %>>
-      <%= note %>
+      <%= formatted_note(note) %>
     </div>
   <% end %>
   <button

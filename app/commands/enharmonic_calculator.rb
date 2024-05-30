@@ -14,7 +14,7 @@ class EnharmonicCalculator < ActiveInteraction::Base
   object :scale
 
   def execute
-    enharmonizable? ? enharmonize(scale.playable_notes) : scale.playable_notes
+    enharmonizable? ? enharmonize : notes
   end
 
   def enharmonizable?
@@ -23,35 +23,44 @@ class EnharmonicCalculator < ActiveInteraction::Base
     scale.playable_notes_count <= TOO_MANY_NOTES
   end
 
-  def enharmonize(notes, index = 0)
+  def enharmonize(index = 0)
     return notes if index == (notes.size - 1)
 
-    replace_note_with_enharmonic(notes, index) if duplicate_notes?(notes, index)
-    enharmonize(notes, index + 1)
+    replace_note_with_enharmonic!(index) if duplicate_notes?(index)
+    enharmonize(index + 1)
   end
 
-  private
+  # private
 
-  def duplicate_notes?(notes, index)
-    current_note = notes[index]
-
-    return false if current_note.nil?
-
-    current_note_wo_accidental = current_note.first
-    duplicate_notes_indices = notes[1..].map.with_index do |note, i|
-      note&.start_with?(current_note_wo_accidental.to_s) ? i : nil
-    end
-    duplicate_notes_indices.compact.count > 1
+  def notes
+    @notes ||= scale.playable_notes
   end
 
-  def replace_note_with_enharmonic(notes, index)
-    current_note = notes[index]
+  def duplicate_notes?(index)
+    return false if current_note(index).nil?
+
+    duplicate_notes_indices(index).compact.count > 1
+  end
+
+  def current_note(index)
+    notes[index]
+  end
+
+  def replace_note_with_enharmonic!(index)
     next_note = notes[index + 1]
 
     if NOTES[index + 1] == next_note
       notes[index + 1] = ENHARMONIC_EQUIVALENTS_1[index + 1]
-    elsif ENHARMONIC_EQUIVALENTS_1[index] == current_note
+    elsif ENHARMONIC_EQUIVALENTS_1[index] == current_note(index) # && duplicate_notes_indices(index).compact.max == index
       notes[index] = ENHARMONIC_EQUIVALENTS_2[index]
+    end
+  end
+
+  def duplicate_notes_indices(index)
+    current_note_wo_accidental = current_note(index).first
+
+    notes.map.with_index do |note, i|
+      note&.start_with?(current_note_wo_accidental.to_s) ? i : nil
     end
   end
 end

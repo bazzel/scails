@@ -14,6 +14,17 @@ class DegreesScaleComponent < ViewComponent::Base
     @scale_settings = scale_settings
   end
 
+  def formatted_note(note)
+    note
+
+    # index = @scale.playable_notes.index(note)
+    # return note if index.nil?
+
+    # enharmonic_equivalent = @scale.enharmonic_equivalents[index]
+
+    # enharmonic_equivalent&.gsub('#', '♯')&.gsub('b', '♭')&.gsub('x', '𝄪')
+  end
+
   def note_class(position)
     if note_in_scale?(position)
       NOTE_IN_SCALE_CLASS

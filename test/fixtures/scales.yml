@@ -1,11 +1,26 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  mode_number: 1
-  scale: MyString
-  common_name: MyString
+chromatic:
+  mode_number: 4095
+  scale: ;CdDeEFgGaAbB
+  common_name: Chromatic
 
-two:
-  mode_number: 1
-  scale: MyString
-  common_name: MyString
+major:
+  mode_number: 2773
+  scale: ;C D EF G A B
+  common_name: Major
+
+natural_minor:
+  mode_number: 2906
+  scale: ;C De F Ga b
+  common_name: Natural Minor
+
+blues_minor:
+  mode_number: 2418
+  scale: ;C  e FgG  b
+  common_name: Blues Minor
+
+phrygian:
+  mode_number: 3418
+  scale: ;Cd e F Ga b
+  common_name: Phrygian
