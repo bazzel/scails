@@ -7,15 +7,13 @@ class EnharmonicCalculator < ActiveInteraction::Base
 
   TOO_MANY_NOTES = 7
 
-  # b = ♭
-  # # = ♯
-  # x = 𝄪
-
   object :scale
 
   def execute
-    enharmonizable? ? enharmonize : notes
+    enharmonizable? ? enharmonize(scale.playable_notes) : scale.playable_notes
   end
+
+  private
 
   def enharmonizable?
     # An enharmonic equivalent can only be found if the scale
@@ -23,41 +21,64 @@ class EnharmonicCalculator < ActiveInteraction::Base
     scale.playable_notes_count <= TOO_MANY_NOTES
   end
 
-  def enharmonize(index = 0)
-    return notes if index == (notes.size - 1)
+  def enharmonize(notes, index = 0)
+    return notes if end_of_list?(notes, index)
 
-    replace_note_with_enharmonic!(index) if duplicate_notes?(index)
-    enharmonize(index + 1)
+    enharmonized_notes = duplicate_notes?(notes, index) ? replace_note_with_enharmonic(notes, index) : notes
+    enharmonize(enharmonized_notes, index + 1)
   end
 
-  # private
-
-  def notes
-    @notes ||= scale.playable_notes
+  def end_of_list?(notes, index)
+    index == (notes.size - 1)
   end
 
-  def duplicate_notes?(index)
-    return false if current_note(index).nil?
+  def duplicate_notes?(notes, index)
+    return false if current_note(notes, index).nil?
 
-    duplicate_notes_indices(index).compact.count > 1
+    duplicate_notes_indices(notes, index).compact.count > 1
   end
 
-  def current_note(index)
+  def current_note(notes, index)
     notes[index]
   end
 
-  def replace_note_with_enharmonic!(index)
-    next_note = notes[index + 1]
+  def replace_note_with_enharmonic(notes, index)
+    enharmonized_notes = replace_note_using_equivalents(notes:, equivalents: ENHARMONIC_EQUIVALENTS_1, index:)
 
-    if NOTES[index + 1] == next_note
-      notes[index + 1] = ENHARMONIC_EQUIVALENTS_1[index + 1]
-    elsif ENHARMONIC_EQUIVALENTS_1[index] == current_note(index) # && duplicate_notes_indices(index).compact.max == index
-      notes[index] = ENHARMONIC_EQUIVALENTS_2[index]
+    if !duplicate_notes?(enharmonized_notes[..index], index) && ordered?(enharmonized_notes, index)
+      return enharmonized_notes
+    end
+
+    enharmonized_notes = replace_note_using_equivalents(notes:, equivalents: ENHARMONIC_EQUIVALENTS_2, index:)
+
+    if enharmonized_notes[index] && !duplicate_notes?(enharmonized_notes[..index],
+                                                      index) && ordered?(enharmonized_notes, index)
+
+      return enharmonized_notes
+    end
+
+    notes
+  end
+
+  def replace_note_using_equivalents(notes:, equivalents:, index:)
+    notes.dup.tap do |enharmonized_notes|
+      enharmonized_notes[index] = equivalents[index]
     end
   end
 
-  def duplicate_notes_indices(index)
-    current_note_wo_accidental = current_note(index).first
+  def ordered?(notes, index)
+    current_note = current_note(notes, index)
+    compacts = notes.compact
+
+    next_note = compacts[compacts.index(current_note) + 1]
+
+    return true if next_note.nil?
+
+    NOTES.index(next_note.first) >= NOTES.index(current_note.first)
+  end
+
+  def duplicate_notes_indices(notes, index)
+    current_note_wo_accidental = current_note(notes, index).first
 
     notes.map.with_index do |note, i|
       note&.start_with?(current_note_wo_accidental.to_s) ? i : nil
