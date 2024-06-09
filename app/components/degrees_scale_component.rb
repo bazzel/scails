@@ -7,7 +7,8 @@ class DegreesScaleComponent < ViewComponent::Base
   FIRST_POSITION = 0
   LAST_POSITION = 12
 
-  delegate :tempo, :loop, :chromatic_scale, :pattern_name, :wave, :prefix, :partials_range, to: :@scale_settings
+  delegate :tempo, :loop, :chromatic_scale, :pattern_name, :wave, :prefix, :partials_range, :root_note,
+           to: :@scale_settings
 
   def initialize(scale:, scale_settings:)
     @scale = scale
@@ -15,20 +16,16 @@ class DegreesScaleComponent < ViewComponent::Base
   end
 
   def formatted_note(note)
-    index = @scale.playable_notes.index(note)
+    index = @scale.playable_notes(root_note).index(note)
     return note if index.nil?
 
-    enharmonic_equivalent = @scale.enharmonic_equivalents[index]
+    enharmonic_equivalent = @scale.enharmonic_equivalents(root_note)[index]
 
     enharmonic_equivalent&.gsub('#', '♯')&.gsub('b', '♭')&.gsub('x', '𝄪')
   end
 
   def note_class(position)
-    if note_in_scale?(position)
-      NOTE_IN_SCALE_CLASS
-    else
-      NOTE_NOT_IN_SCALE_CLASS
-    end
+    note_in_scale?(position) ? NOTE_IN_SCALE_CLASS : NOTE_NOT_IN_SCALE_CLASS
   end
 
   # Used with 'tag.attributes' this method results in a 'list' of html-attributes:

@@ -12,3 +12,4 @@
 - [ ] FEATURE: Share settings
 - [ ] ~~FEATURE: Infinite scroll (https://webcrunch.com/posts/infinite-scroll-rails-turbo???)~~
 - [x] BUG: 'unpin' always removes item from screen
+- [x] Enharmonic equivalents

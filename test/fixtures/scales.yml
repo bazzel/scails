@@ -15,6 +15,11 @@ natural_minor:
   scale: ;C De F Ga b
   common_name: Natural Minor
 
+pentatonic_minor:
+  mode_number: 2386
+  scale: ;C  e F G  b
+  common_name: Pentanic Minor
+
 blues_minor:
   mode_number: 2418
   scale: ;C  e FgG  b

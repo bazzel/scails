@@ -4,7 +4,8 @@
 # It also ends with the root note.
 class ChromaticScale < ActiveInteraction::Base
   NOTES = %w[C C# D D# E F F# G G# A A# B].freeze
-  string :root_note, default: 'C'
+  MIDDLE_C = 'C'
+  string :root_note, default: MIDDLE_C
 
   validates :root_note, inclusion: { in: NOTES }
 
