@@ -19,14 +19,23 @@ export default class extends Controller {
   }
 
   #fillInUrl() {
-    const href = new URL(window.location.href);
-    const hash = this.modeNumberValue;
-    const url = `${href.origin}/#${hash}`;
-    this.urlTarget.value = url;
+    this.urlTarget.value = encodeURI(this.shareableUrl);
   }
 
   #showSnackbar() {
     this.simpleSnackbarComponentOutlet.setMessage(this.snackbarMessageValue);
     this.simpleSnackbarComponentOutlet.show();
+  }
+
+  get shareableUrl() {
+    const href = new URL(window.location.href);
+    const hash = this.modeNumberValue;
+    const rootNoteKey = "scale_settings[root_note]";
+    const rootNoteValue = href.searchParams.get(rootNoteKey);
+    const shareableParams =
+      rootNoteValue !== null ? `?${rootNoteKey}=${rootNoteValue}` : "";
+    const url = `${href.origin}/${shareableParams}#${hash}`;
+    // debugger;
+    return encodeURI(url);
   }
 }
