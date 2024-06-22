@@ -26,7 +26,7 @@ export default class extends Controller {
   }
 
   #fillInUrl() {
-    this.urlTarget.value = encodeURI(this.shareableUrl);
+    this.urlTarget.value = this.shareableUrl;
   }
 
   #renderQrCode() {
