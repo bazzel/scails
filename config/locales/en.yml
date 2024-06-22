@@ -11,6 +11,7 @@ en:
     pin: Pin
     share: &share Share
     copy: Copy
+    download: Download
   helpers:
     label:
       scale_settings:
@@ -50,6 +51,7 @@ en:
       tooltip: *share
       title: Share the %{common_name} scale
       copy_confirmation: Link copied to clipboard.
+      qr_code_instruction: People can scan this QR code with their smartphone camera to view the scale.
   tonejs:
     pattern_names:
       up: Walk upward

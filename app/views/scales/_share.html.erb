@@ -34,6 +34,16 @@
 
         </div>
       </div>
+      <div class="relative flex flex-col items-center mb-6 gap-y-4">
+        <p><%= t(".qr_code_instruction") %></p>
+        <div data-shareable-target="qrCode" class="w-56 shadow-md"></div>
+        <%= button_tag t("actions.download"),
+        class: "button text-button",
+        type: "button",
+        data: {
+          action: "shareable#downloadQrCode",
+        } %>
+      </div>
     <% end %>
     <%= m.with_footer do %>
       <%= button_tag t("actions.close"),

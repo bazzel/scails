@@ -12,3 +12,4 @@ pin 'stimulus-use' # @0.52.2
 pin 'tailwind-material-colors' # @3.0.0
 pin_all_from 'app/javascript/custom', under: 'custom' # See: https://stackoverflow.com/a/72855705
 pin 'sortablejs' # @1.15.2
+pin "qr-code-styling" # @1.6.0
