@@ -1,8 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["dialog", "backdrop", "form"];
+  static targets = ["dialog", "backdrop", "form", "saveButton"];
   static classes = ["visible", "hidden"];
+
+  connect() {
+    this.#adjustHeader();
+  }
 
   toggle() {
     this.dialogTarget.classList.toggle(this.hiddenClass);
@@ -36,6 +40,12 @@ export default class extends Controller {
   submitForm(event) {
     if (this.hasFormTarget) {
       this.formTarget.submit();
+    }
+  }
+
+  #adjustHeader() {
+    if (!this.hasFormTarget) {
+      this.saveButtonTarget.remove();
     }
   }
 }
