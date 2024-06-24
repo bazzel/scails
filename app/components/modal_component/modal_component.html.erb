@@ -26,7 +26,7 @@
         <!--header-->
         <div class="hidden sm:block">
           <h3 class="overflow-hidden text-2xl font-semibold text-nowrap text-ellipsis">
-            <%= @title + @title %>
+            <%= @title %>
           </h3>
         </div>
         <div class="flex items-center justify-between gap-2 pr-4 -mx-6 sm:hidden">
@@ -44,7 +44,7 @@
               <%= inline_svg_tag("icons/x-mark.svg") %>
             </button>
             <h3 class="overflow-hidden text-xl font-normal text-nowrap text-ellipsis">
-              <%= @title + @title %>
+              <%= @title %>
             </h3>
           </div>
           <%= button_tag t("actions.save"),
