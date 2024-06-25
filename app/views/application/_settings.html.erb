@@ -1,4 +1,4 @@
-<%= render(ModalComponent.new(title: t('.title'))) do |m| %>
+<%= render(ModalDialogComponent.new(title: t('.title'))) do |m| %>
   <%= m.with_controller do %>
     <%= render(PlainTooltipComponent.new(tooltip: t('.tooltip'), position: :bottom)) do %>
       <button type="button" class="standard-icon-button">
@@ -8,7 +8,7 @@
     <% end %>
   <% end %>
   <%= m.with_body do %>
-    <%= form_with model: @scale_settings, url: root_path, method: :get, data: { modal_component_target: "form" } do |form| %>
+    <%= form_with model: @scale_settings, url: root_path, method: :get, data: { modal_dialog_component_target: "form" } do |form| %>
       <div class="relative mb-6">
         <%= form.select :root_note, ChromaticScale::NOTES, {}, class: "form-select peer" %>
         <%= form.label :root_note,
@@ -64,12 +64,12 @@
     class: "button text-button",
     type: "button",
     data: {
-      action: "modal-component#close",
+      action: "modal-dialog-component#close",
     } %>
     <%= button_tag t("actions.save"),
     class: "button text-button",
     data: {
-      action: "modal-component#submitForm",
+      action: "modal-dialog-component#submitForm",
     } %>
   <% end %>
 <% end %>

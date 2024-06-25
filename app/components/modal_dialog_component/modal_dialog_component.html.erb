@@ -1,0 +1,57 @@
+<div data-controller="modal-dialog-component">
+  <%= controller %>
+  <dialog
+    data-modal-dialog-component-target="dialog"
+    data-action="click->modal-dialog-component#handleClickOnDialog"
+    class="
+      w-full max-w-full max-h-full sm:-translate-y-1/2 sm:top-1/2 sm:w-fit
+      sm:rounded-3xl sm:my-6 sm:min-w-72 sm:max-w-xl
+    "
+  >
+    <div
+      class="
+        relative flex flex-col h-screen px-6 pb-6 overflow-y-scroll border-0
+        outline-none sm:bg-surface-container-high bg-surface-container sm:p-6 sm:h-auto
+        sm:shadow-lg focus:outline-none
+      "
+    >
+      <!--header-->
+      <div class="hidden sm:block">
+        <h3 class="overflow-hidden text-2xl font-semibold text-nowrap text-ellipsis">
+          <%= @title %>
+        </h3>
+      </div>
+      <div class="flex items-center justify-between gap-2 pr-4 -mx-6 sm:hidden">
+        <div
+          class="
+            flex items-center content-center justify-start gap-4 overflow-hidden h-14
+          "
+        >
+          <button
+            type="button"
+            class="standard-icon-button"
+            data-action="modal-dialog-component#close"
+          >
+            <span class="sr-only"><%= t("actions.cancel") %></span>
+            <%= inline_svg_tag("icons/x-mark.svg") %>
+          </button>
+          <h3 class="overflow-hidden text-xl font-normal text-nowrap text-ellipsis">
+            <%= @title %>
+          </h3>
+        </div>
+        <%= button_tag t("actions.save"),
+        class: "button text-button",
+        data: {
+          action: "modal-dialog-component#submitForm",
+          modal_dialog_component_target: "saveButton",
+        } %>
+      </div>
+      <!--body-->
+      <%= body %>
+      <!--footer-->
+      <% if footer? %>
+        <%= footer %>
+      <% end %>
+    </div>
+  </dialog>
+</div>

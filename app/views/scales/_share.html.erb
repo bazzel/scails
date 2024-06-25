@@ -4,7 +4,7 @@
   data-shareable-mode-number-value="<%= scale.mode_number %>"
   data-shareable-snackbar-message-value="<%= t('.copy_confirmation') %>"
 >
-  <%= render(ModalComponent.new(title: t('.title', common_name: scale.common_name))) do |m| %>
+  <%= render(ModalDialogComponent.new(title: t('.title', common_name: scale.common_name))) do |m| %>
     <%= m.with_controller do %>
       <%= render(PlainTooltipComponent.new(tooltip: t('.tooltip'), position: :bottom)) do %>
         <button type="button" class="standard-icon-button">
@@ -50,8 +50,9 @@
       class: "text-button",
       type: "button",
       data: {
-        action: "modal-component#close",
+        action: "modal-dialog-component#close",
       } %>
     <% end %>
+
   <% end %>
 </div>

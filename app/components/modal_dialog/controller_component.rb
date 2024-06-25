@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Modal
+module ModalDialog
   class ControllerComponent < ViewComponent::Base
   end
 end
